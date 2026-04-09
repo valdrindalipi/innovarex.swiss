@@ -1,0 +1,75 @@
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background-dark: #0A0A0A;
+    --background-light: #F5F0EB;
+    --accent: #E8593C;
+    --accent-hover: #D04A2E;
+    --text-primary: #FFFFFF;
+    --text-secondary: #A3A3A3;
+    --text-dark: #1A1A1A;
+    --border: rgba(255, 255, 255, 0.1);
+
+    --background: #0A0A0A;
+    --foreground: #FFFFFF;
+    --card: #1A1A1A;
+    --card-foreground: #FFFFFF;
+    --popover: #1A1A1A;
+    --popover-foreground: #FFFFFF;
+    --primary: #E8593C;
+    --primary-foreground: #FFFFFF;
+    --secondary: #1A1A1A;
+    --secondary-foreground: #FFFFFF;
+    --muted: #262626;
+    --muted-foreground: #A3A3A3;
+    --accent: #E8593C;
+    --accent-foreground: #FFFFFF;
+    --destructive: #E8593C;
+    --border: rgba(255, 255, 255, 0.1);
+    --input: rgba(255, 255, 255, 0.15);
+    --ring: #E8593C;
+    --radius: 0.75rem;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    @apply font-sans;
+  }
+
+  body {
+    @apply bg-[#0A0A0A] text-white antialiased;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Marquee animation */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
