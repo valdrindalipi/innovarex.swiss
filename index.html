@@ -132,7 +132,7 @@
 
     /* Logo-Laufband */
     @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-    .marquee-track { animation: marquee 34s linear infinite; }
+    .marquee-track { animation: marquee 34s linear infinite; will-change: transform; -webkit-backface-visibility: hidden; }
     @media (hover: hover) { .marquee:hover .marquee-track { animation-play-state: paused; } }
 
     /* Zeichnende Prozesslinie */
@@ -158,6 +158,15 @@
     .faq-body > div { overflow: hidden; }
     details[open] .faq-body { grid-template-rows: 1fr; }
 
+    /* Auf Touch-Geräten: Akzente animieren, sobald die Karte sichtbar ist */
+    @media (max-width: 1023px) {
+      .reveal.is-visible .accent-bar { width: 100%; }
+      .reveal.is-visible .step-chip { transform: rotate(-6deg) scale(1.08); }
+      .reveal.is-visible .step-badge { background: #7633E3; color: #fff; }
+      .step-chip { transition: transform .6s cubic-bezier(.2,.7,.2,1) .3s; }
+      .step-badge { transition: background .5s ease .5s, color .5s ease .5s; }
+    }
+
     /* Fortschrittsbalken & Header */
     #progress { transform: scaleX(0); transform-origin: left; }
     #header.is-hidden { transform: translateY(-100%); }
@@ -172,11 +181,6 @@
     @keyframes dialog-in { from { opacity: 0; transform: translateY(12px) scale(.98); } to { opacity: 1; transform: none; } }
     dialog[open] { animation: dialog-in .3s cubic-bezier(.2,.7,.2,1); }
 
-    @media (prefers-reduced-motion: reduce) {
-      .reveal, .reveal-left, .reveal-scale, .reveal-clip, .rise { opacity: 1; transform: none; clip-path: none; animation: none; transition: none; }
-      .floaty, .floaty2, .blob, .marquee-track, .ping-soft::after { animation: none; }
-      .process-line { transform: none; transition: none; }
-    }
   </style>
 </head>
 <body class="bg-white text-ink font-sans antialiased">
@@ -324,7 +328,7 @@
         <div class="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           <article class="reveal tilt group relative flex h-full flex-col overflow-hidden rounded-2xl border border-ink/5 bg-white p-7 shadow-card hover:shadow-xl" style="--d:0ms">
             <span class="font-display pointer-events-none absolute -right-2 -top-4 text-8xl font-bold text-ink/[0.04] transition-all duration-500 group-hover:-translate-y-1 group-hover:text-accent/10">01</span>
-            <span class="absolute left-0 top-0 h-1 w-0 bg-accent transition-all duration-500 group-hover:w-full"></span>
+            <span class="accent-bar absolute left-0 top-0 h-1 w-0 bg-accent transition-all duration-700 group-hover:w-full"></span>
             <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-ink text-white transition-all duration-500 group-hover:-rotate-6 group-hover:scale-110 group-hover:bg-accent">
               <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75"><path stroke-linecap="round" stroke-linejoin="round" d="M3 21h18M5 21V8l7-5 7 5v13M9 21v-6h6v6M9 11h.01M15 11h.01"/></svg>
             </div>
@@ -334,7 +338,7 @@
           </article>
           <article class="reveal tilt group relative flex h-full flex-col overflow-hidden rounded-2xl border border-ink/5 bg-white p-7 shadow-card hover:shadow-xl" style="--d:100ms">
             <span class="font-display pointer-events-none absolute -right-2 -top-4 text-8xl font-bold text-ink/[0.04] transition-all duration-500 group-hover:-translate-y-1 group-hover:text-accent/10">02</span>
-            <span class="absolute left-0 top-0 h-1 w-0 bg-accent transition-all duration-500 group-hover:w-full"></span>
+            <span class="accent-bar absolute left-0 top-0 h-1 w-0 bg-accent transition-all duration-700 group-hover:w-full"></span>
             <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-ink text-white transition-all duration-500 group-hover:-rotate-6 group-hover:scale-110 group-hover:bg-accent">
               <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75"><path stroke-linecap="round" stroke-linejoin="round" d="M4 5h16a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Zm4 15h8m-4-3v3M7 9h6M7 12h10"/></svg>
             </div>
@@ -344,7 +348,7 @@
           </article>
           <article class="reveal tilt group relative flex h-full flex-col overflow-hidden rounded-2xl border border-ink/5 bg-white p-7 shadow-card hover:shadow-xl" style="--d:200ms">
             <span class="font-display pointer-events-none absolute -right-2 -top-4 text-8xl font-bold text-ink/[0.04] transition-all duration-500 group-hover:-translate-y-1 group-hover:text-accent/10">03</span>
-            <span class="absolute left-0 top-0 h-1 w-0 bg-accent transition-all duration-500 group-hover:w-full"></span>
+            <span class="accent-bar absolute left-0 top-0 h-1 w-0 bg-accent transition-all duration-700 group-hover:w-full"></span>
             <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-ink text-white transition-all duration-500 group-hover:-rotate-6 group-hover:scale-110 group-hover:bg-accent">
               <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75"><path stroke-linecap="round" stroke-linejoin="round" d="M20 7 12 3 4 7m16 0v10l-8 4m8-14-8 4M4 7v10l8 4M4 7l8 4m0 0v10"/></svg>
             </div>
@@ -354,7 +358,7 @@
           </article>
           <article class="reveal tilt group relative flex h-full flex-col overflow-hidden rounded-2xl border border-ink/5 bg-white p-7 shadow-card hover:shadow-xl" style="--d:300ms">
             <span class="font-display pointer-events-none absolute -right-2 -top-4 text-8xl font-bold text-ink/[0.04] transition-all duration-500 group-hover:-translate-y-1 group-hover:text-accent/10">04</span>
-            <span class="absolute left-0 top-0 h-1 w-0 bg-accent transition-all duration-500 group-hover:w-full"></span>
+            <span class="accent-bar absolute left-0 top-0 h-1 w-0 bg-accent transition-all duration-700 group-hover:w-full"></span>
             <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-ink text-white transition-all duration-500 group-hover:-rotate-6 group-hover:scale-110 group-hover:bg-accent">
               <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75"><path stroke-linecap="round" stroke-linejoin="round" d="M3 17l6-6 4 4 8-8M14 7h7v7"/></svg>
             </div>
@@ -444,8 +448,8 @@
           <ol class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             <li class="reveal tilt group relative flex flex-col rounded-2xl border border-ink/5 bg-white p-7 shadow-card hover:shadow-xl" style="--d:0ms">
               <div class="flex items-center justify-between">
-                <span class="font-display inline-flex h-12 w-12 items-center justify-center rounded-xl bg-ink text-base font-bold text-white transition-transform duration-500 group-hover:-rotate-6">01</span>
-                <span class="rounded-full bg-accent-50 px-3 py-1 text-xs font-semibold text-accent">Tag 1</span>
+                <span class="font-display inline-flex h-12 w-12 items-center justify-center step-chip rounded-xl bg-ink text-base font-bold text-white transition-transform duration-500 group-hover:-rotate-6">01</span>
+                <span class="step-badge rounded-full bg-accent-50 px-3 py-1 text-xs font-semibold text-accent">Tag 1</span>
               </div>
               <div class="mt-6 flex items-center gap-3">
                 <span class="text-accent"><svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75"><path stroke-linecap="round" stroke-linejoin="round" d="M8 10h8M8 14h5M21 12a9 9 0 1 1-4.5-7.8L21 3v5h-5"/></svg></span>
@@ -455,8 +459,8 @@
             </li>
             <li class="reveal tilt group relative flex flex-col rounded-2xl border border-ink/5 bg-white p-7 shadow-card hover:shadow-xl" style="--d:100ms">
               <div class="flex items-center justify-between">
-                <span class="font-display inline-flex h-12 w-12 items-center justify-center rounded-xl bg-ink text-base font-bold text-white transition-transform duration-500 group-hover:-rotate-6">02</span>
-                <span class="rounded-full bg-accent-50 px-3 py-1 text-xs font-semibold text-accent">Woche 1–2</span>
+                <span class="font-display inline-flex h-12 w-12 items-center justify-center step-chip rounded-xl bg-ink text-base font-bold text-white transition-transform duration-500 group-hover:-rotate-6">02</span>
+                <span class="step-badge rounded-full bg-accent-50 px-3 py-1 text-xs font-semibold text-accent">Woche 1–2</span>
               </div>
               <div class="mt-6 flex items-center gap-3">
                 <span class="text-accent"><svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75"><path stroke-linecap="round" stroke-linejoin="round" d="M3 21h18M5 21V8l7-5 7 5v13M9 21v-6h6v6M9 11h.01M15 11h.01"/></svg></span>
@@ -466,8 +470,8 @@
             </li>
             <li class="reveal tilt group relative flex flex-col rounded-2xl border border-ink/5 bg-white p-7 shadow-card hover:shadow-xl" style="--d:200ms">
               <div class="flex items-center justify-between">
-                <span class="font-display inline-flex h-12 w-12 items-center justify-center rounded-xl bg-ink text-base font-bold text-white transition-transform duration-500 group-hover:-rotate-6">03</span>
-                <span class="rounded-full bg-accent-50 px-3 py-1 text-xs font-semibold text-accent">Woche 2–3</span>
+                <span class="font-display inline-flex h-12 w-12 items-center justify-center step-chip rounded-xl bg-ink text-base font-bold text-white transition-transform duration-500 group-hover:-rotate-6">03</span>
+                <span class="step-badge rounded-full bg-accent-50 px-3 py-1 text-xs font-semibold text-accent">Woche 2–3</span>
               </div>
               <div class="mt-6 flex items-center gap-3">
                 <span class="text-accent"><svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75"><path stroke-linecap="round" stroke-linejoin="round" d="M9 7h6m-6 4h6m-6 4h3M5 3h14v18H5zM9 3v18"/></svg></span>
@@ -477,8 +481,8 @@
             </li>
             <li class="reveal tilt group relative flex flex-col rounded-2xl border border-ink/5 bg-white p-7 shadow-card hover:shadow-xl" style="--d:300ms">
               <div class="flex items-center justify-between">
-                <span class="font-display inline-flex h-12 w-12 items-center justify-center rounded-xl bg-ink text-base font-bold text-white transition-transform duration-500 group-hover:-rotate-6">04</span>
-                <span class="rounded-full bg-accent-50 px-3 py-1 text-xs font-semibold text-accent">Woche 3–5</span>
+                <span class="font-display inline-flex h-12 w-12 items-center justify-center step-chip rounded-xl bg-ink text-base font-bold text-white transition-transform duration-500 group-hover:-rotate-6">04</span>
+                <span class="step-badge rounded-full bg-accent-50 px-3 py-1 text-xs font-semibold text-accent">Woche 3–5</span>
               </div>
               <div class="mt-6 flex items-center gap-3">
                 <span class="text-accent"><svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75"><path stroke-linecap="round" stroke-linejoin="round" d="M20 7 12 3 4 7m16 0v10l-8 4m8-14-8 4M4 7v10l8 4M4 7l8 4m0 0v10"/></svg></span>
@@ -488,8 +492,8 @@
             </li>
             <li class="reveal tilt group relative flex flex-col rounded-2xl border border-ink/5 bg-white p-7 shadow-card hover:shadow-xl" style="--d:400ms">
               <div class="flex items-center justify-between">
-                <span class="font-display inline-flex h-12 w-12 items-center justify-center rounded-xl bg-ink text-base font-bold text-white transition-transform duration-500 group-hover:-rotate-6">05</span>
-                <span class="rounded-full bg-accent-50 px-3 py-1 text-xs font-semibold text-accent">Woche 6–12</span>
+                <span class="font-display inline-flex h-12 w-12 items-center justify-center step-chip rounded-xl bg-ink text-base font-bold text-white transition-transform duration-500 group-hover:-rotate-6">05</span>
+                <span class="step-badge rounded-full bg-accent-50 px-3 py-1 text-xs font-semibold text-accent">Woche 6–12</span>
               </div>
               <div class="mt-6 flex items-center gap-3">
                 <span class="text-accent"><svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75"><path stroke-linecap="round" stroke-linejoin="round" d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Zm-3-10 2 2 4-4"/></svg></span>
@@ -499,8 +503,8 @@
             </li>
             <li class="reveal tilt group relative flex flex-col rounded-2xl border border-ink/5 bg-white p-7 shadow-card hover:shadow-xl" style="--d:500ms">
               <div class="flex items-center justify-between">
-                <span class="font-display inline-flex h-12 w-12 items-center justify-center rounded-xl bg-accent text-base font-bold text-white transition-transform duration-500 group-hover:-rotate-6">06</span>
-                <span class="rounded-full bg-accent-50 px-3 py-1 text-xs font-semibold text-accent">Woche 12–18</span>
+                <span class="font-display inline-flex h-12 w-12 items-center justify-center step-chip rounded-xl bg-accent text-base font-bold text-white transition-transform duration-500 group-hover:-rotate-6">06</span>
+                <span class="step-badge rounded-full bg-accent-50 px-3 py-1 text-xs font-semibold text-accent">Woche 12–18</span>
               </div>
               <div class="mt-6 flex items-center gap-3">
                 <span class="text-accent"><svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75"><path stroke-linecap="round" stroke-linejoin="round" d="M3 7h11v9H3zM14 10h4l3 3v3h-7zM7 19a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm10 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"/></svg></span>
@@ -684,23 +688,18 @@
               «Ich empfehle keinem Kunden eine Fabrik, in der ich nicht selbst gestanden bin. Und ich kaufe nichts ein, für das ich nicht geradestehen würde.»
               <footer class="mt-2 text-sm text-ink/60">Valdrin Dalipi</footer>
             </blockquote>
-            <div class="mt-8 grid gap-4 sm:grid-cols-3">
-              <div class="reveal rounded-xl bg-white p-5 shadow-card" style="--d:100ms">
+            <div class="mt-8 grid grid-cols-2 gap-3 sm:gap-4">
+              <div class="reveal rounded-xl bg-white p-4 shadow-card sm:p-5" style="--d:100ms">
                 <svg class="h-7 w-7 rounded" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="4" fill="#DE2910"/><path fill="#FFDE00" d="M9 5.5l1.6 4.3 4.6.1-3.7 2.8 1.4 4.4L9 14.4l-3.9 2.7 1.4-4.4-3.7-2.8 4.6-.1z"/><circle cx="17" cy="6" r="1.2" fill="#FFDE00"/><circle cx="19.5" cy="9" r="1.2" fill="#FFDE00"/><circle cx="19.5" cy="13" r="1.2" fill="#FFDE00"/><circle cx="17" cy="16" r="1.2" fill="#FFDE00"/></svg>
                 <p class="mt-3 font-semibold">Regelmässig vor Ort</p>
                 <p class="mt-1 text-sm text-ink/60">Für Sie in der Produktion in China.</p>
               </div>
-              <div class="reveal rounded-xl bg-white p-5 shadow-card" style="--d:200ms">
+              <div class="reveal rounded-xl bg-white p-4 shadow-card sm:p-5" style="--d:200ms">
                 <svg class="h-7 w-7 rounded" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="4" fill="#E30613"/><rect x="13" y="7" width="6" height="18" fill="#fff"/><rect x="7" y="13" width="18" height="6" fill="#fff"/></svg>
                 <p class="mt-3 font-semibold">Qualität wie zu Hause</p>
                 <p class="mt-1 text-sm text-ink/60">Protokoll und Fotos vor jedem Verladen.</p>
               </div>
-              <div class="reveal rounded-xl bg-white p-5 shadow-card" style="--d:300ms">
-                <span class="flex h-7 w-7 items-center justify-center rounded bg-ink font-display text-sm font-bold text-white">1</span>
-                <p class="mt-3 font-semibold">Ansprechpartner</p>
-                <p class="mt-1 text-sm text-ink/60">Sie sprechen direkt mit dem Gründer.</p>
-              </div>
-            </div>
+                          </div>
             <div class="reveal mt-auto pt-6" style="--d:350ms">
               <div class="flex flex-col gap-4 rounded-2xl bg-ink p-6 text-white sm:flex-row sm:items-center sm:justify-between">
                 <div>
@@ -935,7 +934,7 @@
       <div class="mt-6 grid grid-cols-3 gap-3"><figure class="overflow-hidden rounded-xl bg-stone-100"><img src="assets/img/marken/powerjet-1.jpg" alt="PowerJet: Akku-Turbo in Violett und Schwarz" class="aspect-square w-full object-cover" width="900" height="900" loading="lazy"><figcaption class="px-3 py-2 text-xs text-ink/60">Akku-Turbo in Violett und Schwarz</figcaption></figure><figure class="overflow-hidden rounded-xl bg-stone-100"><img src="assets/img/marken/powerjet-2.jpg" alt="PowerJet: Giftbox mit Produkt und Zubehör" class="aspect-square w-full object-cover" width="900" height="900" loading="lazy"><figcaption class="px-3 py-2 text-xs text-ink/60">Giftbox mit Produkt und Zubehör</figcaption></figure><figure class="overflow-hidden rounded-xl bg-stone-100"><img src="assets/img/marken/powerjet-3.jpg" alt="PowerJet: Aufsatz-Set für Auto, Garten und Haushalt" class="aspect-square w-full object-cover" width="900" height="900" loading="lazy"><figcaption class="px-3 py-2 text-xs text-ink/60">Aufsatz-Set für Auto, Garten und Haushalt</figcaption></figure></div>
       <div class="mt-6 grid gap-6 sm:grid-cols-2">
         <div><p class="text-xs font-semibold uppercase tracking-wider text-ink/50">Unsere Rolle</p><ul class="mt-3 space-y-2 text-sm text-ink/80"><li class="flex gap-2"><svg class="mt-0.5 h-4 w-4 shrink-0 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7"/></svg>Eigene Marke der Innovarex GmbH, seit 2024 am Markt</li><li class="flex gap-2"><svg class="mt-0.5 h-4 w-4 shrink-0 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7"/></svg>In China mitentwickelt und produziert, Lager in Eglisau</li><li class="flex gap-2"><svg class="mt-0.5 h-4 w-4 shrink-0 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7"/></svg>Shopify-Shop mit TWINT, Klarna und Rechnung</li><li class="flex gap-2"><svg class="mt-0.5 h-4 w-4 shrink-0 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7"/></svg>Ambassador-Programm und eigene Ad-Produktion</li></ul></div>
-        <div><p class="mt-6 text-xs font-semibold uppercase tracking-wider text-ink/50">Erhältlich bei</p><div class="mt-3 flex flex-wrap items-center gap-6"><img src="assets/logos/retail/galaxus.png" alt="Galaxus" class="h-8 w-auto max-w-[140px] object-contain" loading="lazy"><img src="assets/logos/retail/brack.png" alt="Brack" class="h-8 w-auto max-w-[140px] object-contain" loading="lazy"></div><p class="mt-6 text-xs font-semibold uppercase tracking-wider text-ink/50">Website</p><a href="https://powerjets.ch" target="_blank" rel="noopener" class="mt-3 inline-flex items-center gap-2 rounded-full bg-ink px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-accent">powerjets.ch öffnen<svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M8 7h9v9"/></svg></a></div>
+        <div><p class="mt-6 text-xs font-semibold uppercase tracking-wider text-ink/50">Erhältlich bei</p><div class="mt-3 flex flex-wrap items-center gap-6"><img src="assets/logos/retail/galaxus.png" alt="Galaxus" class="h-8 w-auto max-w-[140px] object-contain" loading="lazy"><img src="assets/logos/retail/brack.png" alt="Brack" class="h-8 w-auto max-w-[140px] object-contain" loading="lazy"><img src="assets/logos/retail/jumbo.png" alt="Jumbo" class="h-8 w-auto max-w-[140px] object-contain" loading="lazy"></div><p class="mt-6 text-xs font-semibold uppercase tracking-wider text-ink/50">Website</p><a href="https://powerjets.ch" target="_blank" rel="noopener" class="mt-3 inline-flex items-center gap-2 rounded-full bg-ink px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-accent">powerjets.ch öffnen<svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M8 7h9v9"/></svg></a></div>
       </div>
       <div class="mt-8 rounded-2xl bg-stone-50 p-5 text-sm text-ink/70">Sie wollen etwas Ähnliches für Ihr Produkt? <a href="#kontakt" class="font-semibold text-accent underline underline-offset-2" data-close-and-go>Jetzt anfragen</a></div>
     </div>
@@ -949,7 +948,7 @@
       <div class="mt-6 grid grid-cols-3 gap-3"><figure class="overflow-hidden rounded-xl bg-stone-100"><img src="assets/img/marken/matchaglow-1.jpg" alt="MatchaGlow: Matcha-Kollagen im Alltag" class="aspect-square w-full object-cover" width="900" height="900" loading="lazy"><figcaption class="px-3 py-2 text-xs text-ink/60">Matcha-Kollagen im Alltag</figcaption></figure><figure class="overflow-hidden rounded-xl bg-stone-100"><img src="assets/img/marken/matchaglow-2.jpg" alt="MatchaGlow: Verpackung, von uns gestaltet" class="aspect-square w-full object-cover" width="900" height="900" loading="lazy"><figcaption class="px-3 py-2 text-xs text-ink/60">Verpackung, von uns gestaltet</figcaption></figure><figure class="overflow-hidden rounded-xl bg-stone-100"><img src="assets/img/marken/matchaglow-3.jpg" alt="MatchaGlow: Ritual-Set mit Guide und Rezeptbuch" class="aspect-square w-full object-cover" width="900" height="900" loading="lazy"><figcaption class="px-3 py-2 text-xs text-ink/60">Ritual-Set mit Guide und Rezeptbuch</figcaption></figure></div>
       <div class="mt-6 grid gap-6 sm:grid-cols-2">
         <div><p class="text-xs font-semibold uppercase tracking-wider text-ink/50">Unsere Rolle</p><ul class="mt-3 space-y-2 text-sm text-ink/80"><li class="flex gap-2"><svg class="mt-0.5 h-4 w-4 shrink-0 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7"/></svg>Co-Founder, verantwortlich für Branding, Import und Marketing</li><li class="flex gap-2"><svg class="mt-0.5 h-4 w-4 shrink-0 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7"/></svg>Abo-Modell mit Klaviyo-Automationen</li><li class="flex gap-2"><svg class="mt-0.5 h-4 w-4 shrink-0 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7"/></svg>Import und Qualitätskontrolle über unser Team</li><li class="flex gap-2"><svg class="mt-0.5 h-4 w-4 shrink-0 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7"/></svg>Einstieg in den stationären Handel</li></ul></div>
-        <div><p class="mt-6 text-xs font-semibold uppercase tracking-wider text-ink/50">Erhältlich bei</p><div class="mt-3 flex flex-wrap items-center gap-6"><img src="assets/logos/retail/galaxus.png" alt="Galaxus" class="h-8 w-auto max-w-[140px] object-contain" loading="lazy"><img src="assets/logos/retail/brack.png" alt="Brack" class="h-8 w-auto max-w-[140px] object-contain" loading="lazy"><img src="assets/logos/retail/amavita.png" alt="Amavita" class="h-8 w-auto max-w-[140px] object-contain" loading="lazy"></div><p class="mt-6 text-xs font-semibold uppercase tracking-wider text-ink/50">Website</p><a href="https://matchaglow.ch" target="_blank" rel="noopener" class="mt-3 inline-flex items-center gap-2 rounded-full bg-ink px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-accent">matchaglow.ch öffnen<svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M8 7h9v9"/></svg></a></div>
+        <div><p class="mt-6 text-xs font-semibold uppercase tracking-wider text-ink/50">Erhältlich bei</p><div class="mt-3 flex flex-wrap items-center gap-6"><img src="assets/logos/retail/galaxus.png" alt="Galaxus" class="h-8 w-auto max-w-[140px] object-contain" loading="lazy"><img src="assets/logos/retail/brack.png" alt="Brack" class="h-8 w-auto max-w-[140px] object-contain" loading="lazy"><img src="assets/logos/retail/amavita.png" alt="Amavita" class="h-8 w-auto max-w-[140px] object-contain" loading="lazy"><img src="assets/logos/retail/rossmann.png" alt="Rossmann" class="h-8 w-auto max-w-[140px] object-contain" loading="lazy"></div><p class="mt-6 text-xs font-semibold uppercase tracking-wider text-ink/50">Website</p><a href="https://matchaglow.ch" target="_blank" rel="noopener" class="mt-3 inline-flex items-center gap-2 rounded-full bg-ink px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-accent">matchaglow.ch öffnen<svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M8 7h9v9"/></svg></a></div>
       </div>
       <div class="mt-8 rounded-2xl bg-stone-50 p-5 text-sm text-ink/70">Sie wollen etwas Ähnliches für Ihr Produkt? <a href="#kontakt" class="font-semibold text-accent underline underline-offset-2" data-close-and-go>Jetzt anfragen</a></div>
     </div>
@@ -1071,7 +1070,8 @@
 
   <script>
     (function () {
-      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var reduce = false; // Animationen bewusst immer aktiv, nur Parallax/Tilt beachten die Systemeinstellung
+      var reduceSys = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
       // Jahr im Footer
       document.getElementById('year').textContent = new Date().getFullYear();
@@ -1090,7 +1090,7 @@
         header.classList.toggle('is-hidden', y > 320 && y > lastY && !menuOpen);
         lastY = y;
         // Parallax
-        if (!reduce && window.innerWidth >= 1024) {
+        if (!reduceSys && window.innerWidth >= 1024) {
           document.querySelectorAll('[data-parallax]').forEach(function (el) {
             var r = el.getBoundingClientRect();
             if (r.bottom < 0 || r.top > window.innerHeight) return;
@@ -1190,7 +1190,7 @@
       }
 
       // Karten leicht zur Maus neigen
-      if (!reduce && window.matchMedia('(hover: hover)').matches) {
+      if (!reduceSys && window.matchMedia('(hover: hover)').matches) {
         document.querySelectorAll('.tilt').forEach(function (card) {
           card.addEventListener('mousemove', function (e) {
             var r = card.getBoundingClientRect();
