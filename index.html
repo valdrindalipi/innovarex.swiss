@@ -22,7 +22,7 @@
   <meta name="twitter:title" content="Import aus China, geprüft nach Schweizer Massstab | Innovarex GmbH">
   <meta name="twitter:description" content="Eigenes Team in China, Qualitätskontrolle vor Versand, Shopify, Webdesign und Ads – vier eigene Marken als Beweis.">
   <meta name="twitter:image" content="https://innovarex.swiss/assets/img/qc-reinraum-team.jpg">
-  <meta name="theme-color" content="#0B0F19">
+  <meta name="theme-color" content="#7633E3">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
   <link rel="icon" type="image/png" sizes="512x512" href="assets/favicon.png">
   <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
@@ -93,6 +93,7 @@
           colors: {
             ink: { DEFAULT: '#0B0F19', 800: '#141A26', 700: '#1E2635' },
             swiss: { DEFAULT: '#E30613', 600: '#C4050F' },
+            accent: { DEFAULT: '#7633E3', 600: '#6224C9', 50: '#F3EEFD' },
           },
           boxShadow: {
             card: '0 1px 2px rgba(11,15,25,0.04), 0 8px 24px -12px rgba(11,15,25,0.12)',
@@ -150,7 +151,7 @@
 
     /* Karten mit Neigung & Lichtkante */
     .tilt { transform-style: preserve-3d; transition: transform .25s ease, box-shadow .3s ease; }
-    .tilt::before { content: ''; position: absolute; inset: 0; border-radius: inherit; padding: 1px; background: linear-gradient(135deg, rgba(227,6,19,.55), transparent 40%, transparent 60%, rgba(11,15,25,.25)); -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude; opacity: 0; transition: opacity .3s ease; pointer-events: none; }
+    .tilt::before { content: ''; position: absolute; inset: 0; border-radius: inherit; padding: 1px; background: linear-gradient(135deg, rgba(118,51,227,.55), transparent 40%, transparent 60%, rgba(11,15,25,.25)); -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude; opacity: 0; transition: opacity .3s ease; pointer-events: none; }
     .tilt:hover::before { opacity: 1; }
 
     /* Akkordeon */
@@ -185,7 +186,7 @@
 </head>
 <body class="bg-white text-ink font-sans antialiased">
 
-  <div id="progress" class="fixed inset-x-0 top-0 z-[60] h-[3px] bg-swiss"></div>
+  <div id="progress" class="fixed inset-x-0 top-0 z-[60] h-[3px] bg-accent"></div>
 
   <!-- ===== Navigation ===== -->
   <header id="header" class="fixed inset-x-0 top-0 z-50 border-b border-transparent bg-white/85 backdrop-blur transition-all duration-500">
@@ -238,18 +239,18 @@
     <!-- ===== Hero ===== -->
     <section class="relative overflow-hidden pt-32 pb-16 sm:pt-40 sm:pb-24 lg:pt-44 lg:pb-28">
       <div class="grid-bg absolute inset-0 -z-10"></div>
-      <div class="blob absolute -left-32 top-24 -z-10 h-96 w-96 rounded-full bg-swiss/10 blur-3xl"></div>
+      <div class="blob absolute -left-32 top-24 -z-10 h-96 w-96 rounded-full bg-accent/10 blur-3xl"></div>
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="grid items-center gap-14 lg:grid-cols-12 lg:gap-12">
           <div class="lg:col-span-6">
             <span class="rise inline-flex items-center gap-2 rounded-full border border-ink/10 bg-white px-3 py-1 text-xs font-semibold uppercase tracking-wider text-ink/70" style="--d:0ms">
-              <span class="relative h-1.5 w-1.5 rounded-full bg-swiss text-swiss ping-soft"></span>
+              <span class="relative h-1.5 w-1.5 rounded-full bg-accent text-accent ping-soft"></span>
               Sourcing-Partner für Schweizer Unternehmen
             </span>
             <h1 class="font-display mt-6 text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl lg:text-[3.4rem] xl:text-6xl">
               <span class="rise block" style="--d:80ms">Import aus China,</span>
               <span class="rise block" style="--d:160ms">geprüft nach Schweizer Massstab.</span>
-              <span class="rise block text-swiss" style="--d:240ms">
+              <span class="rise block text-accent" style="--d:240ms">
                 <span class="rotator" id="rotator" aria-live="polite">
                   <span class="active">Für Ihr Produkt.</span>
                   <span>Für Ihre Eigenmarke.</span>
@@ -261,7 +262,7 @@
               Innovarex beschafft Produkte in China mit eigenem Team vor Ort – und bringt sie in der Schweiz in den Verkauf: mit Shopify-Shop, Webdesign, Branding, Verpackung und Performance Marketing. Vier eigene Marken zeigen, dass das System funktioniert.
             </p>
             <div class="rise mt-8 flex flex-col gap-3 sm:flex-row sm:items-center" style="--d:420ms">
-              <a href="#kontakt" class="group inline-flex items-center justify-center gap-2 rounded-full bg-swiss px-7 py-3.5 text-base font-semibold text-white shadow-lg shadow-swiss/25 transition hover:-translate-y-0.5 hover:bg-swiss-600 hover:shadow-xl hover:shadow-swiss/30">
+              <a href="#kontakt" class="group inline-flex items-center justify-center gap-2 rounded-full bg-accent px-7 py-3.5 text-base font-semibold text-white shadow-lg shadow-accent/25 transition hover:-translate-y-0.5 hover:bg-accent-600 hover:shadow-xl hover:shadow-accent/30">
                 Jetzt anfragen
                 <svg class="h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6"/></svg>
               </a>
@@ -269,11 +270,7 @@
                 So läuft es ab
               </a>
             </div>
-            <ul class="rise mt-7 flex flex-wrap gap-x-6 gap-y-2 text-sm text-ink/60" style="--d:500ms">
-              <li class="flex items-center gap-2"><svg class="h-4 w-4 text-swiss" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7"/></svg>Eigenes Team in China</li>
-              <li class="flex items-center gap-2"><svg class="h-4 w-4 text-swiss" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7"/></svg>Wir haften für die Qualität</li>
-              <li class="flex items-center gap-2"><svg class="h-4 w-4 text-swiss" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7"/></svg>Ab Produktionsmenge</li>
-            </ul>
+            
           </div>
 
           <div class="relative lg:col-span-6">
@@ -292,8 +289,8 @@
               </div>
 
               <div class="rise floaty2 absolute -right-4 top-6 rounded-2xl bg-ink p-4 text-white shadow-photo sm:-right-8 sm:p-5" style="--d:700ms">
-                <p class="font-display text-3xl font-bold leading-none">2×</p>
-                <p class="mt-1 text-xs text-white/70">persönlich in der<br>Produktion in China</p>
+                <p class="font-display text-2xl font-bold leading-none">Vor Ort</p>
+                <p class="mt-1 text-xs text-white/70">regelmässig in der<br>Produktion in China</p>
               </div>
             </div>
           </div>
@@ -326,16 +323,16 @@
       <p class="text-center text-xs font-semibold uppercase tracking-wider text-white/50">Marken aus unserem Haus – keine Kundenlogos</p>
       <div class="mt-6 flex w-max marquee-track items-center">
         <div class="flex shrink-0 items-center gap-12 pr-12 sm:gap-20 sm:pr-20">
-          <div class="flex flex-col items-center gap-3"><div class="flex h-12 w-44 items-center justify-center"><img src="assets/logos/powerjet-white.svg" alt="PowerJet" class="h-full w-full object-contain"></div><span class="text-[11px] uppercase tracking-wider text-white/50">Eigene Marke</span></div>
-          <div class="flex flex-col items-center gap-3"><div class="flex h-12 w-44 items-center justify-center"><img src="assets/logos/matchaglow-white.png" alt="MatchaGlow" class="h-full w-full object-contain" width="1200" height="148"></div><span class="text-[11px] uppercase tracking-wider text-white/50">Co-Founder</span></div>
-          <div class="flex flex-col items-center gap-3"><div class="flex h-12 w-44 items-center justify-center"><img src="assets/logos/wiegeparadies-white.png" alt="Wiegeparadies" class="h-full w-full object-contain" width="400" height="110"></div><span class="text-[11px] uppercase tracking-wider text-white/50">Exit 2026</span></div>
-          <div class="flex flex-col items-center gap-3"><div class="flex h-12 w-44 items-center justify-center"><img src="assets/logos/meditsoul-white.png" alt="MeditSoul" class="h-full w-full object-contain" width="600" height="505"></div><span class="text-[11px] uppercase tracking-wider text-white/50">Exit</span></div>
+          <div class="flex h-12 w-44 items-center justify-center"><img src="assets/logos/powerjet-white.svg" alt="PowerJet" class="h-full w-full object-contain"></div>
+          <div class="flex h-12 w-44 items-center justify-center"><img src="assets/logos/matchaglow-white.png" alt="MatchaGlow" class="h-full w-full object-contain" width="1200" height="148"></div>
+          <div class="flex h-12 w-44 items-center justify-center"><img src="assets/logos/wiegeparadies-white.png" alt="Wiegeparadies" class="h-full w-full object-contain" width="400" height="110"></div>
+          <div class="flex h-12 w-44 items-center justify-center"><img src="assets/logos/meditsoul-white.png" alt="MeditSoul" class="h-full w-full object-contain" width="600" height="505"></div>
         </div>
         <div class="flex shrink-0 items-center gap-12 pr-12 sm:gap-20 sm:pr-20" aria-hidden="true">
-          <div class="flex flex-col items-center gap-3"><div class="flex h-12 w-44 items-center justify-center"><img src="assets/logos/powerjet-white.svg" alt="" class="h-full w-full object-contain"></div><span class="text-[11px] uppercase tracking-wider text-white/50">Eigene Marke</span></div>
-          <div class="flex flex-col items-center gap-3"><div class="flex h-12 w-44 items-center justify-center"><img src="assets/logos/matchaglow-white.png" alt="" class="h-full w-full object-contain" width="1200" height="148"></div><span class="text-[11px] uppercase tracking-wider text-white/50">Co-Founder</span></div>
-          <div class="flex flex-col items-center gap-3"><div class="flex h-12 w-44 items-center justify-center"><img src="assets/logos/wiegeparadies-white.png" alt="" class="h-full w-full object-contain" width="400" height="110"></div><span class="text-[11px] uppercase tracking-wider text-white/50">Exit 2026</span></div>
-          <div class="flex flex-col items-center gap-3"><div class="flex h-12 w-44 items-center justify-center"><img src="assets/logos/meditsoul-white.png" alt="" class="h-full w-full object-contain" width="600" height="505"></div><span class="text-[11px] uppercase tracking-wider text-white/50">Exit</span></div>
+          <div class="flex h-12 w-44 items-center justify-center"><img src="assets/logos/powerjet-white.svg" alt="" class="h-full w-full object-contain"></div>
+          <div class="flex h-12 w-44 items-center justify-center"><img src="assets/logos/matchaglow-white.png" alt="" class="h-full w-full object-contain" width="1200" height="148"></div>
+          <div class="flex h-12 w-44 items-center justify-center"><img src="assets/logos/wiegeparadies-white.png" alt="" class="h-full w-full object-contain" width="400" height="110"></div>
+          <div class="flex h-12 w-44 items-center justify-center"><img src="assets/logos/meditsoul-white.png" alt="" class="h-full w-full object-contain" width="600" height="505"></div>
         </div>
       </div>
     </section>
@@ -344,62 +341,51 @@
     <section id="leistungen" class="py-20 sm:py-28">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="max-w-2xl reveal">
-          <p class="text-sm font-semibold uppercase tracking-wider text-swiss">Leistungen</p>
+          <p class="text-sm font-semibold uppercase tracking-wider text-accent">Leistungen</p>
           <h2 class="font-display mt-3 text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">Import aus China, Webdesign, Branding und Marketing – aus Eglisau.</h2>
           <p class="mt-4 text-lg text-ink/70">Vier Bausteine, einzeln buchbar. Jeder davon läuft täglich für unsere eigenen Marken – deshalb wissen wir, was er kostet und was er bringt.</p>
         </div>
 
         <div class="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          <article class="reveal tilt group relative rounded-2xl border border-ink/5 bg-white p-7 shadow-card hover:shadow-xl" style="--d:0ms">
-            <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-ink text-white transition-transform duration-500 group-hover:-rotate-6 group-hover:scale-110">
+          <article class="reveal tilt group relative flex h-full flex-col overflow-hidden rounded-2xl border border-ink/5 bg-white p-7 shadow-card hover:shadow-xl" style="--d:0ms">
+            <span class="font-display pointer-events-none absolute -right-2 -top-4 text-8xl font-bold text-ink/[0.04] transition-all duration-500 group-hover:-translate-y-1 group-hover:text-accent/10">01</span>
+            <span class="absolute left-0 top-0 h-1 w-0 bg-accent transition-all duration-500 group-hover:w-full"></span>
+            <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-ink text-white transition-all duration-500 group-hover:-rotate-6 group-hover:scale-110 group-hover:bg-accent">
               <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75"><path stroke-linecap="round" stroke-linejoin="round" d="M3 21h18M5 21V8l7-5 7 5v13M9 21v-6h6v6M9 11h.01M15 11h.01"/></svg>
             </div>
-            <h3 class="font-display mt-6 text-xl font-semibold">Import &amp; Sourcing China</h3>
-            <p class="mt-3 text-sm leading-relaxed text-ink/70">Unser Team in China findet die passende Fabrik, verhandelt in der Landessprache und prüft jede Serie nach Schweizer Massstab, bevor sie verladen wird. Verzollt geliefert bis an Ihre Rampe.</p>
-            <ul class="mt-5 space-y-1.5 text-sm text-ink/60">
-              <li class="flex gap-2"><span class="text-swiss">–</span>Fabrikauswahl &amp; Preisverhandlung vor Ort</li>
-              <li class="flex gap-2"><span class="text-swiss">–</span>Musterung, Vorserie, Endkontrolle</li>
-              <li class="flex gap-2"><span class="text-swiss">–</span>See-, Zug- oder Luftfracht, Verzollung</li>
-            </ul>
+            <h3 class="font-display mt-6 text-xl font-semibold">Import &amp; Sourcing</h3>
+            <p class="mt-3 text-sm leading-relaxed text-ink/70">Unser Team in China findet die Fabrik, verhandelt vor Ort und prüft jede Serie vor dem Verladen. Verzollt bis an Ihre Rampe.</p>
+            <ul class="mt-auto space-y-2 pt-6 text-sm text-ink/70"><li class="flex items-center gap-2"><svg class="h-4 w-4 shrink-0 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7"/></svg>Fabrikauswahl vor Ort</li><li class="flex items-center gap-2"><svg class="h-4 w-4 shrink-0 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7"/></svg>Muster &amp; Endkontrolle</li><li class="flex items-center gap-2"><svg class="h-4 w-4 shrink-0 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7"/></svg>Fracht &amp; Verzollung</li></ul>
           </article>
-
-          <article class="reveal tilt group relative rounded-2xl border border-ink/5 bg-white p-7 shadow-card hover:shadow-xl" style="--d:100ms">
-            <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-ink text-white transition-transform duration-500 group-hover:-rotate-6 group-hover:scale-110">
+          <article class="reveal tilt group relative flex h-full flex-col overflow-hidden rounded-2xl border border-ink/5 bg-white p-7 shadow-card hover:shadow-xl" style="--d:100ms">
+            <span class="font-display pointer-events-none absolute -right-2 -top-4 text-8xl font-bold text-ink/[0.04] transition-all duration-500 group-hover:-translate-y-1 group-hover:text-accent/10">02</span>
+            <span class="absolute left-0 top-0 h-1 w-0 bg-accent transition-all duration-500 group-hover:w-full"></span>
+            <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-ink text-white transition-all duration-500 group-hover:-rotate-6 group-hover:scale-110 group-hover:bg-accent">
               <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75"><path stroke-linecap="round" stroke-linejoin="round" d="M4 5h16a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Zm4 15h8m-4-3v3M7 9h6M7 12h10"/></svg>
             </div>
             <h3 class="font-display mt-6 text-xl font-semibold">Webdesign &amp; Shopify</h3>
-            <p class="mt-3 text-sm leading-relaxed text-ink/70">Websites, Landingpages und Shopify-Shops, die verkaufen: schnell, mobil sauber, mit Schweizer Zahlungsarten, Abo-Modellen und Anbindung an Galaxus und Brack.</p>
-            <ul class="mt-5 space-y-1.5 text-sm text-ink/60">
-              <li class="flex gap-2"><span class="text-swiss">–</span>Firmenwebsite &amp; Landingpages</li>
-              <li class="flex gap-2"><span class="text-swiss">–</span>Shopify-Aufbau &amp; Conversion-Optimierung</li>
-              <li class="flex gap-2"><span class="text-swiss">–</span>TWINT, Klarna, Rechnung, Marktplätze</li>
-            </ul>
+            <p class="mt-3 text-sm leading-relaxed text-ink/70">Websites und Shopify-Shops, die verkaufen: schnell, mobil sauber, mit Schweizer Zahlungsarten und Anbindung an Galaxus und Brack.</p>
+            <ul class="mt-auto space-y-2 pt-6 text-sm text-ink/70"><li class="flex items-center gap-2"><svg class="h-4 w-4 shrink-0 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7"/></svg>Websites &amp; Landingpages</li><li class="flex items-center gap-2"><svg class="h-4 w-4 shrink-0 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7"/></svg>Shopify-Shops &amp; Abo-Modelle</li><li class="flex items-center gap-2"><svg class="h-4 w-4 shrink-0 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7"/></svg>TWINT, Klarna, Marktplätze</li></ul>
           </article>
-
-          <article class="reveal tilt group relative rounded-2xl border border-ink/5 bg-white p-7 shadow-card hover:shadow-xl" style="--d:200ms">
-            <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-ink text-white transition-transform duration-500 group-hover:-rotate-6 group-hover:scale-110">
+          <article class="reveal tilt group relative flex h-full flex-col overflow-hidden rounded-2xl border border-ink/5 bg-white p-7 shadow-card hover:shadow-xl" style="--d:200ms">
+            <span class="font-display pointer-events-none absolute -right-2 -top-4 text-8xl font-bold text-ink/[0.04] transition-all duration-500 group-hover:-translate-y-1 group-hover:text-accent/10">03</span>
+            <span class="absolute left-0 top-0 h-1 w-0 bg-accent transition-all duration-500 group-hover:w-full"></span>
+            <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-ink text-white transition-all duration-500 group-hover:-rotate-6 group-hover:scale-110 group-hover:bg-accent">
               <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75"><path stroke-linecap="round" stroke-linejoin="round" d="M20 7 12 3 4 7m16 0v10l-8 4m8-14-8 4M4 7v10l8 4M4 7l8 4m0 0v10"/></svg>
             </div>
             <h3 class="font-display mt-6 text-xl font-semibold">Marke &amp; Verpackung</h3>
-            <p class="mt-3 text-sm leading-relaxed text-ink/70">Positionierung, Name, Logo, Giftbox, Inserts: Wir gestalten Produkte so, dass sie im Regal und im Feed auffallen – und lassen sie genau so produzieren.</p>
-            <ul class="mt-5 space-y-1.5 text-sm text-ink/60">
-              <li class="flex gap-2"><span class="text-swiss">–</span>Markenidentität &amp; Naming</li>
-              <li class="flex gap-2"><span class="text-swiss">–</span>Verpackungsdesign &amp; Druckvorstufe</li>
-              <li class="flex gap-2"><span class="text-swiss">–</span>Produktfotos &amp; Ad-Creatives</li>
-            </ul>
+            <p class="mt-3 text-sm leading-relaxed text-ink/70">Positionierung, Name, Logo und Giftbox: Wir gestalten Produkte, die im Regal und im Feed auffallen, und lassen sie genau so produzieren.</p>
+            <ul class="mt-auto space-y-2 pt-6 text-sm text-ink/70"><li class="flex items-center gap-2"><svg class="h-4 w-4 shrink-0 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7"/></svg>Naming &amp; Logo</li><li class="flex items-center gap-2"><svg class="h-4 w-4 shrink-0 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7"/></svg>Verpackung &amp; Giftbox</li><li class="flex items-center gap-2"><svg class="h-4 w-4 shrink-0 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7"/></svg>Produktfotos &amp; Creatives</li></ul>
           </article>
-
-          <article class="reveal tilt group relative rounded-2xl border border-ink/5 bg-white p-7 shadow-card hover:shadow-xl" style="--d:300ms">
-            <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-ink text-white transition-transform duration-500 group-hover:-rotate-6 group-hover:scale-110">
+          <article class="reveal tilt group relative flex h-full flex-col overflow-hidden rounded-2xl border border-ink/5 bg-white p-7 shadow-card hover:shadow-xl" style="--d:300ms">
+            <span class="font-display pointer-events-none absolute -right-2 -top-4 text-8xl font-bold text-ink/[0.04] transition-all duration-500 group-hover:-translate-y-1 group-hover:text-accent/10">04</span>
+            <span class="absolute left-0 top-0 h-1 w-0 bg-accent transition-all duration-500 group-hover:w-full"></span>
+            <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-ink text-white transition-all duration-500 group-hover:-rotate-6 group-hover:scale-110 group-hover:bg-accent">
               <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75"><path stroke-linecap="round" stroke-linejoin="round" d="M3 17l6-6 4 4 8-8M14 7h7v7"/></svg>
             </div>
             <h3 class="font-display mt-6 text-xl font-semibold">Performance Marketing</h3>
-            <p class="mt-3 text-sm leading-relaxed text-ink/70">Meta und TikTok Ads, Klaviyo-Flows, Ambassador-Programme. Wir optimieren auf Deckungsbeitrag pro Bestellung – nicht auf Klicks oder Reichweite.</p>
-            <ul class="mt-5 space-y-1.5 text-sm text-ink/60">
-              <li class="flex gap-2"><span class="text-swiss">–</span>Kampagnen-Setup &amp; Skalierung</li>
-              <li class="flex gap-2"><span class="text-swiss">–</span>E-Mail- &amp; SMS-Automationen</li>
-              <li class="flex gap-2"><span class="text-swiss">–</span>Influencer- &amp; Ambassador-Programme</li>
-            </ul>
+            <p class="mt-3 text-sm leading-relaxed text-ink/70">Google, Meta und TikTok Ads plus E-Mail-Automationen. Wir optimieren auf Deckungsbeitrag pro Bestellung, nicht auf Klicks.</p>
+            <ul class="mt-auto space-y-2 pt-6 text-sm text-ink/70"><li class="flex items-center gap-2"><svg class="h-4 w-4 shrink-0 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7"/></svg>Google, Meta &amp; TikTok Ads</li><li class="flex items-center gap-2"><svg class="h-4 w-4 shrink-0 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7"/></svg>Klaviyo E-Mail-Flows</li><li class="flex items-center gap-2"><svg class="h-4 w-4 shrink-0 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7"/></svg>Influencer &amp; Ambassador</li></ul>
           </article>
         </div>
       </div>
@@ -408,67 +394,53 @@
     <!-- ===== Vor Ort in China ===== -->
     <section id="vor-ort" class="border-y border-ink/5 bg-stone-50 py-20 sm:py-28">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div class="grid gap-12 lg:grid-cols-12 lg:gap-16">
-          <div class="lg:col-span-5">
-            <div class="reveal">
-              <p class="text-sm font-semibold uppercase tracking-wider text-swiss">Vor Ort in China</p>
-              <h2 class="font-display mt-3 text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">Qualitätskontrolle wie in der Schweiz – nur eben in der Fabrik.</h2>
-              <p class="mt-4 text-lg text-ink/70">Zweimal sind wir selbst nach China gereist, haben Produktionen abgenommen, mit den Ingenieuren am Tisch gesessen und Muster unter dem Mikroskop verglichen. Dazwischen ist unser eigenes Team vor Ort – fest angestellt, nicht auf Provision.</p>
-            </div>
-
-            <ul class="mt-10 space-y-4">
-              <li class="reveal flex gap-4 rounded-2xl bg-white p-5 shadow-card" style="--d:100ms">
-                <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-swiss text-white"><svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Zm-3-10 2 2 4-4"/></svg></span>
-                <div>
-                  <h3 class="font-semibold">Qualitätskontrolle nach Schweizer Massstab</h3>
-                  <p class="mt-1 text-sm text-ink/70">Wir prüfen während der Produktion und vor dem Versand, so wie Sie es in der Schweiz erwarten würden. Was nicht besteht, wird nicht verladen – und für das, was ankommt, haften wir.</p>
-                </div>
-              </li>
-              <li class="reveal flex gap-4 rounded-2xl bg-white p-5 shadow-card" style="--d:200ms">
-                <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-ink text-white"><svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2m20 0v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75M13 7a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z"/></svg></span>
-                <div>
-                  <h3 class="font-semibold">Eigenes Team in China</h3>
-                  <p class="mt-1 text-sm text-ink/70">Unsere Leute sprechen die Sprache der Fabrik und sitzen dort, wo produziert wird. Kein Sourcing-Agent, keine Provision auf Ihren Einkaufspreis.</p>
-                </div>
-              </li>
-              <li class="reveal flex gap-4 rounded-2xl bg-white p-5 shadow-card" style="--d:300ms">
-                <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-ink text-white"><svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16v13H4zM4 7l2-4h12l2 4M9 11h6"/></svg></span>
-                <div>
-                  <h3 class="font-semibold">Nur Serienmengen</h3>
-                  <p class="mt-1 text-sm text-ink/70">Wir kaufen ab Produktionsmenge ein – keine Einzelstücke, keine Testbestellungen. Dafür Preise und Konditionen, die es nur im Bulk gibt.</p>
-                </div>
-              </li>
-            </ul>
+        <div class="grid gap-10 lg:grid-cols-12 lg:gap-16">
+          <div class="reveal lg:col-span-6">
+            <p class="text-sm font-semibold uppercase tracking-wider text-accent">Vor Ort in China</p>
+            <h2 class="font-display mt-3 text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">Qualitätskontrolle wie in der Schweiz – nur eben in der Fabrik.</h2>
+            <p class="mt-4 text-lg text-ink/70">Wir sind regelmässig selbst in China: Produktionen abnehmen, mit den Ingenieuren am Tisch sitzen, Muster unter dem Mikroskop vergleichen. Dazwischen ist unser eigenes Team vor Ort – fest angestellt, nicht auf Provision.</p>
           </div>
+          <ul class="grid gap-4 sm:grid-cols-3 lg:col-span-6 lg:grid-cols-1">
+            <li class="reveal flex gap-4 rounded-2xl bg-white p-5 shadow-card" style="--d:100ms">
+              <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-accent text-white"><svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Zm-3-10 2 2 4-4"/></svg></span>
+              <div><h3 class="font-semibold">Qualitätskontrolle nach Schweizer Massstab</h3><p class="mt-1 text-sm text-ink/70">Geprüft während der Produktion und vor dem Verladen. Was nicht besteht, bleibt in der Fabrik – für das, was ankommt, haften wir.</p></div>
+            </li>
+            <li class="reveal flex gap-4 rounded-2xl bg-white p-5 shadow-card" style="--d:200ms">
+              <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-ink text-white"><svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2m20 0v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75M13 7a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z"/></svg></span>
+              <div><h3 class="font-semibold">Eigenes Team in China</h3><p class="mt-1 text-sm text-ink/70">Unsere Leute sprechen die Sprache der Fabrik und sitzen dort, wo produziert wird. Kein Sourcing-Agent, keine Provision.</p></div>
+            </li>
+            <li class="reveal flex gap-4 rounded-2xl bg-white p-5 shadow-card" style="--d:300ms">
+              <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-ink text-white"><svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16v13H4zM4 7l2-4h12l2 4M9 11h6"/></svg></span>
+              <div><h3 class="font-semibold">Nur Serienmengen</h3><p class="mt-1 text-sm text-ink/70">Wir kaufen ab Produktionsmenge ein. Dafür Preise und Konditionen, die es nur im Bulk gibt.</p></div>
+            </li>
+          </ul>
+        </div>
 
-          <div class="lg:col-span-7">
-            <div class="grid grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-5">
-              <figure class="reveal-scale zoom-img group relative overflow-hidden rounded-2xl shadow-card" style="--d:0ms">
-                <img src="assets/img/qc-produktionshalle.jpg" alt="Produktionshalle einer Supplement-Fabrik in China mit Edelstahltanks" class="aspect-[4/5] w-full object-cover" width="768" height="960" loading="lazy">
-                <figcaption class="absolute inset-x-0 bottom-0 translate-y-2 bg-gradient-to-t from-ink/80 to-transparent p-4 text-sm font-medium text-white opacity-0 transition duration-500 group-hover:translate-y-0 group-hover:opacity-100">Supplement-Produktion</figcaption>
-              </figure>
-              <figure class="reveal-scale zoom-img group relative overflow-hidden rounded-2xl shadow-card sm:mt-8" style="--d:100ms">
-                <img src="assets/img/muster-showroom.jpg" alt="PowerJet-Muster im Showroom des Lieferanten in China" class="aspect-[4/5] w-full object-cover" width="768" height="960" loading="lazy">
-                <figcaption class="absolute inset-x-0 bottom-0 translate-y-2 bg-gradient-to-t from-ink/80 to-transparent p-4 text-sm font-medium text-white opacity-0 transition duration-500 group-hover:translate-y-0 group-hover:opacity-100">Muster-Check im Showroom</figcaption>
-              </figure>
-              <figure class="reveal-scale zoom-img group relative overflow-hidden rounded-2xl shadow-card" style="--d:200ms">
-                <img src="assets/img/muster-matcha.jpg" alt="Matcha-Muster und Verpackungen beim Lieferanten auf dem Tisch" class="aspect-[4/5] w-full object-cover" width="1000" height="1250" loading="lazy">
-                <figcaption class="absolute inset-x-0 bottom-0 translate-y-2 bg-gradient-to-t from-ink/80 to-transparent p-4 text-sm font-medium text-white opacity-0 transition duration-500 group-hover:translate-y-0 group-hover:opacity-100">Musterverkostung Matcha</figcaption>
-              </figure>
-              <figure class="reveal-scale zoom-img group relative overflow-hidden rounded-2xl shadow-card" style="--d:300ms">
-                <img src="assets/img/meeting-lieferant.jpg" alt="Innovarex-Team am Konferenztisch mit dem Lieferanten in China" class="aspect-[4/3] w-full object-cover" width="1024" height="768" loading="lazy">
-                <figcaption class="absolute inset-x-0 bottom-0 translate-y-2 bg-gradient-to-t from-ink/80 to-transparent p-4 text-sm font-medium text-white opacity-0 transition duration-500 group-hover:translate-y-0 group-hover:opacity-100">Verhandlung mit dem Lieferanten</figcaption>
-              </figure>
-              <figure class="reveal-scale zoom-img group relative overflow-hidden rounded-2xl shadow-card sm:mt-8" style="--d:400ms">
-                <img src="assets/img/lieferant-team-meeting.jpg" alt="Gemeinsames Meeting mit dem Team des Lieferanten" class="aspect-[4/3] w-full object-cover" width="1200" height="900" loading="lazy">
-                <figcaption class="absolute inset-x-0 bottom-0 translate-y-2 bg-gradient-to-t from-ink/80 to-transparent p-4 text-sm font-medium text-white opacity-0 transition duration-500 group-hover:translate-y-0 group-hover:opacity-100">Abstimmung mit dem Fabrikteam</figcaption>
-              </figure>
-              <figure class="reveal-scale zoom-img group relative overflow-hidden rounded-2xl shadow-card" style="--d:500ms">
-                <img src="assets/img/team-china-abend.jpg" alt="Innovarex-Team mit Partnern in China am Abend vor der Skyline" class="aspect-[4/3] w-full object-cover" width="1024" height="768" loading="lazy">
-                <figcaption class="absolute inset-x-0 bottom-0 translate-y-2 bg-gradient-to-t from-ink/80 to-transparent p-4 text-sm font-medium text-white opacity-0 transition duration-500 group-hover:translate-y-0 group-hover:opacity-100">Unser Team in China</figcaption>
-              </figure>
-            </div>
-          </div>
+        <div class="mt-14 grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-3">
+          <figure class="reveal-scale zoom-img group relative overflow-hidden rounded-2xl shadow-card" style="--d:0ms">
+            <img src="assets/img/qc-produktionshalle.jpg" alt="Produktionshalle einer Supplement-Fabrik in China mit Edelstahltanks" class="aspect-[4/5] w-full object-cover" width="768" height="960" loading="lazy">
+            <figcaption class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/80 to-transparent p-5 text-sm font-medium text-white sm:translate-y-2 sm:opacity-0 sm:transition sm:duration-500 sm:group-hover:translate-y-0 sm:group-hover:opacity-100">Supplement-Produktion</figcaption>
+          </figure>
+          <figure class="reveal-scale zoom-img group relative overflow-hidden rounded-2xl shadow-card" style="--d:100ms">
+            <img src="assets/img/muster-showroom.jpg" alt="PowerJet-Muster im Showroom des Lieferanten in China" class="aspect-[4/5] w-full object-cover" width="768" height="960" loading="lazy">
+            <figcaption class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/80 to-transparent p-5 text-sm font-medium text-white sm:translate-y-2 sm:opacity-0 sm:transition sm:duration-500 sm:group-hover:translate-y-0 sm:group-hover:opacity-100">Muster-Check im Showroom</figcaption>
+          </figure>
+          <figure class="reveal-scale zoom-img group relative overflow-hidden rounded-2xl shadow-card" style="--d:200ms">
+            <img src="assets/img/muster-matcha.jpg" alt="Matcha-Muster und Verpackungen beim Lieferanten auf dem Tisch" class="aspect-[4/5] w-full object-cover" width="1000" height="1250" loading="lazy">
+            <figcaption class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/80 to-transparent p-5 text-sm font-medium text-white sm:translate-y-2 sm:opacity-0 sm:transition sm:duration-500 sm:group-hover:translate-y-0 sm:group-hover:opacity-100">Musterverkostung Matcha</figcaption>
+          </figure>
+          <figure class="reveal-scale zoom-img group relative overflow-hidden rounded-2xl shadow-card" style="--d:300ms">
+            <img src="assets/img/meeting-lieferant.jpg" alt="Innovarex-Team am Konferenztisch mit dem Lieferanten in China" class="aspect-[4/3] w-full object-cover" width="1024" height="768" loading="lazy">
+            <figcaption class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/80 to-transparent p-5 text-sm font-medium text-white sm:translate-y-2 sm:opacity-0 sm:transition sm:duration-500 sm:group-hover:translate-y-0 sm:group-hover:opacity-100">Verhandlung mit dem Lieferanten</figcaption>
+          </figure>
+          <figure class="reveal-scale zoom-img group relative overflow-hidden rounded-2xl shadow-card" style="--d:400ms">
+            <img src="assets/img/lieferant-team-meeting.jpg" alt="Gemeinsames Meeting mit dem Team des Lieferanten" class="aspect-[4/3] w-full object-cover" width="1200" height="900" loading="lazy">
+            <figcaption class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/80 to-transparent p-5 text-sm font-medium text-white sm:translate-y-2 sm:opacity-0 sm:transition sm:duration-500 sm:group-hover:translate-y-0 sm:group-hover:opacity-100">Abstimmung mit dem Fabrikteam</figcaption>
+          </figure>
+          <figure class="reveal-scale zoom-img group relative overflow-hidden rounded-2xl shadow-card" style="--d:500ms">
+            <img src="assets/img/team-china-abend.jpg" alt="Innovarex-Team mit Partnern in China am Abend vor der Skyline" class="aspect-[4/3] w-full object-cover" width="1024" height="768" loading="lazy">
+            <figcaption class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/80 to-transparent p-5 text-sm font-medium text-white sm:translate-y-2 sm:opacity-0 sm:transition sm:duration-500 sm:group-hover:translate-y-0 sm:group-hover:opacity-100">Unser Team in China</figcaption>
+          </figure>
         </div>
       </div>
     </section>
@@ -477,7 +449,7 @@
     <section id="erfahrung" class="py-20 sm:py-28">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="max-w-2xl reveal">
-          <p class="text-sm font-semibold uppercase tracking-wider text-swiss">Erfahrung</p>
+          <p class="text-sm font-semibold uppercase tracking-wider text-accent">Erfahrung</p>
           <h2 class="font-display mt-3 text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">Was wir schon beschafft haben.</h2>
           <p class="mt-4 text-lg text-ink/70">Von Nahrungsergänzung über Elektronik bis zur Babyausstattung: Für über 20 Kundenprojekte und unsere eigenen Marken haben wir Produkte in diesen Kategorien in China produzieren lassen.</p>
         </div>
@@ -541,30 +513,27 @@
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
           <div class="order-2 lg:order-1 lg:col-span-7">
-            <div class="grid grid-cols-2 gap-4 sm:grid-cols-3">
-              <figure class="reveal-scale zoom-img col-span-2 overflow-hidden rounded-3xl shadow-card sm:col-span-3" style="--d:0ms" data-parallax="0.04">
+            <div class="space-y-4">
+              <figure class="reveal-scale zoom-img relative overflow-hidden rounded-3xl shadow-card" style="--d:0ms" data-parallax="0.04">
                 <img src="assets/img/lager-palette-dpd-wide.jpg" alt="Fertig kommissionierte Palette vor dem DPD-Transporter im Schweizer Lager der Innovarex GmbH" class="aspect-[16/10] w-full object-cover" width="1400" height="875" loading="lazy">
+                <div class="absolute left-4 top-4 rounded-2xl bg-white/90 px-4 py-3 shadow-card backdrop-blur sm:left-6 sm:top-6">
+                  <p class="font-display text-2xl font-bold leading-none">1–2 Tage</p>
+                  <p class="mt-1 text-xs text-ink/60">Lieferzeit ab Lager Schweiz</p>
+                </div>
               </figure>
-              <figure class="reveal-scale zoom-img overflow-hidden rounded-2xl shadow-card" style="--d:150ms">
-                <img src="assets/img/lager-palette-dpd.jpg" alt="Palette mit Kartons vor dem Versand" class="aspect-[4/5] w-full object-cover" width="1000" height="1250" loading="lazy">
+              <figure class="reveal-scale zoom-img overflow-hidden rounded-3xl shadow-card" style="--d:150ms">
+                <img src="assets/img/lager-transporter-wide.jpg" alt="Transporter voll mit Paketen für den Versand an Endkunden" class="aspect-[16/9] w-full object-cover" width="1000" height="562" loading="lazy">
               </figure>
-              <figure class="reveal-scale zoom-img overflow-hidden rounded-2xl shadow-card" style="--d:250ms">
-                <img src="assets/img/lager-transporter.jpg" alt="Transporter voll mit Paketen für den Versand an Endkunden" class="aspect-[4/5] w-full object-cover" width="1000" height="1250" loading="lazy">
-              </figure>
-              <div class="reveal-scale col-span-2 flex items-center justify-between gap-4 rounded-2xl bg-ink p-5 text-white sm:col-span-1 sm:flex-col sm:items-start" style="--d:350ms">
-                <p class="font-display text-3xl font-bold sm:text-4xl">1–2</p>
-                <p class="text-sm text-white/70">Werktage Lieferzeit ab Schweizer Lager an Endkunden</p>
-              </div>
             </div>
           </div>
           <div class="order-1 reveal lg:order-2 lg:col-span-5">
-            <p class="text-sm font-semibold uppercase tracking-wider text-swiss">Lager &amp; Logistik</p>
+            <p class="text-sm font-semibold uppercase tracking-wider text-accent">Lager &amp; Logistik</p>
             <h2 class="font-display mt-3 text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">Vom Container bis zum Paket – in der Schweiz.</h2>
             <p class="mt-4 text-lg text-ink/70">Die Ware kommt verzollt in der Schweiz an. Von hier gehen Paletten an Handelspartner wie Galaxus und Brack und Pakete an Endkunden – ohne Umweg über ein Zwischenlager im Ausland.</p>
             <ul class="mt-6 space-y-3 text-sm text-ink/70">
-              <li class="flex gap-3"><span class="mt-1 h-2 w-2 shrink-0 rounded-full bg-swiss"></span>Import, Verzollung und Einlagerung aus einer Verantwortung</li>
-              <li class="flex gap-3"><span class="mt-1 h-2 w-2 shrink-0 rounded-full bg-swiss"></span>B2B-Kommissionierung palettenweise, B2C paketweise</li>
-              <li class="flex gap-3"><span class="mt-1 h-2 w-2 shrink-0 rounded-full bg-swiss"></span>Retouren, Ersatzteile und Garantie aus der Schweiz</li>
+              <li class="flex gap-3"><span class="mt-1 h-2 w-2 shrink-0 rounded-full bg-accent"></span>Import, Verzollung und Einlagerung aus einer Verantwortung</li>
+              <li class="flex gap-3"><span class="mt-1 h-2 w-2 shrink-0 rounded-full bg-accent"></span>B2B-Kommissionierung palettenweise, B2C paketweise</li>
+              <li class="flex gap-3"><span class="mt-1 h-2 w-2 shrink-0 rounded-full bg-accent"></span>Retouren, Ersatzteile und Garantie aus der Schweiz</li>
             </ul>
           </div>
         </div>
@@ -573,10 +542,10 @@
 
     <!-- ===== Marken / Zahlen ===== -->
     <section id="marken" class="relative overflow-hidden bg-ink py-20 text-white sm:py-28">
-      <div class="blob absolute -right-40 top-10 h-[28rem] w-[28rem] rounded-full bg-swiss/15 blur-3xl"></div>
+      <div class="blob absolute -right-40 top-10 h-[28rem] w-[28rem] rounded-full bg-accent/15 blur-3xl"></div>
       <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="max-w-2xl reveal">
-          <p class="text-sm font-semibold uppercase tracking-wider text-swiss">Unsere Marken</p>
+          <p class="text-sm font-semibold uppercase tracking-wider text-accent">Unsere Marken</p>
           <h2 class="font-display mt-3 text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">Wir zeigen keine Kundenlogos. Wir zeigen, was wir selbst gebaut haben.</h2>
           <p class="mt-4 text-lg text-white/70">Jede Marke hier lief über unser eigenes Kapital, unsere Fabriken und unsere Werbekonten. Zwei davon haben wir an Käufer übergeben.</p>
         </div>
@@ -634,7 +603,7 @@
           <article class="reveal tilt group relative rounded-2xl border border-white/10 bg-white/5 p-7 transition hover:bg-white/10" style="--d:200ms">
             <div class="flex items-center justify-between gap-4">
               <div class="flex h-11 w-40 items-center justify-start"><img src="assets/logos/wiegeparadies-white.png" alt="Wiegeparadies Logo" class="h-full w-full object-contain" width="400" height="110"></div>
-              <span class="rounded-full bg-swiss px-3 py-1 text-xs font-semibold">Exit 6-stellig</span>
+              <span class="rounded-full bg-accent px-3 py-1 text-xs font-semibold">Exit 6-stellig</span>
             </div>
             <p class="mt-4 text-sm text-white/60">Baby &amp; Schlaf · Juni 2023 bis März 2026</p>
             <p class="mt-3 leading-relaxed text-white/80">Federwiegen und Babyprodukte. Von uns 2023 gestartet, mit eigener Beschaffung in China, Shopify und Meta Ads zur Marke aufgebaut und im März 2026 sechsstellig an einen Käufer übergeben.</p>
@@ -649,7 +618,7 @@
           <article class="reveal tilt group relative rounded-2xl border border-white/10 bg-white/5 p-7 transition hover:bg-white/10" style="--d:300ms">
             <div class="flex items-center justify-between gap-4">
               <div class="flex h-11 w-40 items-center justify-start"><img src="assets/logos/meditsoul-white.png" alt="MeditSoul Logo" class="h-full w-full object-contain" width="600" height="505"></div>
-              <span class="rounded-full bg-swiss px-3 py-1 text-xs font-semibold">Exit 5-stellig</span>
+              <span class="rounded-full bg-accent px-3 py-1 text-xs font-semibold">Exit 5-stellig</span>
             </div>
             <p class="mt-4 text-sm text-white/60">Meditation &amp; Wohlbefinden</p>
             <p class="mt-3 leading-relaxed text-white/80">Marke rund um Meditation und Achtsamkeit – von der Produktbeschaffung bis zum laufenden Shop aufgebaut und mit fünfstelligem Exit an neue Eigentümer übergeben.</p>
@@ -666,43 +635,86 @@
     <!-- ===== Ablauf ===== -->
     <section id="ablauf" class="py-20 sm:py-28">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div class="max-w-2xl reveal">
-          <p class="text-sm font-semibold uppercase tracking-wider text-swiss">Ablauf</p>
-          <h2 class="font-display mt-3 text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">Von der Anfrage bis zur Palette in Ihrem Lager.</h2>
-          <p class="mt-4 text-lg text-ink/70">Sechs Schritte, ein Ansprechpartner. Sie sehen alle Zahlen, bevor Sie etwas entscheiden – und wir sagen früh, ob ein Produkt für uns Sinn ergibt.</p>
+        <div class="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+          <div class="max-w-2xl reveal">
+            <p class="text-sm font-semibold uppercase tracking-wider text-accent">Ablauf</p>
+            <h2 class="font-display mt-3 text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">Von der Anfrage bis zur Palette in Ihrem Lager.</h2>
+            <p class="mt-4 text-lg text-ink/70">Sechs Schritte, ein Ansprechpartner. Sie sehen alle Zahlen, bevor Sie etwas entscheiden.</p>
+          </div>
+          <div class="reveal flex items-center gap-4 rounded-2xl bg-ink p-5 text-white lg:max-w-xs" style="--d:150ms">
+            <p class="font-display whitespace-nowrap text-4xl font-bold leading-none">3–4</p>
+            <p class="text-sm text-white/70">Monate von der ersten Anfrage bis zur Palette im Lager – bei Seefracht</p>
+          </div>
         </div>
 
         <div class="reveal relative mt-14">
+          <div class="absolute left-0 right-0 top-14 hidden h-px bg-ink/10 lg:block"><div class="process-line h-full bg-accent"></div></div>
           <ol class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            <li class="reveal relative rounded-2xl border border-ink/5 bg-white p-7 shadow-card" style="--d:0ms">
-              <span class="font-display inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-ink text-lg font-bold text-white">01</span>
-              <h3 class="font-display mt-5 text-xl font-semibold">Anfrage &amp; Gespräch</h3>
-              <p class="mt-2 text-sm leading-relaxed text-ink/70">Sie schildern Produkt, Menge und Ziel. In 30 Minuten – bei Ihnen vor Ort oder online – klären wir, ob und wie es passt.</p>
+            <li class="reveal tilt group relative flex flex-col rounded-2xl border border-ink/5 bg-white p-7 shadow-card hover:shadow-xl" style="--d:0ms">
+              <div class="flex items-center justify-between">
+                <span class="font-display inline-flex h-12 w-12 items-center justify-center rounded-xl bg-ink text-base font-bold text-white transition-transform duration-500 group-hover:-rotate-6">01</span>
+                <span class="rounded-full bg-accent-50 px-3 py-1 text-xs font-semibold text-accent">Tag 1</span>
+              </div>
+              <div class="mt-6 flex items-center gap-3">
+                <span class="text-accent"><svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75"><path stroke-linecap="round" stroke-linejoin="round" d="M8 10h8M8 14h5M21 12a9 9 0 1 1-4.5-7.8L21 3v5h-5"/></svg></span>
+                <h3 class="font-display text-xl font-semibold">Anfrage &amp; Gespräch</h3>
+              </div>
+              <p class="mt-3 text-sm leading-relaxed text-ink/70">Sie schildern Produkt, Menge und Ziel. In 30 Minuten – bei Ihnen vor Ort oder online – klären wir, ob und wie es passt.</p>
             </li>
-            <li class="reveal relative rounded-2xl border border-ink/5 bg-white p-7 shadow-card" style="--d:100ms">
-              <span class="font-display inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-ink text-lg font-bold text-white">02</span>
-              <h3 class="font-display mt-5 text-xl font-semibold">Passende Fabrik finden</h3>
-              <p class="mt-2 text-sm leading-relaxed text-ink/70">Unser Team in China vergleicht Fabriken, die Schweizer Qualitätsansprüche erfüllen: Zertifikate, Referenzen, Produktionsbesuch. Wir verhandeln direkt, ohne Zwischenhändler.</p>
+            <li class="reveal tilt group relative flex flex-col rounded-2xl border border-ink/5 bg-white p-7 shadow-card hover:shadow-xl" style="--d:100ms">
+              <div class="flex items-center justify-between">
+                <span class="font-display inline-flex h-12 w-12 items-center justify-center rounded-xl bg-ink text-base font-bold text-white transition-transform duration-500 group-hover:-rotate-6">02</span>
+                <span class="rounded-full bg-accent-50 px-3 py-1 text-xs font-semibold text-accent">Woche 1–2</span>
+              </div>
+              <div class="mt-6 flex items-center gap-3">
+                <span class="text-accent"><svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75"><path stroke-linecap="round" stroke-linejoin="round" d="M3 21h18M5 21V8l7-5 7 5v13M9 21v-6h6v6M9 11h.01M15 11h.01"/></svg></span>
+                <h3 class="font-display text-xl font-semibold">Passende Fabrik finden</h3>
+              </div>
+              <p class="mt-3 text-sm leading-relaxed text-ink/70">Unser Team in China vergleicht Fabriken, die Schweizer Qualitätsansprüche erfüllen: Zertifikate, Referenzen, Produktionsbesuch.</p>
             </li>
-            <li class="reveal relative rounded-2xl border border-ink/5 bg-white p-7 shadow-card" style="--d:200ms">
-              <span class="font-display inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-ink text-lg font-bold text-white">03</span>
-              <h3 class="font-display mt-5 text-xl font-semibold">Kalkulation</h3>
-              <p class="mt-2 text-sm leading-relaxed text-ink/70">Stückpreis, Verpackung, Fracht in drei Varianten, Zoll und unsere Pauschale auf einer Seite. Sie sehen Ihre Marge, bevor Sie zusagen.</p>
+            <li class="reveal tilt group relative flex flex-col rounded-2xl border border-ink/5 bg-white p-7 shadow-card hover:shadow-xl" style="--d:200ms">
+              <div class="flex items-center justify-between">
+                <span class="font-display inline-flex h-12 w-12 items-center justify-center rounded-xl bg-ink text-base font-bold text-white transition-transform duration-500 group-hover:-rotate-6">03</span>
+                <span class="rounded-full bg-accent-50 px-3 py-1 text-xs font-semibold text-accent">Woche 2–3</span>
+              </div>
+              <div class="mt-6 flex items-center gap-3">
+                <span class="text-accent"><svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75"><path stroke-linecap="round" stroke-linejoin="round" d="M9 7h6m-6 4h6m-6 4h3M5 3h14v18H5zM9 3v18"/></svg></span>
+                <h3 class="font-display text-xl font-semibold">Kalkulation</h3>
+              </div>
+              <p class="mt-3 text-sm leading-relaxed text-ink/70">Stückpreis, Verpackung, Fracht in drei Varianten, Zoll und unsere Pauschale auf einer Seite. Sie sehen Ihre Marge, bevor Sie zusagen.</p>
             </li>
-            <li class="reveal relative rounded-2xl border border-ink/5 bg-white p-7 shadow-card" style="--d:300ms">
-              <span class="font-display inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-ink text-lg font-bold text-white">04</span>
-              <h3 class="font-display mt-5 text-xl font-semibold">Muster &amp; Freigabe</h3>
-              <p class="mt-2 text-sm leading-relaxed text-ink/70">Sie erhalten Muster in die Schweiz, prüfen Material, Funktion und Verpackung – und geben die Serie schriftlich frei.</p>
+            <li class="reveal tilt group relative flex flex-col rounded-2xl border border-ink/5 bg-white p-7 shadow-card hover:shadow-xl" style="--d:300ms">
+              <div class="flex items-center justify-between">
+                <span class="font-display inline-flex h-12 w-12 items-center justify-center rounded-xl bg-ink text-base font-bold text-white transition-transform duration-500 group-hover:-rotate-6">04</span>
+                <span class="rounded-full bg-accent-50 px-3 py-1 text-xs font-semibold text-accent">Woche 3–5</span>
+              </div>
+              <div class="mt-6 flex items-center gap-3">
+                <span class="text-accent"><svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75"><path stroke-linecap="round" stroke-linejoin="round" d="M20 7 12 3 4 7m16 0v10l-8 4m8-14-8 4M4 7v10l8 4M4 7l8 4m0 0v10"/></svg></span>
+                <h3 class="font-display text-xl font-semibold">Muster &amp; Freigabe</h3>
+              </div>
+              <p class="mt-3 text-sm leading-relaxed text-ink/70">Sie erhalten Muster in die Schweiz, prüfen Material, Funktion und Verpackung – und geben die Serie schriftlich frei.</p>
             </li>
-            <li class="reveal relative rounded-2xl border border-ink/5 bg-white p-7 shadow-card" style="--d:400ms">
-              <span class="font-display inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-ink text-lg font-bold text-white">05</span>
-              <h3 class="font-display mt-5 text-xl font-semibold">Produktion &amp; Qualitätskontrolle</h3>
-              <p class="mt-2 text-sm leading-relaxed text-ink/70">Unser Team begleitet die Produktion und prüft vor dem Verladen nach Schweizer Massstab – mit Fotos und Protokoll für Sie. Parallel entstehen Shop, Verpackung und Kampagnen.</p>
+            <li class="reveal tilt group relative flex flex-col rounded-2xl border border-ink/5 bg-white p-7 shadow-card hover:shadow-xl" style="--d:400ms">
+              <div class="flex items-center justify-between">
+                <span class="font-display inline-flex h-12 w-12 items-center justify-center rounded-xl bg-ink text-base font-bold text-white transition-transform duration-500 group-hover:-rotate-6">05</span>
+                <span class="rounded-full bg-accent-50 px-3 py-1 text-xs font-semibold text-accent">Woche 6–12</span>
+              </div>
+              <div class="mt-6 flex items-center gap-3">
+                <span class="text-accent"><svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75"><path stroke-linecap="round" stroke-linejoin="round" d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Zm-3-10 2 2 4-4"/></svg></span>
+                <h3 class="font-display text-xl font-semibold">Produktion &amp; Qualitätskontrolle</h3>
+              </div>
+              <p class="mt-3 text-sm leading-relaxed text-ink/70">Unser Team begleitet die Produktion und prüft vor dem Verladen nach Schweizer Massstab – mit Fotos und Protokoll für Sie.</p>
             </li>
-            <li class="reveal relative rounded-2xl border border-swiss/30 bg-white p-7 shadow-card" style="--d:500ms">
-              <span class="font-display inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-swiss text-lg font-bold text-white">06</span>
-              <h3 class="font-display mt-5 text-xl font-semibold">Fracht, Zoll &amp; Lieferung</h3>
-              <p class="mt-2 text-sm leading-relaxed text-ink/70">See-, Zug- oder Luftfracht je nach Eile und Budget, Verzollung durch uns, Lieferung bis an Ihre Rampe. Danach: Launch, Verkauf und Nachbestellung.</p>
+            <li class="reveal tilt group relative flex flex-col rounded-2xl border border-ink/5 bg-white p-7 shadow-card hover:shadow-xl" style="--d:500ms">
+              <div class="flex items-center justify-between">
+                <span class="font-display inline-flex h-12 w-12 items-center justify-center rounded-xl bg-accent text-base font-bold text-white transition-transform duration-500 group-hover:-rotate-6">06</span>
+                <span class="rounded-full bg-accent-50 px-3 py-1 text-xs font-semibold text-accent">Woche 12–18</span>
+              </div>
+              <div class="mt-6 flex items-center gap-3">
+                <span class="text-accent"><svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75"><path stroke-linecap="round" stroke-linejoin="round" d="M3 7h11v9H3zM14 10h4l3 3v3h-7zM7 19a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm10 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"/></svg></span>
+                <h3 class="font-display text-xl font-semibold">Fracht, Zoll &amp; Lieferung</h3>
+              </div>
+              <p class="mt-3 text-sm leading-relaxed text-ink/70">See-, Zug- oder Luftfracht je nach Eile und Budget, Verzollung durch uns, Lieferung bis an Ihre Rampe. Danach: Launch und Nachbestellung.</p>
             </li>
           </ol>
         </div>
@@ -724,40 +736,35 @@
             <div class="reveal mx-auto mt-6 max-w-sm rounded-2xl bg-white p-5 shadow-card lg:max-w-none" style="--d:200ms">
               <p class="text-xs font-semibold uppercase tracking-wider text-ink/50">Direkter Kontakt</p>
               <ul class="mt-3 space-y-2 text-sm">
-                <li><a href="mailto:vdalipi@innovarex.swiss" class="flex items-center gap-3 font-medium hover:text-swiss"><svg class="h-4 w-4 text-ink/50" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 7l9 6 9-6M4 5h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Z"/></svg>vdalipi@innovarex.swiss</a></li>
-                <li><a href="tel:+41784419989" class="flex items-center gap-3 font-medium hover:text-swiss"><svg class="h-4 w-4 text-ink/50" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z"/></svg>+41 78 441 99 89</a></li>
+                <li><a href="mailto:vdalipi@innovarex.swiss" class="flex items-center gap-3 font-medium hover:text-accent"><svg class="h-4 w-4 text-ink/50" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 7l9 6 9-6M4 5h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Z"/></svg>vdalipi@innovarex.swiss</a></li>
+                <li><a href="tel:+41784419989" class="flex items-center gap-3 font-medium hover:text-accent"><svg class="h-4 w-4 text-ink/50" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z"/></svg>+41 78 441 99 89</a></li>
               </ul>
-              <p class="mt-3 text-sm text-ink/60">Wir kommen bei Ihnen vorbei – oder treffen uns im Online-Meeting, auch abends.</p>
+              <p class="mt-3 text-sm text-ink/60">Wir kommen bei Ihnen vorbei oder treffen uns im Online-Meeting.</p>
             </div>
           </div>
           <div class="reveal lg:col-span-7">
-            <p class="text-sm font-semibold uppercase tracking-wider text-swiss">Über uns</p>
+            <p class="text-sm font-semibold uppercase tracking-wider text-accent">Über uns</p>
             <h2 class="font-display mt-3 text-3xl font-bold tracking-tight sm:text-4xl">Ein Gründer, der selbst in der Fabrik steht.</h2>
-            <p class="mt-5 text-lg leading-relaxed text-ink/70">
-              Valdrin Dalipi hat Innovarex 2023 in Eglisau gegründet und seither vier Marken aufgebaut – jede mit eigenem Geld, eigener Beschaffung in China und eigenen Werbekonten. Zwei davon wurden verkauft, zwei laufen weiter.
-            </p>
-            <p class="mt-4 text-lg leading-relaxed text-ink/70">
-              Was Innovarex von Agenturen unterscheidet: Wir haben jede Entscheidung, die wir Ihnen empfehlen, vorher mit unserem eigenen Risiko getroffen. Zweimal war Valdrin persönlich in der Produktion in China; dazwischen arbeitet unser Team dort fest angestellt.
-            </p>
-            <blockquote class="mt-6 border-l-2 border-swiss pl-5 text-ink">
+            <p class="mt-5 text-lg leading-relaxed text-ink/70">Valdrin Dalipi hat Innovarex 2023 in Eglisau gegründet und seither vier Marken aufgebaut – mit eigenem Geld, eigener Beschaffung in China und eigenen Werbekonten. Zwei davon wurden verkauft. Jede Empfehlung an Sie haben wir vorher mit unserem eigenen Risiko getestet.</p>
+            <blockquote class="mt-6 border-l-2 border-accent pl-5 text-ink">
               «Ich empfehle keinem Kunden eine Fabrik, in der ich nicht selbst gestanden bin. Und ich kaufe nichts ein, für das ich nicht geradestehen würde.»
               <footer class="mt-2 text-sm text-ink/60">— Valdrin Dalipi</footer>
             </blockquote>
             <div class="mt-8 grid gap-4 sm:grid-cols-3">
               <div class="reveal rounded-xl bg-white p-5 shadow-card" style="--d:100ms">
-                <p class="font-display text-2xl font-bold">2×</p>
-                <p class="mt-1 font-semibold">Selbst in China</p>
-                <p class="mt-1 text-sm text-ink/60">Produktionen abgenommen, Fabriken verglichen, Verträge am Tisch verhandelt.</p>
+                <p class="font-display text-2xl font-bold">CN</p>
+                <p class="mt-1 font-semibold">Regelmässig vor Ort</p>
+                <p class="mt-1 text-sm text-ink/60">Für Sie in der Produktion in China.</p>
               </div>
               <div class="reveal rounded-xl bg-white p-5 shadow-card" style="--d:200ms">
                 <p class="font-display text-2xl font-bold">CH</p>
                 <p class="mt-1 font-semibold">Qualität wie zu Hause</p>
-                <p class="mt-1 text-sm text-ink/60">Prüfprotokoll, Fotos und Freigabe vor jedem Verladen – nach dem Massstab, den Sie in der Schweiz kennen.</p>
+                <p class="mt-1 text-sm text-ink/60">Protokoll und Fotos vor jedem Verladen.</p>
               </div>
               <div class="reveal rounded-xl bg-white p-5 shadow-card" style="--d:300ms">
                 <p class="font-display text-2xl font-bold">1</p>
                 <p class="mt-1 font-semibold">Ansprechpartner</p>
-                <p class="mt-1 text-sm text-ink/60">Sie sprechen mit dem Gründer – per Telefon, bei Ihnen vor Ort oder im Online-Meeting.</p>
+                <p class="mt-1 text-sm text-ink/60">Sie sprechen direkt mit dem Gründer.</p>
               </div>
             </div>
           </div>
@@ -770,7 +777,7 @@
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="grid gap-12 lg:grid-cols-12 lg:gap-16">
           <div class="reveal lg:col-span-4">
-            <p class="text-sm font-semibold uppercase tracking-wider text-swiss">Klartext</p>
+            <p class="text-sm font-semibold uppercase tracking-wider text-accent">Klartext</p>
             <h2 class="font-display mt-3 text-3xl font-bold tracking-tight sm:text-4xl">Was Sie vorher wissen sollten.</h2>
             <p class="mt-4 text-lg text-ink/70">Wir arbeiten nicht mit jedem. Das spart beiden Seiten Zeit.</p>
           </div>
@@ -826,11 +833,11 @@
 
     <!-- ===== Kontakt ===== -->
     <section id="kontakt" class="relative overflow-hidden border-t border-ink/5 bg-stone-50 py-20 sm:py-28">
-      <div class="blob absolute -left-40 bottom-0 h-96 w-96 rounded-full bg-swiss/10 blur-3xl"></div>
+      <div class="blob absolute -left-40 bottom-0 h-96 w-96 rounded-full bg-accent/10 blur-3xl"></div>
       <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="grid gap-12 lg:grid-cols-12 lg:gap-16">
           <div class="reveal lg:col-span-5">
-            <p class="text-sm font-semibold uppercase tracking-wider text-swiss">Kontakt</p>
+            <p class="text-sm font-semibold uppercase tracking-wider text-accent">Kontakt</p>
             <h2 class="font-display mt-3 text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">Welches Produkt soll es werden?</h2>
             <p class="mt-4 text-lg text-ink/70">Schreiben Sie uns, was Sie beschaffen oder verkaufen wollen und in welcher Menge. Sie bekommen innerhalb eines Werktags eine ehrliche Einschätzung – oder eine Absage mit Begründung.</p>
 
@@ -848,8 +855,8 @@
                 <div><p class="font-semibold">Adresse</p><p class="text-ink/70">Innovarex GmbH<br>Schaffhauserstrasse 5<br>8193 Eglisau, Schweiz</p></div>
               </li>
               <li class="flex items-start gap-3">
-                <span class="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-swiss text-white"><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10l4.5-2.5v9L15 14m-11-4a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-6Z"/></svg></span>
-                <div><p class="font-semibold">Vor Ort oder online</p><p class="text-ink/70">Wir kommen in Ihre Firma – oder treffen uns im Online-Meeting, auch abends.</p></div>
+                <span class="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-accent text-white"><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10l4.5-2.5v9L15 14m-11-4a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-6Z"/></svg></span>
+                <div><p class="font-semibold">Vor Ort oder online</p><p class="text-ink/70">Wir kommen in Ihre Firma oder treffen uns im Online-Meeting.</p></div>
               </li>
             </ul>
           </div>
@@ -863,7 +870,7 @@
 
               <div class="grid gap-5 sm:grid-cols-2">
                 <div>
-                  <label for="name" class="block text-sm font-medium">Name <span class="text-swiss">*</span></label>
+                  <label for="name" class="block text-sm font-medium">Name <span class="text-accent">*</span></label>
                   <input id="name" name="name" type="text" required autocomplete="name" class="mt-2 w-full rounded-xl border border-ink/15 bg-white px-4 py-3 text-sm outline-none transition placeholder:text-ink/40 focus:border-ink focus:ring-2 focus:ring-ink/10" placeholder="Vor- und Nachname">
                 </div>
                 <div>
@@ -871,7 +878,7 @@
                   <input id="company" name="firma" type="text" autocomplete="organization" class="mt-2 w-full rounded-xl border border-ink/15 bg-white px-4 py-3 text-sm outline-none transition placeholder:text-ink/40 focus:border-ink focus:ring-2 focus:ring-ink/10" placeholder="Firmenname">
                 </div>
                 <div>
-                  <label for="email" class="block text-sm font-medium">E-Mail <span class="text-swiss">*</span></label>
+                  <label for="email" class="block text-sm font-medium">E-Mail <span class="text-accent">*</span></label>
                   <input id="email" name="email" type="email" required autocomplete="email" class="mt-2 w-full rounded-xl border border-ink/15 bg-white px-4 py-3 text-sm outline-none transition placeholder:text-ink/40 focus:border-ink focus:ring-2 focus:ring-ink/10" placeholder="name@firma.ch">
                 </div>
                 <div>
@@ -879,7 +886,7 @@
                   <input id="phone" name="telefon" type="tel" autocomplete="tel" class="mt-2 w-full rounded-xl border border-ink/15 bg-white px-4 py-3 text-sm outline-none transition placeholder:text-ink/40 focus:border-ink focus:ring-2 focus:ring-ink/10" placeholder="+41 79 000 00 00">
                 </div>
                 <div class="sm:col-span-2">
-                  <label for="interest" class="block text-sm font-medium">Worum geht es? <span class="text-swiss">*</span></label>
+                  <label for="interest" class="block text-sm font-medium">Worum geht es? <span class="text-accent">*</span></label>
                   <select id="interest" name="interesse" required class="mt-2 w-full rounded-xl border border-ink/15 bg-white px-4 py-3 text-sm outline-none transition focus:border-ink focus:ring-2 focus:ring-ink/10">
                     <option value="" disabled selected>Bitte auswählen</option>
                     <option>Import &amp; Sourcing aus China</option>
@@ -895,20 +902,20 @@
                   <input id="quantity" name="menge_budget" type="text" class="mt-2 w-full rounded-xl border border-ink/15 bg-white px-4 py-3 text-sm outline-none transition placeholder:text-ink/40 focus:border-ink focus:ring-2 focus:ring-ink/10" placeholder="z. B. 2'000 Stück pro Bestellung oder CHF 15'000 Ads-Budget pro Monat">
                 </div>
                 <div class="sm:col-span-2">
-                  <label for="message" class="block text-sm font-medium">Ihr Projekt <span class="text-swiss">*</span></label>
+                  <label for="message" class="block text-sm font-medium">Ihr Projekt <span class="text-accent">*</span></label>
                   <textarea id="message" name="nachricht" rows="5" required class="mt-2 w-full resize-y rounded-xl border border-ink/15 bg-white px-4 py-3 text-sm outline-none transition placeholder:text-ink/40 focus:border-ink focus:ring-2 focus:ring-ink/10" placeholder="Welches Produkt, für welchen Kanal, bis wann?"></textarea>
                 </div>
                 <div class="sm:col-span-2">
                   <label class="flex items-start gap-3 text-sm text-ink/70">
                     <input type="checkbox" name="datenschutz" required class="mt-1 h-4 w-4 rounded border-ink/30 accent-ink">
-                    <span>Ich habe die <button type="button" class="underline underline-offset-2 hover:text-ink" data-dialog="datenschutz">Datenschutzerklärung</button> gelesen und bin mit der Verarbeitung meiner Angaben zur Bearbeitung der Anfrage einverstanden. <span class="text-swiss">*</span></span>
+                    <span>Ich habe die <button type="button" class="underline underline-offset-2 hover:text-ink" data-dialog="datenschutz">Datenschutzerklärung</button> gelesen und bin mit der Verarbeitung meiner Angaben zur Bearbeitung der Anfrage einverstanden. <span class="text-accent">*</span></span>
                   </label>
                 </div>
               </div>
 
-              <p id="form-error" class="mt-4 hidden text-sm text-swiss" role="alert">Bitte füllen Sie alle Pflichtfelder korrekt aus.</p>
+              <p id="form-error" class="mt-4 hidden text-sm text-accent" role="alert">Bitte füllen Sie alle Pflichtfelder korrekt aus.</p>
 
-              <button type="submit" class="group mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-swiss px-7 py-3.5 text-base font-semibold text-white shadow-lg shadow-swiss/25 transition hover:-translate-y-0.5 hover:bg-swiss-600 hover:shadow-xl hover:shadow-swiss/30 sm:w-auto">
+              <button type="submit" class="group mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-accent px-7 py-3.5 text-base font-semibold text-white shadow-lg shadow-accent/25 transition hover:-translate-y-0.5 hover:bg-accent-600 hover:shadow-xl hover:shadow-accent/30 sm:w-auto">
                 Anfrage senden
                 <svg class="h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6"/></svg>
               </button>
@@ -961,8 +968,7 @@
       </div>
       <div class="mt-12 flex flex-col gap-3 border-t border-white/10 pt-6 text-xs text-white/50 sm:flex-row sm:items-center sm:justify-between">
         <p>© <span id="year">2026</span> Innovarex GmbH. Alle Rechte vorbehalten.</p>
-        <p>Eglisau, Schweiz · Eigenes Team in China</p>
-      </div>
+              </div>
     </div>
   </footer>
 
@@ -1073,12 +1079,12 @@
         header.classList.toggle('is-hidden', y > 320 && y > lastY && !menuOpen);
         lastY = y;
         // Parallax
-        if (!reduce) {
+        if (!reduce && window.innerWidth >= 1024) {
           document.querySelectorAll('[data-parallax]').forEach(function (el) {
             var r = el.getBoundingClientRect();
             if (r.bottom < 0 || r.top > window.innerHeight) return;
             var f = parseFloat(el.getAttribute('data-parallax')) || 0.05;
-            var off = (r.top + r.height / 2 - window.innerHeight / 2) * f;
+            var off = Math.max(-40, Math.min(40, (r.top + r.height / 2 - window.innerHeight / 2) * f));
             el.style.transform = 'translateY(' + (-off).toFixed(1) + 'px)';
           });
         }
