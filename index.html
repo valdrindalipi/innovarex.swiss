@@ -1060,6 +1060,7 @@
               <input type="hidden" name="_subject" value="Neue Anfrage über innovarex.swiss">
               <input type="hidden" name="_template" value="table">
               <input type="hidden" name="_captcha" value="false">
+              <input type="hidden" name="_next" value="https://innovarex.swiss/?gesendet=1#kontakt">
               <input type="hidden" name="erstberatung" id="wizard-field" value="">
               <input type="text" name="_honey" class="hidden" tabindex="-1" autocomplete="off">
 
@@ -1117,6 +1118,12 @@
               </button>
               <p class="mt-3 text-xs text-ink/50">Unverbindlich. Ihre Angaben werden nur zur Bearbeitung der Anfrage verwendet.</p>
             </form>
+            <div id="form-success" class="hidden rounded-3xl border border-ink/5 bg-white p-8 text-center shadow-card sm:p-12">
+              <span class="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-accent text-white"><svg class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7"/></svg></span>
+              <h3 class="font-display mt-6 text-2xl font-bold">Danke, Ihre Anfrage ist bei uns.</h3>
+              <p class="mx-auto mt-3 max-w-md text-ink/70">Wir melden uns innerhalb eines Werktags persönlich bei Ihnen. Wenn es eilt, erreichen Sie uns direkt unter <a href="tel:+41784419989" class="font-semibold text-ink">+41 78 441 99 89</a>.</p>
+              <button type="button" id="form-again" class="mt-8 inline-flex items-center rounded-full border border-ink/15 px-6 py-3 text-sm font-semibold transition hover:border-ink/40">Weitere Anfrage senden</button>
+            </div>
           </div>
         </div>
       </div>
@@ -1528,21 +1535,40 @@
         d.querySelectorAll('[data-close-and-go]').forEach(function (a) { a.addEventListener('click', function () { d.close(); }); });
       });
 
-      // Formular-Validierung
+      // Formular: im Hintergrund senden, Bestätigung auf Deutsch anzeigen
       var form = document.getElementById('contact-form');
       var error = document.getElementById('form-error');
+      var success = document.getElementById('form-success');
+      var submitBtn = form.querySelector('button[type="submit"]');
+      var submitLabel = submitBtn.innerHTML;
+      var showSuccess = function () {
+        form.classList.add('hidden'); success.classList.remove('hidden');
+        success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      };
+      if (/[?&]gesendet=1/.test(location.search)) { showSuccess(); history.replaceState(null, '', location.pathname + '#kontakt'); }
+      document.getElementById('form-again').addEventListener('click', function () {
+        form.reset(); success.classList.add('hidden'); form.classList.remove('hidden');
+        submitBtn.disabled = false; submitBtn.innerHTML = submitLabel;
+      });
       form.addEventListener('submit', function (e) {
+        e.preventDefault();
         if (!form.checkValidity()) {
-          e.preventDefault();
+          error.textContent = 'Bitte füllen Sie alle Pflichtfelder korrekt aus.';
           error.classList.remove('hidden');
-          var first = form.querySelector(':invalid');
-          if (first) { first.focus(); }
+          var first = form.querySelector(':invalid'); if (first) first.focus();
           return;
         }
         error.classList.add('hidden');
-        var btn = form.querySelector('button[type="submit"]');
-        btn.disabled = true;
-        btn.textContent = 'Wird gesendet …';
+        submitBtn.disabled = true; submitBtn.textContent = 'Wird gesendet …';
+        var data = new FormData(form);
+        fetch('https://formsubmit.co/ajax/vdalipi@innovarex.swiss', { method: 'POST', headers: { 'Accept': 'application/json' }, body: data })
+          .then(function (r) { return r.ok ? r.json() : Promise.reject(r); })
+          .then(function () { showSuccess(); })
+          .catch(function () {
+            submitBtn.disabled = false; submitBtn.innerHTML = submitLabel;
+            error.textContent = 'Das Senden hat nicht geklappt. Bitte versuchen Sie es erneut oder schreiben Sie direkt an vdalipi@innovarex.swiss.';
+            error.classList.remove('hidden');
+          });
       });
     })();
   </script>
