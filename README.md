@@ -26,7 +26,7 @@ landingpage/
 
 ## Kontaktformular
 
-Das Formular sendet per POST an FormSubmit (`https://formsubmit.co/info@innovarex.swiss`).
+Das Formular sendet per POST an FormSubmit (`https://formsubmit.co/vdalipi@innovarex.swiss`).
 Beim ersten Absenden schickt FormSubmit eine Aktivierungsmail an diese Adresse – einmal bestätigen, danach landen Anfragen direkt im Postfach.
 Soll eine andere Adresse verwendet werden: `action`-Attribut des `<form>` und die E-Mail-Adressen in Kontakt, Footer und Impressum anpassen.
 
