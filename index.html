@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="de-CH" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Innovarex GmbH | E-Commerce, Branding & Import aus China – Schweiz</title>
+  <meta name="description" content="Innovarex GmbH – Ihr Schweizer B2B-Partner für Sourcing & Import aus China, Shopify E-Commerce, Branding und Performance Marketing. Eigenes Team in China, eigene Marken mit erfolgreichen Exits.">
+  <meta property="og:title" content="Innovarex GmbH | Vom Produkt zur Marke. Aus einer Hand.">
+  <meta property="og:description" content="Sourcing aus China, E-Commerce, Branding und Performance Marketing – mit eigenem Team in China und Marken, die wir selbst aufgebaut und verkauft haben.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="de_CH">
+  <link rel="icon" href="assets/logo.png" type="image/png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'ui-sans-serif', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'sans-serif'],
+            display: ['Space Grotesk', 'Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            ink: { DEFAULT: '#0B0F19', 800: '#141A26', 700: '#1E2635' },
+            swiss: { DEFAULT: '#E30613', 600: '#C4050F' },
+          },
+          boxShadow: {
+            card: '0 1px 2px rgba(11,15,25,0.04), 0 8px 24px -12px rgba(11,15,25,0.12)',
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    html { -webkit-font-smoothing: antialiased; }
+    .reveal { opacity: 0; transform: translateY(16px); transition: opacity .6s ease, transform .6s ease; }
+    .reveal.is-visible { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
+    dialog::backdrop { background: rgba(11,15,25,.6); backdrop-filter: blur(4px); }
+    .grid-bg {
+      background-image: linear-gradient(rgba(11,15,25,.05) 1px, transparent 1px), linear-gradient(90deg, rgba(11,15,25,.05) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: radial-gradient(ellipse at top, black 40%, transparent 75%);
+      -webkit-mask-image: radial-gradient(ellipse at top, black 40%, transparent 75%);
+    }
+  </style>
+</head>
+<body class="bg-white text-ink font-sans antialiased">
+
+  <!-- ===== Navigation ===== -->
+  <header id="header" class="fixed inset-x-0 top-0 z-50 border-b border-transparent bg-white/80 backdrop-blur transition-all duration-300">
+    <div class="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+      <a href="#top" class="flex items-center" aria-label="Innovarex Swiss – Startseite">
+        <img src="assets/logo.png" alt="innovarex swiss" class="h-8 w-auto sm:h-9" width="1200" height="199">
+      </a>
+
+      <nav class="hidden items-center gap-8 text-sm font-medium text-ink/70 md:flex" aria-label="Hauptnavigation">
+        <a href="#leistungen" class="transition hover:text-ink">Leistungen</a>
+        <a href="#referenzen" class="transition hover:text-ink">Referenzen</a>
+        <a href="#ablauf" class="transition hover:text-ink">Ablauf</a>
+        <a href="#ueber-uns" class="transition hover:text-ink">Über uns</a>
+      </nav>
+
+      <div class="flex items-center gap-3">
+        <a href="#kontakt" class="hidden rounded-full bg-ink px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-ink-700 md:inline-flex">Kontakt</a>
+        <button id="menu-toggle" type="button" class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-ink/10 md:hidden" aria-controls="mobile-menu" aria-expanded="false" aria-label="Menü öffnen">
+          <svg id="icon-open" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/></svg>
+          <svg id="icon-close" class="hidden h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" d="M6 6l12 12M18 6L6 18"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div id="mobile-menu" class="hidden border-t border-ink/5 bg-white md:hidden">
+      <nav class="mx-auto flex max-w-7xl flex-col px-4 py-4 sm:px-6" aria-label="Mobile Navigation">
+        <a href="#leistungen" class="rounded-lg px-3 py-3 text-base font-medium hover:bg-stone-50">Leistungen</a>
+        <a href="#referenzen" class="rounded-lg px-3 py-3 text-base font-medium hover:bg-stone-50">Referenzen</a>
+        <a href="#ablauf" class="rounded-lg px-3 py-3 text-base font-medium hover:bg-stone-50">Ablauf</a>
+        <a href="#ueber-uns" class="rounded-lg px-3 py-3 text-base font-medium hover:bg-stone-50">Über uns</a>
+        <a href="#kontakt" class="mt-3 rounded-full bg-ink px-5 py-3 text-center text-base font-semibold text-white">Kontakt</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- ===== Hero ===== -->
+    <section class="relative overflow-hidden pt-32 pb-20 sm:pt-40 sm:pb-28 lg:pt-44 lg:pb-32">
+      <div class="grid-bg absolute inset-0 -z-10"></div>
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
+          <div class="lg:col-span-7">
+            <span class="inline-flex items-center gap-2 rounded-full border border-ink/10 bg-white px-3 py-1 text-xs font-semibold uppercase tracking-wider text-ink/70">
+              <span class="h-1.5 w-1.5 rounded-full bg-swiss"></span>
+              B2B-Partner · Schweiz &amp; China
+            </span>
+            <h1 class="font-display mt-6 text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl xl:text-7xl">
+              Vom Produkt<br class="hidden sm:block"> zur Marke.<br>
+              <span class="text-ink/40">Aus einer Hand.</span>
+            </h1>
+            <p class="mt-6 max-w-xl text-lg leading-relaxed text-ink/70 sm:text-xl">
+              Innovarex ist Ihr Schweizer Partner für Sourcing aus China, E-Commerce, Branding und Performance Marketing. Mit eigenem Team in China – und Marken, die wir selbst aufgebaut, skaliert und verkauft haben.
+            </p>
+            <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+              <a href="#kontakt" class="inline-flex items-center justify-center gap-2 rounded-full bg-swiss px-7 py-3.5 text-base font-semibold text-white shadow-lg shadow-swiss/25 transition hover:bg-swiss-600">
+                Jetzt anfragen
+                <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6"/></svg>
+              </a>
+              <a href="#referenzen" class="inline-flex items-center justify-center rounded-full border border-ink/15 bg-white px-7 py-3.5 text-base font-semibold text-ink transition hover:border-ink/40">
+                Referenzen ansehen
+              </a>
+            </div>
+            <ul class="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm text-ink/60">
+              <li class="flex items-center gap-2"><svg class="h-4 w-4 text-swiss" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7"/></svg>Kostenlose Erstberatung</li>
+              <li class="flex items-center gap-2"><svg class="h-4 w-4 text-swiss" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7"/></svg>Antwort innerhalb von 24 Stunden</li>
+              <li class="flex items-center gap-2"><svg class="h-4 w-4 text-swiss" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7"/></svg>Kein Zwischenhändler</li>
+            </ul>
+          </div>
+
+          <div class="lg:col-span-5">
+            <div class="relative rounded-3xl bg-ink p-8 text-white shadow-2xl sm:p-10">
+              <div class="absolute -right-6 -top-6 h-32 w-32 rounded-full bg-swiss/30 blur-3xl"></div>
+              <p class="text-xs font-semibold uppercase tracking-wider text-white/50">Track Record</p>
+              <dl class="mt-6 grid grid-cols-2 gap-6">
+                <div>
+                  <dt class="text-sm text-white/60">Eigene Marken</dt>
+                  <dd class="font-display mt-1 text-4xl font-bold">4</dd>
+                </div>
+                <div>
+                  <dt class="text-sm text-white/60">Erfolgreiche Exits</dt>
+                  <dd class="font-display mt-1 text-4xl font-bold">2</dd>
+                </div>
+                <div>
+                  <dt class="text-sm text-white/60">Grösster Exit</dt>
+                  <dd class="font-display mt-1 text-4xl font-bold">6<span class="text-2xl text-white/60">-stellig</span></dd>
+                </div>
+                <div>
+                  <dt class="text-sm text-white/60">Team in China</dt>
+                  <dd class="font-display mt-1 text-4xl font-bold">Eigenes</dd>
+                </div>
+              </dl>
+              <div class="mt-8 border-t border-white/10 pt-6">
+                <p class="text-sm leading-relaxed text-white/70">
+                  «Wir bauen keine Theorie. Wir haben jede Leistung, die wir anbieten, für unsere eigenen Marken zuerst selbst umgesetzt.»
+                </p>
+                <p class="mt-3 text-sm font-semibold">Valdrin Dalipi <span class="font-normal text-white/50">· Gründer &amp; Geschäftsführer</span></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Marken-Leiste ===== -->
+    <section class="border-y border-ink/5 bg-stone-50">
+      <div class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+        <p class="text-center text-xs font-semibold uppercase tracking-wider text-ink/50">Marken, die wir aufgebaut haben</p>
+        <ul class="font-display mt-5 flex flex-wrap items-center justify-center gap-x-10 gap-y-4 text-lg font-semibold text-ink/40 sm:text-xl">
+          <li>Wiegeparadies</li>
+          <li>PowerJets</li>
+          <li>MatchaGlow</li>
+          <li>MeditSoul</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===== Leistungen ===== -->
+    <section id="leistungen" class="py-20 sm:py-28">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="max-w-2xl reveal">
+          <p class="text-sm font-semibold uppercase tracking-wider text-swiss">Leistungen</p>
+          <h2 class="font-display mt-3 text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">Alles, was ein Produkt braucht, um in der Schweiz zu verkaufen.</h2>
+          <p class="mt-4 text-lg text-ink/70">Vier Bereiche, ein Ansprechpartner. Sie wählen das Modul, das Sie brauchen – oder das Gesamtpaket.</p>
+        </div>
+
+        <div class="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <article class="reveal group rounded-2xl border border-ink/5 bg-white p-7 shadow-card transition hover:-translate-y-1 hover:shadow-xl">
+            <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-ink text-white">
+              <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Zm0 0c2.5-2.5 3.5-5.5 3.5-9S14.5 5.5 12 3m0 18c-2.5-2.5-3.5-5.5-3.5-9S9.5 5.5 12 3M3.5 9h17M3.5 15h17"/></svg>
+            </div>
+            <h3 class="font-display mt-6 text-xl font-semibold">Import &amp; Sourcing China</h3>
+            <p class="mt-3 text-sm leading-relaxed text-ink/70">Fabriksuche, Verhandlung, Musterung und Qualitätskontrolle durch unser eigenes Team vor Ort. Versand, Verzollung und Lieferung bis an Ihr Lager in der Schweiz.</p>
+            <ul class="mt-5 space-y-1.5 text-sm text-ink/60">
+              <li class="flex gap-2"><span class="text-swiss">–</span>Kein Zwischenhändler, beste Einkaufspreise</li>
+              <li class="flex gap-2"><span class="text-swiss">–</span>QC während &amp; nach der Produktion</li>
+              <li class="flex gap-2"><span class="text-swiss">–</span>See- &amp; Luftfracht, verzollt geliefert</li>
+            </ul>
+          </article>
+
+          <article class="reveal group rounded-2xl border border-ink/5 bg-white p-7 shadow-card transition hover:-translate-y-1 hover:shadow-xl">
+            <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-ink text-white">
+              <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75"><path stroke-linecap="round" stroke-linejoin="round" d="M3 4h2l2.4 12.2a1 1 0 0 0 1 .8h9.7a1 1 0 0 0 1-.8L21 8H6.2M9 21a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm8 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z"/></svg>
+            </div>
+            <h3 class="font-display mt-6 text-xl font-semibold">E-Commerce &amp; Shopify</h3>
+            <p class="mt-3 text-sm leading-relaxed text-ink/70">Aufbau und Optimierung von Shopify-Shops, die verkaufen: Conversion-Design, Zahlungsanbieter, Logistik, Marktplätze wie Galaxus – bis zum laufenden Betrieb.</p>
+            <ul class="mt-5 space-y-1.5 text-sm text-ink/60">
+              <li class="flex gap-2"><span class="text-swiss">–</span>Shop-Setup, Theme &amp; Apps</li>
+              <li class="flex gap-2"><span class="text-swiss">–</span>TWINT, Klarna, Kreditkarte, Rechnung</li>
+              <li class="flex gap-2"><span class="text-swiss">–</span>Lager, Versand &amp; Retouren</li>
+            </ul>
+          </article>
+
+          <article class="reveal group rounded-2xl border border-ink/5 bg-white p-7 shadow-card transition hover:-translate-y-1 hover:shadow-xl">
+            <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-ink text-white">
+              <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1.5M12 19.5V21M4.2 4.2l1.1 1.1m13.4 13.4 1.1 1.1M3 12h1.5m15 0H21M4.2 19.8l1.1-1.1M18.7 5.3l1.1-1.1M16 12a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z"/></svg>
+            </div>
+            <h3 class="font-display mt-6 text-xl font-semibold">Branding &amp; Produkt</h3>
+            <p class="mt-3 text-sm leading-relaxed text-ink/70">Von der Produktidee zur fertigen Marke: Positionierung, Naming, Logo, Verpackung, Inserts und Private Label – produziert nach Ihren Vorgaben.</p>
+            <ul class="mt-5 space-y-1.5 text-sm text-ink/60">
+              <li class="flex gap-2"><span class="text-swiss">–</span>Markenidentität &amp; Design</li>
+              <li class="flex gap-2"><span class="text-swiss">–</span>Verpackung, Giftbox, Barcodes</li>
+              <li class="flex gap-2"><span class="text-swiss">–</span>Produktfotos &amp; Content</li>
+            </ul>
+          </article>
+
+          <article class="reveal group rounded-2xl border border-ink/5 bg-white p-7 shadow-card transition hover:-translate-y-1 hover:shadow-xl">
+            <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-ink text-white">
+              <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75"><path stroke-linecap="round" stroke-linejoin="round" d="M3 17l6-6 4 4 8-8M14 7h7v7"/></svg>
+            </div>
+            <h3 class="font-display mt-6 text-xl font-semibold">Performance Marketing</h3>
+            <p class="mt-3 text-sm leading-relaxed text-ink/70">Meta &amp; TikTok Ads, E-Mail-Marketing mit Klaviyo, Influencer-Kooperationen und Creatives – datengetrieben, auf ROAS und Deckungsbeitrag optimiert.</p>
+            <ul class="mt-5 space-y-1.5 text-sm text-ink/60">
+              <li class="flex gap-2"><span class="text-swiss">–</span>Kampagnen-Setup &amp; Skalierung</li>
+              <li class="flex gap-2"><span class="text-swiss">–</span>Statische &amp; Video-Creatives</li>
+              <li class="flex gap-2"><span class="text-swiss">–</span>E-Mail-Flows &amp; Retention</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Für wen ===== -->
+    <section class="border-y border-ink/5 bg-stone-50 py-20 sm:py-28">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="grid gap-12 lg:grid-cols-12 lg:gap-16">
+          <div class="lg:col-span-5 reveal">
+            <p class="text-sm font-semibold uppercase tracking-wider text-swiss">Für wen</p>
+            <h2 class="font-display mt-3 text-3xl font-bold tracking-tight sm:text-4xl">Für Unternehmen, die Produkte in der Schweiz verkaufen – oder es vorhaben.</h2>
+            <p class="mt-4 text-lg text-ink/70">Ob bestehender Shop, Handelsunternehmen oder Produktidee: Wir übernehmen die Teile, die Zeit, Kontakte und Erfahrung brauchen.</p>
+          </div>
+          <div class="lg:col-span-7">
+            <div class="grid gap-4 sm:grid-cols-2">
+              <div class="reveal rounded-2xl bg-white p-6 shadow-card">
+                <h3 class="font-semibold">E-Commerce Brands</h3>
+                <p class="mt-2 text-sm text-ink/70">Eigene Produkte günstiger produzieren, neue Produkte lancieren, Ads skalieren.</p>
+              </div>
+              <div class="reveal rounded-2xl bg-white p-6 shadow-card">
+                <h3 class="font-semibold">Handel &amp; Retail</h3>
+                <p class="mt-2 text-sm text-ink/70">Eigenmarken, Grossmengen und Spezialanfertigungen direkt ab Fabrik.</p>
+              </div>
+              <div class="reveal rounded-2xl bg-white p-6 shadow-card">
+                <h3 class="font-semibold">Startups &amp; Gründer</h3>
+                <p class="mt-2 text-sm text-ink/70">Vom Prototyp bis zum ersten verkauften Produkt – inklusive Shop und Marketing.</p>
+              </div>
+              <div class="reveal rounded-2xl bg-white p-6 shadow-card">
+                <h3 class="font-semibold">KMU &amp; Industrie</h3>
+                <p class="mt-2 text-sm text-ink/70">Komponenten, Werbeartikel und Kundengeschenke mit Qualitätskontrolle vor Ort.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Referenzen / Zahlen ===== -->
+    <section id="referenzen" class="bg-ink py-20 text-white sm:py-28">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="max-w-2xl reveal">
+          <p class="text-sm font-semibold uppercase tracking-wider text-swiss">Referenzen</p>
+          <h2 class="font-display mt-3 text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">Marken, die wir selbst aufgebaut haben.</h2>
+          <p class="mt-4 text-lg text-white/70">Wir beraten nicht nur – wir betreiben. Jede Leistung ist an eigenen Marken erprobt, zwei davon wurden erfolgreich verkauft.</p>
+        </div>
+
+        <dl class="mt-14 grid grid-cols-2 gap-8 border-y border-white/10 py-10 lg:grid-cols-4">
+          <div class="reveal">
+            <dd class="font-display text-4xl font-bold sm:text-5xl"><span data-count="4">4</span></dd>
+            <dt class="mt-2 text-sm text-white/60">Marken aufgebaut &amp; skaliert</dt>
+          </div>
+          <div class="reveal">
+            <dd class="font-display text-4xl font-bold sm:text-5xl"><span data-count="2">2</span></dd>
+            <dt class="mt-2 text-sm text-white/60">Erfolgreiche Exits</dt>
+          </div>
+          <div class="reveal">
+            <dd class="font-display text-4xl font-bold sm:text-5xl">6<span class="text-2xl text-white/50">-stellig</span></dd>
+            <dt class="mt-2 text-sm text-white/60">Grösster Exit (Wiegeparadies)</dt>
+          </div>
+          <div class="reveal">
+            <dd class="font-display text-4xl font-bold sm:text-5xl">seit <span data-count="2023">2023</span></dd>
+            <dt class="mt-2 text-sm text-white/60">Operativ in der Schweiz &amp; China</dt>
+          </div>
+        </dl>
+
+        <div class="mt-14 grid gap-6 md:grid-cols-2">
+          <article class="reveal rounded-2xl border border-white/10 bg-white/5 p-7 transition hover:bg-white/10">
+            <div class="flex items-center justify-between">
+              <h3 class="font-display text-2xl font-semibold">Wiegeparadies</h3>
+              <span class="rounded-full bg-swiss px-3 py-1 text-xs font-semibold">6-stelliger Exit</span>
+            </div>
+            <p class="mt-3 text-sm text-white/60">Aufgebaut Juni 2023 · verkauft März 2026</p>
+            <p class="mt-4 leading-relaxed text-white/80">E-Commerce-Marke im Baby-Segment von null aufgebaut: Sourcing und Produktion in China, Shopify-Shop, Performance Marketing und Logistik. Nach knapp drei Jahren erfolgreich an einen Käufer übergeben.</p>
+            <ul class="mt-5 flex flex-wrap gap-2 text-xs text-white/70">
+              <li class="rounded-full border border-white/15 px-3 py-1">Sourcing</li>
+              <li class="rounded-full border border-white/15 px-3 py-1">Shopify</li>
+              <li class="rounded-full border border-white/15 px-3 py-1">Meta Ads</li>
+              <li class="rounded-full border border-white/15 px-3 py-1">Exit</li>
+            </ul>
+          </article>
+
+          <article class="reveal rounded-2xl border border-white/10 bg-white/5 p-7 transition hover:bg-white/10">
+            <div class="flex items-center justify-between">
+              <h3 class="font-display text-2xl font-semibold">PowerJets</h3>
+              <span class="rounded-full bg-white/10 px-3 py-1 text-xs font-semibold">Eigene Marke</span>
+            </div>
+            <p class="mt-3 text-sm text-white/60">Marke der Innovarex GmbH · powerjets.ch</p>
+            <p class="mt-4 leading-relaxed text-white/80">Produktentwicklung und Produktion in China, eigenes Branding und Verpackung, Schweizer Lager, Shopify-Shop, Meta Ads, Ambassador-Programm und Vertrieb über Marktplätze wie Galaxus.</p>
+            <ul class="mt-5 flex flex-wrap gap-2 text-xs text-white/70">
+              <li class="rounded-full border border-white/15 px-3 py-1">Produktentwicklung</li>
+              <li class="rounded-full border border-white/15 px-3 py-1">Branding</li>
+              <li class="rounded-full border border-white/15 px-3 py-1">Ads</li>
+              <li class="rounded-full border border-white/15 px-3 py-1">Galaxus</li>
+            </ul>
+          </article>
+
+          <article class="reveal rounded-2xl border border-white/10 bg-white/5 p-7 transition hover:bg-white/10">
+            <div class="flex items-center justify-between">
+              <h3 class="font-display text-2xl font-semibold">MatchaGlow</h3>
+              <span class="rounded-full bg-white/10 px-3 py-1 text-xs font-semibold">Co-Founder</span>
+            </div>
+            <p class="mt-3 text-sm text-white/60">Matcha &amp; Kollagen · matchaglow.ch</p>
+            <p class="mt-4 leading-relaxed text-white/80">Als Mitgründer verantwortlich für Branding, Performance Marketing und den Import. Abo-Modell, B2B-Grosshandel und Vertrieb über Marktplätze – aufgebaut auf derselben Struktur wie unsere anderen Marken.</p>
+            <ul class="mt-5 flex flex-wrap gap-2 text-xs text-white/70">
+              <li class="rounded-full border border-white/15 px-3 py-1">Branding</li>
+              <li class="rounded-full border border-white/15 px-3 py-1">Performance Marketing</li>
+              <li class="rounded-full border border-white/15 px-3 py-1">Import</li>
+            </ul>
+          </article>
+
+          <article class="reveal rounded-2xl border border-white/10 bg-white/5 p-7 transition hover:bg-white/10">
+            <div class="flex items-center justify-between">
+              <h3 class="font-display text-2xl font-semibold">MeditSoul</h3>
+              <span class="rounded-full bg-swiss px-3 py-1 text-xs font-semibold">5-stelliger Exit</span>
+            </div>
+            <p class="mt-3 text-sm text-white/60">Aufgebaut &amp; verkauft</p>
+            <p class="mt-4 leading-relaxed text-white/80">Marke von der Produktbeschaffung bis zum laufenden Shop aufgebaut und anschliessend mit einem fünfstelligen Exit an einen neuen Eigentümer übergeben.</p>
+            <ul class="mt-5 flex flex-wrap gap-2 text-xs text-white/70">
+              <li class="rounded-full border border-white/15 px-3 py-1">Sourcing</li>
+              <li class="rounded-full border border-white/15 px-3 py-1">Shopify</li>
+              <li class="rounded-full border border-white/15 px-3 py-1">Exit</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Ablauf ===== -->
+    <section id="ablauf" class="py-20 sm:py-28">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="max-w-2xl reveal">
+          <p class="text-sm font-semibold uppercase tracking-wider text-swiss">Ablauf</p>
+          <h2 class="font-display mt-3 text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">In vier Schritten zum Ergebnis.</h2>
+          <p class="mt-4 text-lg text-ink/70">Klare Schritte, transparente Kosten, ein Ansprechpartner. Sie müssen sich um nichts kümmern.</p>
+        </div>
+
+        <ol class="mt-14 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+          <li class="reveal relative rounded-2xl border border-ink/5 p-7">
+            <span class="font-display text-5xl font-bold text-ink/10">01</span>
+            <h3 class="font-display mt-4 text-xl font-semibold">Anfrage</h3>
+            <p class="mt-2 text-sm leading-relaxed text-ink/70">Sie schildern uns Ihr Projekt – Produkt, Ziel, Zeitrahmen. Kostenlos und unverbindlich.</p>
+          </li>
+          <li class="reveal relative rounded-2xl border border-ink/5 p-7">
+            <span class="font-display text-5xl font-bold text-ink/10">02</span>
+            <h3 class="font-display mt-4 text-xl font-semibold">Analyse &amp; Offerte</h3>
+            <p class="mt-2 text-sm leading-relaxed text-ink/70">Wir prüfen Machbarkeit, Lieferanten und Zahlen und erstellen eine transparente Komplettofferte.</p>
+          </li>
+          <li class="reveal relative rounded-2xl border border-ink/5 p-7">
+            <span class="font-display text-5xl font-bold text-ink/10">03</span>
+            <h3 class="font-display mt-4 text-xl font-semibold">Umsetzung</h3>
+            <p class="mt-2 text-sm leading-relaxed text-ink/70">Produktion mit Qualitätskontrolle vor Ort, Shop-Aufbau, Branding und Kampagnen – parallel und koordiniert.</p>
+          </li>
+          <li class="reveal relative rounded-2xl border border-ink/5 p-7">
+            <span class="font-display text-5xl font-bold text-ink/10">04</span>
+            <h3 class="font-display mt-4 text-xl font-semibold">Lieferung &amp; Skalierung</h3>
+            <p class="mt-2 text-sm leading-relaxed text-ink/70">Verzollte Lieferung in die Schweiz, Launch und laufende Optimierung bis zum profitablen Wachstum.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ===== Über uns ===== -->
+    <section id="ueber-uns" class="border-y border-ink/5 bg-stone-50 py-20 sm:py-28">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
+          <div class="reveal lg:col-span-4">
+            <div class="mx-auto flex aspect-square w-full max-w-xs items-center justify-center rounded-3xl bg-ink text-white shadow-2xl">
+              <div class="text-center">
+                <span class="font-display text-6xl font-bold tracking-tight">VD</span>
+                <p class="mt-3 text-sm text-white/60">Valdrin Dalipi</p>
+              </div>
+            </div>
+          </div>
+          <div class="reveal lg:col-span-8">
+            <p class="text-sm font-semibold uppercase tracking-wider text-swiss">Über uns</p>
+            <h2 class="font-display mt-3 text-3xl font-bold tracking-tight sm:text-4xl">Schweizer Anspruch. Chinesische Produktion. Ein Team.</h2>
+            <p class="mt-5 text-lg leading-relaxed text-ink/70">
+              Hinter Innovarex steht Valdrin Dalipi mit einem eingespielten Team in der Schweiz und in China. Seit 2023 bauen wir eigene E-Commerce-Marken auf – von der ersten Fabrikanfrage bis zum Verkauf des Unternehmens. Dieses Wissen stellen wir Geschäftskunden zur Verfügung.
+            </p>
+            <p class="mt-4 text-lg leading-relaxed text-ink/70">
+              Unser Team in China besteht aus festen Mitarbeitenden, keinen Freelancern. So kontrollieren wir Qualität, Preise und Termine direkt – ohne Zwischenhändler.
+            </p>
+            <blockquote class="mt-6 border-l-2 border-swiss pl-5 text-ink">
+              «Wir verstehen beide Seiten: die Erwartungen Schweizer Kunden und die Realität in der Fabrik. Genau dazwischen entsteht der Unterschied.»
+              <footer class="mt-2 text-sm text-ink/60">— Valdrin Dalipi, Gründer &amp; Geschäftsführer Innovarex GmbH</footer>
+            </blockquote>
+            <div class="mt-8 grid gap-4 sm:grid-cols-3">
+              <div class="rounded-xl bg-white p-4 shadow-card">
+                <p class="font-semibold">Eigenes Team in China</p>
+                <p class="mt-1 text-sm text-ink/60">Kontrolle vor Ort statt Agenten.</p>
+              </div>
+              <div class="rounded-xl bg-white p-4 shadow-card">
+                <p class="font-semibold">Unternehmer, nicht Berater</p>
+                <p class="mt-1 text-sm text-ink/60">Wir riskieren mit eigenen Marken.</p>
+              </div>
+              <div class="rounded-xl bg-white p-4 shadow-card">
+                <p class="font-semibold">Persönliche Betreuung</p>
+                <p class="mt-1 text-sm text-ink/60">Kleines Team, schnelle Entscheide.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Kontakt ===== -->
+    <section id="kontakt" class="py-20 sm:py-28">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="grid gap-12 lg:grid-cols-12 lg:gap-16">
+          <div class="reveal lg:col-span-5">
+            <p class="text-sm font-semibold uppercase tracking-wider text-swiss">Kontakt</p>
+            <h2 class="font-display mt-3 text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">Erzählen Sie uns von Ihrem Projekt.</h2>
+            <p class="mt-4 text-lg text-ink/70">Wir melden uns innerhalb von 24 Stunden mit einer ersten Einschätzung – kostenlos und unverbindlich.</p>
+
+            <ul class="mt-8 space-y-4 text-sm">
+              <li class="flex items-start gap-3">
+                <span class="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-ink text-white"><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 7l9 6 9-6M4 5h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Z"/></svg></span>
+                <div><p class="font-semibold">E-Mail</p><a href="mailto:info@innovarex.swiss" class="text-ink/70 hover:text-ink">info@innovarex.swiss</a></div>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-ink text-white"><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11Zm0-8.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"/></svg></span>
+                <div><p class="font-semibold">Adresse</p><p class="text-ink/70">Innovarex GmbH<br>Schaffhauserstrasse 5<br>8193 Eglisau, Schweiz</p></div>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-ink text-white"><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg></span>
+                <div><p class="font-semibold">Reaktionszeit</p><p class="text-ink/70">Antwort innerhalb von 24 Stunden an Werktagen</p></div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="reveal lg:col-span-7">
+            <form id="contact-form" action="https://formsubmit.co/info@innovarex.swiss" method="POST" class="rounded-3xl border border-ink/5 bg-white p-6 shadow-card sm:p-10" novalidate>
+              <input type="hidden" name="_subject" value="Neue Anfrage über innovarex.swiss">
+              <input type="hidden" name="_template" value="table">
+              <input type="hidden" name="_captcha" value="false">
+              <input type="text" name="_honey" class="hidden" tabindex="-1" autocomplete="off">
+
+              <div class="grid gap-5 sm:grid-cols-2">
+                <div>
+                  <label for="name" class="block text-sm font-medium">Name <span class="text-swiss">*</span></label>
+                  <input id="name" name="name" type="text" required autocomplete="name" class="mt-2 w-full rounded-xl border border-ink/15 bg-white px-4 py-3 text-sm outline-none transition placeholder:text-ink/40 focus:border-ink focus:ring-2 focus:ring-ink/10" placeholder="Vor- und Nachname">
+                </div>
+                <div>
+                  <label for="company" class="block text-sm font-medium">Firma</label>
+                  <input id="company" name="firma" type="text" autocomplete="organization" class="mt-2 w-full rounded-xl border border-ink/15 bg-white px-4 py-3 text-sm outline-none transition placeholder:text-ink/40 focus:border-ink focus:ring-2 focus:ring-ink/10" placeholder="Firmenname">
+                </div>
+                <div>
+                  <label for="email" class="block text-sm font-medium">E-Mail <span class="text-swiss">*</span></label>
+                  <input id="email" name="email" type="email" required autocomplete="email" class="mt-2 w-full rounded-xl border border-ink/15 bg-white px-4 py-3 text-sm outline-none transition placeholder:text-ink/40 focus:border-ink focus:ring-2 focus:ring-ink/10" placeholder="name@firma.ch">
+                </div>
+                <div>
+                  <label for="phone" class="block text-sm font-medium">Telefon</label>
+                  <input id="phone" name="telefon" type="tel" autocomplete="tel" class="mt-2 w-full rounded-xl border border-ink/15 bg-white px-4 py-3 text-sm outline-none transition placeholder:text-ink/40 focus:border-ink focus:ring-2 focus:ring-ink/10" placeholder="+41 79 000 00 00">
+                </div>
+                <div class="sm:col-span-2">
+                  <label for="interest" class="block text-sm font-medium">Worum geht es? <span class="text-swiss">*</span></label>
+                  <select id="interest" name="interesse" required class="mt-2 w-full rounded-xl border border-ink/15 bg-white px-4 py-3 text-sm outline-none transition focus:border-ink focus:ring-2 focus:ring-ink/10">
+                    <option value="" disabled selected>Bitte auswählen</option>
+                    <option>Import &amp; Sourcing aus China</option>
+                    <option>E-Commerce &amp; Shopify</option>
+                    <option>Branding &amp; Produktentwicklung</option>
+                    <option>Performance Marketing</option>
+                    <option>Gesamtpaket – vom Produkt zur Marke</option>
+                    <option>Etwas anderes</option>
+                  </select>
+                </div>
+                <div class="sm:col-span-2">
+                  <label for="quantity" class="block text-sm font-medium">Ungefähre Stückzahl / Budget</label>
+                  <input id="quantity" name="stueckzahl_budget" type="text" class="mt-2 w-full rounded-xl border border-ink/15 bg-white px-4 py-3 text-sm outline-none transition placeholder:text-ink/40 focus:border-ink focus:ring-2 focus:ring-ink/10" placeholder="z. B. 1'000 – 5'000 Stück oder CHF 20'000 Ads-Budget/Monat">
+                </div>
+                <div class="sm:col-span-2">
+                  <label for="message" class="block text-sm font-medium">Ihr Projekt <span class="text-swiss">*</span></label>
+                  <textarea id="message" name="nachricht" rows="5" required class="mt-2 w-full resize-y rounded-xl border border-ink/15 bg-white px-4 py-3 text-sm outline-none transition placeholder:text-ink/40 focus:border-ink focus:ring-2 focus:ring-ink/10" placeholder="Welches Produkt, welches Ziel, welcher Zeitrahmen?"></textarea>
+                </div>
+                <div class="sm:col-span-2">
+                  <label class="flex items-start gap-3 text-sm text-ink/70">
+                    <input type="checkbox" name="datenschutz" required class="mt-1 h-4 w-4 rounded border-ink/30 accent-ink">
+                    <span>Ich habe die <button type="button" class="underline underline-offset-2 hover:text-ink" data-dialog="datenschutz">Datenschutzerklärung</button> gelesen und bin mit der Verarbeitung meiner Angaben zur Bearbeitung der Anfrage einverstanden. <span class="text-swiss">*</span></span>
+                  </label>
+                </div>
+              </div>
+
+              <p id="form-error" class="mt-4 hidden text-sm text-swiss" role="alert">Bitte füllen Sie alle Pflichtfelder korrekt aus.</p>
+
+              <button type="submit" class="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-swiss px-7 py-3.5 text-base font-semibold text-white shadow-lg shadow-swiss/25 transition hover:bg-swiss-600 sm:w-auto">
+                Anfrage senden
+                <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6"/></svg>
+              </button>
+              <p class="mt-3 text-xs text-ink/50">Kostenlos und unverbindlich. Ihre Daten werden ausschliesslich zur Bearbeitung Ihrer Anfrage verwendet.</p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== Footer ===== -->
+  <footer class="border-t border-ink/5 bg-stone-50">
+    <div class="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
+      <div class="grid gap-10 md:grid-cols-12">
+        <div class="md:col-span-5">
+          <img src="assets/logo.png" alt="innovarex swiss" class="h-8 w-auto" width="1200" height="199">
+          <p class="mt-4 max-w-sm text-sm leading-relaxed text-ink/60">Schweizer B2B-Partner für Import aus China, E-Commerce, Branding und Performance Marketing. Vom Produkt zur Marke – aus einer Hand.</p>
+        </div>
+        <div class="md:col-span-2">
+          <p class="text-xs font-semibold uppercase tracking-wider text-ink/50">Navigation</p>
+          <ul class="mt-4 space-y-2 text-sm">
+            <li><a href="#leistungen" class="text-ink/70 hover:text-ink">Leistungen</a></li>
+            <li><a href="#referenzen" class="text-ink/70 hover:text-ink">Referenzen</a></li>
+            <li><a href="#ablauf" class="text-ink/70 hover:text-ink">Ablauf</a></li>
+            <li><a href="#ueber-uns" class="text-ink/70 hover:text-ink">Über uns</a></li>
+            <li><a href="#kontakt" class="text-ink/70 hover:text-ink">Kontakt</a></li>
+          </ul>
+        </div>
+        <div class="md:col-span-3">
+          <p class="text-xs font-semibold uppercase tracking-wider text-ink/50">Kontakt</p>
+          <address class="mt-4 text-sm not-italic leading-relaxed text-ink/70">
+            Innovarex GmbH<br>
+            Schaffhauserstrasse 5<br>
+            8193 Eglisau, Schweiz<br>
+            <a href="mailto:info@innovarex.swiss" class="hover:text-ink">info@innovarex.swiss</a>
+          </address>
+        </div>
+        <div class="md:col-span-2">
+          <p class="text-xs font-semibold uppercase tracking-wider text-ink/50">Rechtliches</p>
+          <ul class="mt-4 space-y-2 text-sm">
+            <li><button type="button" class="text-ink/70 hover:text-ink" data-dialog="impressum">Impressum</button></li>
+            <li><button type="button" class="text-ink/70 hover:text-ink" data-dialog="datenschutz">Datenschutzerklärung</button></li>
+            <li><button type="button" class="text-ink/70 hover:text-ink" data-dialog="agb">AGB</button></li>
+          </ul>
+        </div>
+      </div>
+      <div class="mt-12 flex flex-col gap-3 border-t border-ink/10 pt-6 text-xs text-ink/50 sm:flex-row sm:items-center sm:justify-between">
+        <p>© <span id="year">2026</span> Innovarex GmbH. Alle Rechte vorbehalten.</p>
+        <p>CHE-291.171.613 · Made in Switzerland</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== Rechtliche Dialoge ===== -->
+  <dialog id="dialog-impressum" class="w-[min(92vw,42rem)] rounded-2xl p-0 shadow-2xl">
+    <div class="max-h-[80vh] overflow-y-auto p-6 sm:p-8">
+      <div class="flex items-start justify-between gap-4">
+        <h2 class="font-display text-2xl font-bold">Impressum</h2>
+        <button type="button" class="rounded-full p-2 hover:bg-stone-100" data-close aria-label="Schliessen"><svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" d="M6 6l12 12M18 6L6 18"/></svg></button>
+      </div>
+      <div class="mt-5 space-y-4 text-sm leading-relaxed text-ink/80">
+        <p class="font-semibold text-ink">Angaben gemäss Schweizer Recht</p>
+        <p>Innovarex GmbH<br>Schaffhauserstrasse 5<br>8193 Eglisau<br>Schweiz</p>
+        <p>E-Mail: <a href="mailto:info@innovarex.swiss" class="underline">info@innovarex.swiss</a><br>Website: innovarex.swiss</p>
+        <p><span class="font-semibold text-ink">Vertretungsberechtigte Person:</span> Valdrin Dalipi, Geschäftsführer</p>
+        <p><span class="font-semibold text-ink">Handelsregistereintrag:</span> Innovarex GmbH, UID CHE-291.171.613</p>
+        <p class="font-semibold text-ink">Haftungsausschluss</p>
+        <p>Der Autor übernimmt keinerlei Gewähr hinsichtlich der inhaltlichen Richtigkeit, Genauigkeit, Aktualität, Zuverlässigkeit und Vollständigkeit der Informationen. Haftungsansprüche gegen den Autor wegen Schäden materieller oder immaterieller Art, welche aus dem Zugriff oder der Nutzung bzw. Nichtnutzung der veröffentlichten Informationen entstanden sind, werden ausgeschlossen. Alle Angebote sind unverbindlich.</p>
+        <p class="font-semibold text-ink">Haftung für Links</p>
+        <p>Verweise und Links auf Webseiten Dritter liegen ausserhalb unseres Verantwortungsbereichs. Der Zugriff und die Nutzung solcher Webseiten erfolgen auf eigene Gefahr der Nutzerin oder des Nutzers.</p>
+        <p class="font-semibold text-ink">Urheberrechte</p>
+        <p>Die Urheber- und alle anderen Rechte an Inhalten, Bildern, Fotos oder anderen Dateien auf dieser Website gehören ausschliesslich der Innovarex GmbH oder den speziell genannten Rechteinhabern. Für die Reproduktion jeglicher Elemente ist die schriftliche Zustimmung des Urheberrechtsträgers im Voraus einzuholen.</p>
+      </div>
+    </div>
+  </dialog>
+
+  <dialog id="dialog-datenschutz" class="w-[min(92vw,42rem)] rounded-2xl p-0 shadow-2xl">
+    <div class="max-h-[80vh] overflow-y-auto p-6 sm:p-8">
+      <div class="flex items-start justify-between gap-4">
+        <h2 class="font-display text-2xl font-bold">Datenschutzerklärung</h2>
+        <button type="button" class="rounded-full p-2 hover:bg-stone-100" data-close aria-label="Schliessen"><svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" d="M6 6l12 12M18 6L6 18"/></svg></button>
+      </div>
+      <div class="mt-5 space-y-4 text-sm leading-relaxed text-ink/80">
+        <p class="font-semibold text-ink">1. Verantwortliche Stelle</p>
+        <p>Verantwortlich für die Datenbearbeitung auf dieser Website ist die Innovarex GmbH, Schaffhauserstrasse 5, 8193 Eglisau, Schweiz, <a href="mailto:info@innovarex.swiss" class="underline">info@innovarex.swiss</a>.</p>
+        <p class="font-semibold text-ink">2. Allgemeines</p>
+        <p>Wir bearbeiten Personendaten gemäss dem Schweizer Datenschutzgesetz (DSG) und, soweit anwendbar, der EU-Datenschutz-Grundverordnung (DSGVO). Personendaten sind alle Angaben, die sich auf eine bestimmte oder bestimmbare Person beziehen.</p>
+        <p class="font-semibold text-ink">3. Erhebung und Bearbeitung von Personendaten</p>
+        <p>Wir erheben Personendaten, wenn Sie uns diese im Rahmen einer Anfrage über das Kontaktformular oder per E-Mail freiwillig mitteilen. Dazu gehören insbesondere Vor- und Nachname, Firmenname, E-Mail-Adresse, Telefonnummer sowie die Inhalte Ihrer Nachricht.</p>
+        <p class="font-semibold text-ink">4. Zweck der Datenbearbeitung</p>
+        <p>Die Daten werden ausschliesslich zur Bearbeitung Ihrer Anfrage, zur Erstellung von Offerten und zur Abwicklung der Geschäftsbeziehung verwendet. Eine Nutzung zu Werbezwecken erfolgt nur mit Ihrer ausdrücklichen Einwilligung.</p>
+        <p class="font-semibold text-ink">5. Weitergabe an Dritte</p>
+        <p>Für die Übermittlung des Kontaktformulars nutzen wir einen technischen Dienstleister (Formular-Backend). Eine darüber hinausgehende Weitergabe an Dritte erfolgt nur, wenn dies zur Vertragserfüllung notwendig ist oder wir gesetzlich dazu verpflichtet sind.</p>
+        <p class="font-semibold text-ink">6. Cookies und Webanalyse</p>
+        <p>Diese Website setzt keine Tracking-Cookies ein. Beim Laden von Schriften und Bibliotheken über Content Delivery Networks (Google Fonts, Tailwind CSS) wird Ihre IP-Adresse technisch bedingt an den jeweiligen Anbieter übermittelt.</p>
+        <p class="font-semibold text-ink">7. Datensicherheit</p>
+        <p>Wir treffen angemessene technische und organisatorische Massnahmen, um Ihre Personendaten vor unbefugtem Zugriff, Verlust oder Missbrauch zu schützen. Die Übertragung erfolgt SSL-verschlüsselt.</p>
+        <p class="font-semibold text-ink">8. Ihre Rechte</p>
+        <p>Sie haben das Recht auf Auskunft, Berichtigung, Löschung und Einschränkung der Bearbeitung Ihrer Personendaten. Wenden Sie sich dazu an die oben genannte Adresse.</p>
+        <p class="font-semibold text-ink">9. Aufbewahrungsdauer</p>
+        <p>Wir bewahren Personendaten nur so lange auf, wie es für die genannten Zwecke erforderlich ist oder gesetzliche Aufbewahrungsfristen es vorsehen.</p>
+        <p class="font-semibold text-ink">10. Änderungen</p>
+        <p>Wir behalten uns vor, diese Datenschutzerklärung jederzeit anzupassen. Massgeblich ist die jeweils auf dieser Website veröffentlichte Fassung. Stand: September 2026.</p>
+      </div>
+    </div>
+  </dialog>
+
+  <dialog id="dialog-agb" class="w-[min(92vw,42rem)] rounded-2xl p-0 shadow-2xl">
+    <div class="max-h-[80vh] overflow-y-auto p-6 sm:p-8">
+      <div class="flex items-start justify-between gap-4">
+        <h2 class="font-display text-2xl font-bold">Allgemeine Geschäftsbedingungen</h2>
+        <button type="button" class="rounded-full p-2 hover:bg-stone-100" data-close aria-label="Schliessen"><svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" d="M6 6l12 12M18 6L6 18"/></svg></button>
+      </div>
+      <div class="mt-5 space-y-4 text-sm leading-relaxed text-ink/80">
+        <p class="text-ink/60">Stand: September 2026</p>
+        <p class="font-semibold text-ink">1. Geltungsbereich</p>
+        <p>Diese AGB gelten für alle Dienstleistungen der Innovarex GmbH (nachfolgend «Innovarex») gegenüber Geschäftskunden. Abweichende Bedingungen des Kunden gelten nur, wenn Innovarex ihnen schriftlich zugestimmt hat.</p>
+        <p class="font-semibold text-ink">2. Leistungen</p>
+        <p>Innovarex bietet Dienstleistungen in den Bereichen Import und Produktion aus China, E-Commerce, Branding und Performance Marketing an. Der genaue Leistungsumfang wird in der jeweiligen individuellen Offerte festgelegt.</p>
+        <p class="font-semibold text-ink">3. Offerte und Vertragsschluss</p>
+        <p>Offerten sind unverbindlich und freibleibend. Ein Vertrag kommt durch schriftliche Auftragsbestätigung von Innovarex oder durch Beginn der Leistungserbringung zustande. Zusätzliche, nicht in der Offerte aufgeführte Kosten werden nur nach vorheriger Absprache berechnet.</p>
+        <p class="font-semibold text-ink">4. Preise und Zahlung</p>
+        <p>Alle Preise verstehen sich in Schweizer Franken. Bei Produktions- und Importaufträgen ist in der Regel eine Anzahlung vor Produktionsbeginn erforderlich; der Restbetrag wird vor Versand der Ware fällig. Die Zahlungsmodalitäten werden individuell vereinbart.</p>
+        <p class="font-semibold text-ink">5. Lieferung</p>
+        <p>Die Lieferung erfolgt an die vom Kunden angegebene Adresse in der Schweiz. Lieferfristen sind Richtwerte; Verzögerungen durch Produktion, Transport oder Zoll begründen keinen Anspruch auf Schadenersatz.</p>
+        <p class="font-semibold text-ink">6. Qualitätskontrolle und Mängelrüge</p>
+        <p>Innovarex führt Qualitätskontrollen während und nach der Produktion durch. Produktionsbedingte, geringfügige Abweichungen in Farbe, Grösse oder Material stellen keinen Mangel dar. Mängel sind innerhalb von 7 Werktagen nach Erhalt der Ware schriftlich zu melden.</p>
+        <p class="font-semibold text-ink">7. Haftung</p>
+        <p>Innovarex haftet nur für Schäden, die auf vorsätzliches oder grob fahrlässiges Verhalten zurückzuführen sind. Die Haftung ist auf den Auftragswert der betroffenen Bestellung beschränkt. Eine Haftung für indirekte Schäden, Folgeschäden oder entgangenen Gewinn ist ausgeschlossen.</p>
+        <p class="font-semibold text-ink">8. Vertraulichkeit und geistiges Eigentum</p>
+        <p>Beide Parteien behandeln vertrauliche Informationen vertraulich. Vom Kunden bereitgestellte Designs, Marken und Spezifikationen bleiben Eigentum des Kunden und werden nur im Rahmen des Auftrags verwendet.</p>
+        <p class="font-semibold text-ink">9. Anwendbares Recht und Gerichtsstand</p>
+        <p>Es gilt ausschliesslich Schweizer Recht. Gerichtsstand ist der Sitz der Innovarex GmbH.</p>
+        <p class="font-semibold text-ink">10. Schlussbestimmungen</p>
+        <p>Sollten einzelne Bestimmungen unwirksam sein, bleibt die Wirksamkeit der übrigen Bestimmungen unberührt. Innovarex behält sich vor, diese AGB jederzeit anzupassen.</p>
+      </div>
+    </div>
+  </dialog>
+
+  <script>
+    (function () {
+      // Jahr im Footer
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      // Header-Schatten beim Scrollen
+      var header = document.getElementById('header');
+      var onScroll = function () {
+        header.classList.toggle('border-ink/5', window.scrollY > 8);
+        header.classList.toggle('shadow-sm', window.scrollY > 8);
+      };
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+
+      // Mobile-Menü
+      var toggle = document.getElementById('menu-toggle');
+      var menu = document.getElementById('mobile-menu');
+      var iconOpen = document.getElementById('icon-open');
+      var iconClose = document.getElementById('icon-close');
+      var setMenu = function (open) {
+        menu.classList.toggle('hidden', !open);
+        iconOpen.classList.toggle('hidden', open);
+        iconClose.classList.toggle('hidden', !open);
+        toggle.setAttribute('aria-expanded', String(open));
+        toggle.setAttribute('aria-label', open ? 'Menü schliessen' : 'Menü öffnen');
+      };
+      toggle.addEventListener('click', function () { setMenu(menu.classList.contains('hidden')); });
+      menu.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', function () { setMenu(false); }); });
+
+      // Einblend-Animationen
+      var revealEls = document.querySelectorAll('.reveal');
+      if ('IntersectionObserver' in window) {
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); }
+          });
+        }, { threshold: 0.12 });
+        revealEls.forEach(function (el) { io.observe(el); });
+      } else {
+        revealEls.forEach(function (el) { el.classList.add('is-visible'); });
+      }
+
+      // Rechtliche Dialoge
+      document.querySelectorAll('[data-dialog]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var d = document.getElementById('dialog-' + btn.getAttribute('data-dialog'));
+          if (d && typeof d.showModal === 'function') { d.showModal(); }
+        });
+      });
+      document.querySelectorAll('dialog').forEach(function (d) {
+        d.querySelectorAll('[data-close]').forEach(function (b) { b.addEventListener('click', function () { d.close(); }); });
+        d.addEventListener('click', function (e) { if (e.target === d) { d.close(); } });
+      });
+
+      // Formular-Validierung
+      var form = document.getElementById('contact-form');
+      var error = document.getElementById('form-error');
+      form.addEventListener('submit', function (e) {
+        if (!form.checkValidity()) {
+          e.preventDefault();
+          error.classList.remove('hidden');
+          var first = form.querySelector(':invalid');
+          if (first) { first.focus(); }
+          return;
+        }
+        error.classList.add('hidden');
+        var btn = form.querySelector('button[type="submit"]');
+        btn.disabled = true;
+        btn.textContent = 'Wird gesendet …';
+      });
+    })();
+  </script>
+</body>
+</html>
