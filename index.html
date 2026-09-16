@@ -133,7 +133,7 @@
     /* Logo-Laufband */
     @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
     .marquee-track { animation: marquee 34s linear infinite; }
-    .marquee:hover .marquee-track { animation-play-state: paused; }
+    @media (hover: hover) { .marquee:hover .marquee-track { animation-play-state: paused; } }
 
     /* Zeichnende Prozesslinie */
     .process-line { transform: scaleX(0); transform-origin: left; transition: transform 1.6s cubic-bezier(.7,0,.2,1) .2s; }
@@ -225,6 +225,8 @@
     </div>
   </header>
 
+  <a id="sticky-cta" href="#kontakt" class="fixed inset-x-4 bottom-4 z-40 flex translate-y-24 items-center justify-center gap-2 rounded-full bg-accent px-6 py-3.5 text-base font-semibold text-white shadow-xl shadow-accent/30 transition-transform duration-500 lg:hidden" aria-hidden="true">Jetzt anfragen<svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+
   <main id="top">
 
     <!-- ===== Hero ===== -->
@@ -244,7 +246,7 @@
               <span class="rise block text-accent" style="--d:240ms"><span id="rotator" class="inline-block transition-all duration-500" data-words="Für Ihr neues Produkt.|Für Ihre Eigenmarke.|Für bessere Margen.|Für Ihren Onlineshop.">Für Ihr neues Produkt.</span></span>
             </h1>
             <p class="rise mt-4 max-w-xl text-base leading-relaxed text-ink/70 sm:text-lg" style="--d:340ms">
-              Innovarex beschafft Produkte in China mit eigenem Team vor Ort und bringt sie in der Schweiz in den Verkauf: mit Shopify-Shop, Webdesign, Branding und Performance Marketing. Für neue Produkte, aber auch für bestehende, die einen besseren Preis, mehr Marge oder eine höhere Qualität brauchen.
+              Wir beschaffen Ihr Produkt in China mit eigenem Team vor Ort und bringen es in der Schweiz in den Verkauf. Für neue Produkte und für bestehende, die mehr Marge oder bessere Qualität brauchen.
             </p>
             <div class="rise mt-6 flex flex-col gap-3 sm:flex-row sm:items-center" style="--d:420ms">
               <a href="#kontakt" class="group inline-flex items-center justify-center gap-2 rounded-full bg-accent px-7 py-3.5 text-base font-semibold text-white shadow-lg shadow-accent/25 transition hover:-translate-y-0.5 hover:bg-accent-600 hover:shadow-xl hover:shadow-accent/30">
@@ -256,22 +258,14 @@
               </a>
             </div>
 
-            <dl class="rise mt-7 grid grid-cols-3 gap-2 sm:grid-cols-2 sm:gap-3" style="--d:520ms">
-              <div class="col-span-3 rounded-2xl border border-ink/10 bg-white/80 p-4 backdrop-blur sm:col-span-1">
-                <dd class="font-display whitespace-nowrap text-2xl font-bold sm:text-3xl">CHF <span data-count="1000000" data-format="chf">0</span>+</dd>
+            <dl class="rise mt-7 grid grid-cols-2 gap-3" style="--d:520ms">
+              <div class="rounded-2xl border border-ink/10 bg-white/80 p-4 backdrop-blur sm:p-5">
+                <dd class="font-display text-xl font-bold sm:text-3xl">CHF <span data-count="1000000" data-format="chf">0</span>+</dd>
                 <dt class="mt-1 text-xs text-ink/60 sm:text-sm">Umsatz mit unseren eigenen Marken</dt>
               </div>
-              <div class="rounded-2xl border border-ink/10 bg-white/80 p-3 backdrop-blur sm:p-4">
-                <dd class="font-display text-2xl font-bold sm:text-3xl"><span data-count="20">0</span>+</dd>
-                <dt class="mt-1 text-xs text-ink/60 sm:text-sm">Projekte für Schweizer Unternehmen</dt>
-              </div>
-              <div class="rounded-2xl border border-ink/10 bg-white/80 p-3 backdrop-blur sm:p-4">
-                <dd class="font-display text-2xl font-bold sm:text-3xl"><span data-count="0">0</span></dd>
-                <dt class="mt-1 text-xs text-ink/60 sm:text-sm">Zwischenhändler. Eigenes Team in der Fabrik</dt>
-              </div>
-              <div class="rounded-2xl border border-ink/10 bg-white/80 p-3 backdrop-blur sm:p-4">
-                <dd class="font-display text-2xl font-bold sm:text-3xl"><span data-count="1">0</span></dd>
-                <dt class="mt-1 text-xs text-ink/60 sm:text-sm">Ansprechpartner von der Fabrik bis zum Verkauf</dt>
+              <div class="rounded-2xl border border-ink/10 bg-white/80 p-4 backdrop-blur sm:p-5">
+                <dd class="font-display text-xl font-bold sm:text-3xl"><span data-count="20">0</span>+ Projekte</dd>
+                <dt class="mt-1 text-xs text-ink/60 sm:text-sm">Für Schweizer Unternehmen umgesetzt</dt>
               </div>
             </dl>
           </div>
@@ -368,6 +362,10 @@
             <p class="mt-3 text-sm leading-relaxed text-ink/70">Google, Meta und TikTok Ads plus E-Mail-Automationen. Wir optimieren auf Deckungsbeitrag pro Bestellung, nicht auf Klicks.</p>
             <ul class="mt-auto space-y-2 pt-6 text-sm text-ink/70"><li class="flex items-center gap-2"><svg class="h-4 w-4 shrink-0 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7"/></svg>Google, Meta &amp; TikTok Ads</li><li class="flex items-center gap-2"><svg class="h-4 w-4 shrink-0 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7"/></svg>Klaviyo E-Mail-Flows</li><li class="flex items-center gap-2"><svg class="h-4 w-4 shrink-0 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7"/></svg>Influencer &amp; Ambassador</li></ul>
           </article>
+        </div>
+        <div class="reveal mt-12 flex flex-col items-start justify-between gap-4 rounded-2xl border border-ink/10 bg-white p-6 sm:flex-row sm:items-center" style="--d:400ms">
+          <p class="font-display text-lg font-semibold">Nicht sicher, welcher Baustein passt? Wir sagen es Ihnen in 30 Minuten.</p>
+          <a href="#kontakt" class="group inline-flex shrink-0 items-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-accent/25 transition hover:-translate-y-0.5 hover:bg-accent-600">Jetzt anfragen<svg class="h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
         </div>
       </div>
     </section>
@@ -512,6 +510,10 @@
             </li>
           </ol>
         </div>
+        <div class="reveal mt-12 flex flex-col items-start justify-between gap-4 rounded-2xl border border-ink/10 bg-white p-6 sm:flex-row sm:items-center" style="--d:300ms">
+          <p class="font-display text-lg font-semibold">Schritt 1 dauert 30 Minuten. Der Rest ist unsere Arbeit.</p>
+          <a href="#kontakt" class="group inline-flex shrink-0 items-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-accent/25 transition hover:-translate-y-0.5 hover:bg-accent-600">Gespräch anfragen<svg class="h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+        </div>
       </div>
     </section>
 
@@ -593,6 +595,9 @@
               <li class="rounded-full border border-white/15 px-3 py-1">Meta Ads</li>
               <li class="rounded-full border border-white/15 px-3 py-1">Retail</li>
             </ul>
+            <div class="mt-5 flex flex-wrap gap-3">
+              <button type="button" class="group inline-flex items-center gap-2 rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-ink transition hover:bg-accent hover:text-white" data-dialog="marke-powerjet">Produkte ansehen<svg class="h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6"/></svg></button>
+            </div>
           </article>
 
           <article class="reveal tilt group relative flex h-full flex-col rounded-2xl border border-white/10 bg-white/5 p-7 transition hover:bg-white/10" style="--d:100ms">
@@ -608,6 +613,9 @@
               <li class="rounded-full border border-white/15 px-3 py-1">Import</li>
               <li class="rounded-full border border-white/15 px-3 py-1">Handel</li>
             </ul>
+            <div class="mt-5 flex flex-wrap gap-3">
+              <button type="button" class="group inline-flex items-center gap-2 rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-ink transition hover:bg-accent hover:text-white" data-dialog="marke-matchaglow">Produkte ansehen<svg class="h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6"/></svg></button>
+            </div>
           </article>
 
           <article class="reveal tilt group relative flex h-full flex-col rounded-2xl border border-white/10 bg-white/5 p-7 transition hover:bg-white/10" style="--d:200ms">
@@ -623,6 +631,9 @@
               <li class="rounded-full border border-white/15 px-3 py-1">Meta Ads</li>
               <li class="rounded-full border border-white/15 px-3 py-1">Verkauft</li>
             </ul>
+            <div class="mt-5 flex flex-wrap gap-3">
+              <button type="button" class="group inline-flex items-center gap-2 rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-ink transition hover:bg-accent hover:text-white" data-dialog="marke-wiegeparadies">Produkte ansehen<svg class="h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6"/></svg></button>
+            </div>
           </article>
 
           <article class="reveal tilt group relative flex h-full flex-col rounded-2xl border border-white/10 bg-white/5 p-7 transition hover:bg-white/10" style="--d:300ms">
@@ -637,7 +648,17 @@
               <li class="rounded-full border border-white/15 px-3 py-1">Shopify</li>
               <li class="rounded-full border border-white/15 px-3 py-1">Verkauft</li>
             </ul>
+            <div class="mt-5 flex flex-wrap gap-3">
+              <button type="button" class="group inline-flex items-center gap-2 rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-ink transition hover:bg-accent hover:text-white" data-dialog="marke-meditsoul">Produkte ansehen<svg class="h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6"/></svg></button>
+            </div>
           </article>
+        </div>
+        <div class="reveal mt-12 flex flex-col items-start justify-between gap-5 rounded-2xl border border-white/10 bg-white/5 p-7 sm:flex-row sm:items-center" style="--d:400ms">
+          <div>
+            <p class="font-display text-xl font-semibold">Die nächste Marke könnte Ihre sein.</p>
+            <p class="mt-1 text-sm text-white/70">Wir bauen das System, mit dem diese vier Marken gewachsen sind, für Ihr Produkt auf.</p>
+          </div>
+          <a href="#kontakt" class="group inline-flex shrink-0 items-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-accent-600">Jetzt anfragen<svg class="h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
         </div>
       </div>
     </section>
@@ -658,7 +679,7 @@
           <div class="reveal flex flex-col lg:col-span-7">
             <p class="text-sm font-semibold uppercase tracking-wider text-accent">Über uns</p>
             <h2 class="font-display mt-3 text-3xl font-bold tracking-tight sm:text-4xl">Ein Gründer, der selbst in der Fabrik steht.</h2>
-            <p class="mt-5 text-lg leading-relaxed text-ink/70">Valdrin Dalipi hat Innovarex 2023 in Eglisau gegründet und seither vier Marken aufgebaut, mit eigenem Geld, eigener Beschaffung in China und eigenen Werbekonten. Zwei davon wurden verkauft. Jede Empfehlung an Sie haben wir vorher mit unserem eigenen Risiko getestet.</p>
+            <p class="mt-5 text-lg leading-relaxed text-ink/70">Innovarex wurde 2023 in Eglisau gegründet und hat seither vier Marken aufgebaut, mit eigenem Geld und eigener Beschaffung in China. Zwei davon wurden verkauft. Jede Empfehlung an Sie haben wir vorher mit unserem eigenen Risiko getestet.</p>
             <blockquote class="mt-6 border-l-2 border-accent pl-5 text-ink">
               «Ich empfehle keinem Kunden eine Fabrik, in der ich nicht selbst gestanden bin. Und ich kaufe nichts ein, für das ich nicht geradestehen würde.»
               <footer class="mt-2 text-sm text-ink/60">Valdrin Dalipi</footer>
@@ -904,6 +925,64 @@
     </div>
   </footer>
 
+  <!-- ===== Marken-Dialoge ===== -->
+  <dialog id="dialog-marke-powerjet" class="w-[min(94vw,56rem)] rounded-2xl p-0 shadow-2xl">
+    <div class="max-h-[85vh] overflow-y-auto p-6 sm:p-8">
+      <div class="flex items-start justify-between gap-4">
+        <div><h2 class="font-display text-2xl font-bold">PowerJet</h2><p class="mt-1 text-sm text-ink/60">Akku-Turbo für die Autopflege</p></div>
+        <button type="button" class="rounded-full p-2 hover:bg-stone-100" data-close aria-label="Schliessen"><svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" d="M6 6l12 12M18 6L6 18"/></svg></button>
+      </div>
+      <div class="mt-6 grid grid-cols-3 gap-3"><figure class="overflow-hidden rounded-xl bg-stone-100"><img src="assets/img/marken/powerjet-1.jpg" alt="PowerJet: Akku-Turbo in Violett und Schwarz" class="aspect-square w-full object-cover" width="900" height="900" loading="lazy"><figcaption class="px-3 py-2 text-xs text-ink/60">Akku-Turbo in Violett und Schwarz</figcaption></figure><figure class="overflow-hidden rounded-xl bg-stone-100"><img src="assets/img/marken/powerjet-2.jpg" alt="PowerJet: Giftbox mit Produkt und Zubehör" class="aspect-square w-full object-cover" width="900" height="900" loading="lazy"><figcaption class="px-3 py-2 text-xs text-ink/60">Giftbox mit Produkt und Zubehör</figcaption></figure><figure class="overflow-hidden rounded-xl bg-stone-100"><img src="assets/img/marken/powerjet-3.jpg" alt="PowerJet: Aufsatz-Set für Auto, Garten und Haushalt" class="aspect-square w-full object-cover" width="900" height="900" loading="lazy"><figcaption class="px-3 py-2 text-xs text-ink/60">Aufsatz-Set für Auto, Garten und Haushalt</figcaption></figure></div>
+      <div class="mt-6 grid gap-6 sm:grid-cols-2">
+        <div><p class="text-xs font-semibold uppercase tracking-wider text-ink/50">Unsere Rolle</p><ul class="mt-3 space-y-2 text-sm text-ink/80"><li class="flex gap-2"><svg class="mt-0.5 h-4 w-4 shrink-0 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7"/></svg>Eigene Marke der Innovarex GmbH, seit 2024 am Markt</li><li class="flex gap-2"><svg class="mt-0.5 h-4 w-4 shrink-0 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7"/></svg>In China mitentwickelt und produziert, Lager in Eglisau</li><li class="flex gap-2"><svg class="mt-0.5 h-4 w-4 shrink-0 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7"/></svg>Shopify-Shop mit TWINT, Klarna und Rechnung</li><li class="flex gap-2"><svg class="mt-0.5 h-4 w-4 shrink-0 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7"/></svg>Ambassador-Programm und eigene Ad-Produktion</li></ul></div>
+        <div><p class="mt-6 text-xs font-semibold uppercase tracking-wider text-ink/50">Erhältlich bei</p><div class="mt-3 flex flex-wrap items-center gap-6"><img src="assets/logos/retail/galaxus.png" alt="Galaxus" class="h-8 w-auto max-w-[140px] object-contain" loading="lazy"><img src="assets/logos/retail/brack.png" alt="Brack" class="h-8 w-auto max-w-[140px] object-contain" loading="lazy"></div><p class="mt-6 text-xs font-semibold uppercase tracking-wider text-ink/50">Website</p><a href="https://powerjets.ch" target="_blank" rel="noopener" class="mt-3 inline-flex items-center gap-2 rounded-full bg-ink px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-accent">powerjets.ch öffnen<svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M8 7h9v9"/></svg></a></div>
+      </div>
+      <div class="mt-8 rounded-2xl bg-stone-50 p-5 text-sm text-ink/70">Sie wollen etwas Ähnliches für Ihr Produkt? <a href="#kontakt" class="font-semibold text-accent underline underline-offset-2" data-close-and-go>Jetzt anfragen</a></div>
+    </div>
+  </dialog>
+  <dialog id="dialog-marke-matchaglow" class="w-[min(94vw,56rem)] rounded-2xl p-0 shadow-2xl">
+    <div class="max-h-[85vh] overflow-y-auto p-6 sm:p-8">
+      <div class="flex items-start justify-between gap-4">
+        <div><h2 class="font-display text-2xl font-bold">MatchaGlow</h2><p class="mt-1 text-sm text-ink/60">Ceremonial Matcha mit Kollagen</p></div>
+        <button type="button" class="rounded-full p-2 hover:bg-stone-100" data-close aria-label="Schliessen"><svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" d="M6 6l12 12M18 6L6 18"/></svg></button>
+      </div>
+      <div class="mt-6 grid grid-cols-3 gap-3"><figure class="overflow-hidden rounded-xl bg-stone-100"><img src="assets/img/marken/matchaglow-1.jpg" alt="MatchaGlow: Matcha-Kollagen im Alltag" class="aspect-square w-full object-cover" width="900" height="900" loading="lazy"><figcaption class="px-3 py-2 text-xs text-ink/60">Matcha-Kollagen im Alltag</figcaption></figure><figure class="overflow-hidden rounded-xl bg-stone-100"><img src="assets/img/marken/matchaglow-2.jpg" alt="MatchaGlow: Verpackung, von uns gestaltet" class="aspect-square w-full object-cover" width="900" height="900" loading="lazy"><figcaption class="px-3 py-2 text-xs text-ink/60">Verpackung, von uns gestaltet</figcaption></figure><figure class="overflow-hidden rounded-xl bg-stone-100"><img src="assets/img/marken/matchaglow-3.jpg" alt="MatchaGlow: Ritual-Set mit Guide und Rezeptbuch" class="aspect-square w-full object-cover" width="900" height="900" loading="lazy"><figcaption class="px-3 py-2 text-xs text-ink/60">Ritual-Set mit Guide und Rezeptbuch</figcaption></figure></div>
+      <div class="mt-6 grid gap-6 sm:grid-cols-2">
+        <div><p class="text-xs font-semibold uppercase tracking-wider text-ink/50">Unsere Rolle</p><ul class="mt-3 space-y-2 text-sm text-ink/80"><li class="flex gap-2"><svg class="mt-0.5 h-4 w-4 shrink-0 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7"/></svg>Co-Founder, verantwortlich für Branding, Import und Marketing</li><li class="flex gap-2"><svg class="mt-0.5 h-4 w-4 shrink-0 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7"/></svg>Abo-Modell mit Klaviyo-Automationen</li><li class="flex gap-2"><svg class="mt-0.5 h-4 w-4 shrink-0 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7"/></svg>Import und Qualitätskontrolle über unser Team</li><li class="flex gap-2"><svg class="mt-0.5 h-4 w-4 shrink-0 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7"/></svg>Einstieg in den stationären Handel</li></ul></div>
+        <div><p class="mt-6 text-xs font-semibold uppercase tracking-wider text-ink/50">Erhältlich bei</p><div class="mt-3 flex flex-wrap items-center gap-6"><img src="assets/logos/retail/galaxus.png" alt="Galaxus" class="h-8 w-auto max-w-[140px] object-contain" loading="lazy"><img src="assets/logos/retail/brack.png" alt="Brack" class="h-8 w-auto max-w-[140px] object-contain" loading="lazy"><img src="assets/logos/retail/amavita.png" alt="Amavita" class="h-8 w-auto max-w-[140px] object-contain" loading="lazy"></div><p class="mt-6 text-xs font-semibold uppercase tracking-wider text-ink/50">Website</p><a href="https://matchaglow.ch" target="_blank" rel="noopener" class="mt-3 inline-flex items-center gap-2 rounded-full bg-ink px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-accent">matchaglow.ch öffnen<svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M8 7h9v9"/></svg></a></div>
+      </div>
+      <div class="mt-8 rounded-2xl bg-stone-50 p-5 text-sm text-ink/70">Sie wollen etwas Ähnliches für Ihr Produkt? <a href="#kontakt" class="font-semibold text-accent underline underline-offset-2" data-close-and-go>Jetzt anfragen</a></div>
+    </div>
+  </dialog>
+  <dialog id="dialog-marke-wiegeparadies" class="w-[min(94vw,56rem)] rounded-2xl p-0 shadow-2xl">
+    <div class="max-h-[85vh] overflow-y-auto p-6 sm:p-8">
+      <div class="flex items-start justify-between gap-4">
+        <div><h2 class="font-display text-2xl font-bold">Wiegeparadies</h2><p class="mt-1 text-sm text-ink/60">Federwiegen für Babys</p></div>
+        <button type="button" class="rounded-full p-2 hover:bg-stone-100" data-close aria-label="Schliessen"><svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" d="M6 6l12 12M18 6L6 18"/></svg></button>
+      </div>
+      <div class="mt-6 grid grid-cols-3 gap-3"><figure class="overflow-hidden rounded-xl bg-stone-100"><img src="assets/img/marken/wiegeparadies-1.jpg" alt="Wiegeparadies: Federwiege Mondzauber" class="aspect-square w-full object-cover" width="900" height="900" loading="lazy"><figcaption class="px-3 py-2 text-xs text-ink/60">Federwiege Mondzauber</figcaption></figure><figure class="overflow-hidden rounded-xl bg-stone-100"><img src="assets/img/marken/wiegeparadies-2.jpg" alt="Wiegeparadies: Federwiege mit Spielbogen" class="aspect-square w-full object-cover" width="900" height="900" loading="lazy"><figcaption class="px-3 py-2 text-xs text-ink/60">Federwiege mit Spielbogen</figcaption></figure><figure class="overflow-hidden rounded-xl bg-stone-100"><img src="assets/img/marken/wiegeparadies-3.jpg" alt="Wiegeparadies: Kampagnenmotiv für Meta Ads" class="aspect-square w-full object-cover" width="900" height="900" loading="lazy"><figcaption class="px-3 py-2 text-xs text-ink/60">Kampagnenmotiv für Meta Ads</figcaption></figure></div>
+      <div class="mt-6 grid gap-6 sm:grid-cols-2">
+        <div><p class="text-xs font-semibold uppercase tracking-wider text-ink/50">Unsere Rolle</p><ul class="mt-3 space-y-2 text-sm text-ink/80"><li class="flex gap-2"><svg class="mt-0.5 h-4 w-4 shrink-0 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7"/></svg>2023 von uns gestartet, im März 2026 sechsstellig verkauft</li><li class="flex gap-2"><svg class="mt-0.5 h-4 w-4 shrink-0 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7"/></svg>Beschaffung und Produktion in China</li><li class="flex gap-2"><svg class="mt-0.5 h-4 w-4 shrink-0 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7"/></svg>Shopify-Shop, Meta Ads und Influencer-Kampagnen</li><li class="flex gap-2"><svg class="mt-0.5 h-4 w-4 shrink-0 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7"/></svg>Vollständige Übergabe an den Käufer inklusive Lieferanten</li></ul></div>
+        <div><p class="mt-6 text-xs font-semibold uppercase tracking-wider text-ink/50">Website</p><a href="https://wiegeparadies.ch" target="_blank" rel="noopener" class="mt-3 inline-flex items-center gap-2 rounded-full bg-ink px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-accent">wiegeparadies.ch öffnen<svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M8 7h9v9"/></svg></a></div>
+      </div>
+      <div class="mt-8 rounded-2xl bg-stone-50 p-5 text-sm text-ink/70">Sie wollen etwas Ähnliches für Ihr Produkt? <a href="#kontakt" class="font-semibold text-accent underline underline-offset-2" data-close-and-go>Jetzt anfragen</a></div>
+    </div>
+  </dialog>
+  <dialog id="dialog-marke-meditsoul" class="w-[min(94vw,56rem)] rounded-2xl p-0 shadow-2xl">
+    <div class="max-h-[85vh] overflow-y-auto p-6 sm:p-8">
+      <div class="flex items-start justify-between gap-4">
+        <div><h2 class="font-display text-2xl font-bold">MeditSoul</h2><p class="mt-1 text-sm text-ink/60">Sadhu-Boards für Meditation</p></div>
+        <button type="button" class="rounded-full p-2 hover:bg-stone-100" data-close aria-label="Schliessen"><svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" d="M6 6l12 12M18 6L6 18"/></svg></button>
+      </div>
+      <div class="mt-6 grid grid-cols-3 gap-3"><figure class="overflow-hidden rounded-xl bg-stone-100"><img src="assets/img/marken/meditsoul-1.jpg" alt="MeditSoul: Sadhu-Board Balance, Nussbaum" class="aspect-square w-full object-cover" width="900" height="900" loading="lazy"><figcaption class="px-3 py-2 text-xs text-ink/60">Sadhu-Board Balance, Nussbaum</figcaption></figure><figure class="overflow-hidden rounded-xl bg-stone-100"><img src="assets/img/marken/meditsoul-2.jpg" alt="MeditSoul: Sadhu-Board Energy, Eiche hell" class="aspect-square w-full object-cover" width="900" height="900" loading="lazy"><figcaption class="px-3 py-2 text-xs text-ink/60">Sadhu-Board Energy, Eiche hell</figcaption></figure><figure class="overflow-hidden rounded-xl bg-stone-100"><img src="assets/img/marken/meditsoul-3.jpg" alt="MeditSoul: Aufbewahrungsbeutel aus Baumwolle" class="aspect-square w-full object-cover" width="900" height="900" loading="lazy"><figcaption class="px-3 py-2 text-xs text-ink/60">Aufbewahrungsbeutel aus Baumwolle</figcaption></figure></div>
+      <div class="mt-6 grid gap-6 sm:grid-cols-2">
+        <div><p class="text-xs font-semibold uppercase tracking-wider text-ink/50">Unsere Rolle</p><ul class="mt-3 space-y-2 text-sm text-ink/80"><li class="flex gap-2"><svg class="mt-0.5 h-4 w-4 shrink-0 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7"/></svg>Von uns aufgebaut und fünfstellig verkauft</li><li class="flex gap-2"><svg class="mt-0.5 h-4 w-4 shrink-0 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7"/></svg>Beschaffung aus geprüfter Holzmanufaktur</li><li class="flex gap-2"><svg class="mt-0.5 h-4 w-4 shrink-0 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7"/></svg>Shopify-Shop mit Content und Ads</li><li class="flex gap-2"><svg class="mt-0.5 h-4 w-4 shrink-0 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7"/></svg>Übergabe an neue Eigentümer</li></ul></div>
+        <div><p class="mt-6 text-xs font-semibold uppercase tracking-wider text-ink/50">Website</p><a href="https://meditsoul.com" target="_blank" rel="noopener" class="mt-3 inline-flex items-center gap-2 rounded-full bg-ink px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-accent">meditsoul.com öffnen<svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M8 7h9v9"/></svg></a></div>
+      </div>
+      <div class="mt-8 rounded-2xl bg-stone-50 p-5 text-sm text-ink/70">Sie wollen etwas Ähnliches für Ihr Produkt? <a href="#kontakt" class="font-semibold text-accent underline underline-offset-2" data-close-and-go>Jetzt anfragen</a></div>
+    </div>
+  </dialog>
+
   <!-- ===== Rechtliche Dialoge ===== -->
   <dialog id="dialog-impressum" class="w-[min(92vw,42rem)] rounded-2xl p-0 shadow-2xl">
     <div class="max-h-[80vh] overflow-y-auto p-6 sm:p-8">
@@ -1025,6 +1104,19 @@
       window.addEventListener('resize', onScroll);
       onScroll();
 
+      // Sticky CTA auf Mobile: ab 700px Scroll, nicht wenn Kontakt sichtbar
+      var sticky = document.getElementById('sticky-cta');
+      var kontaktVisible = false;
+      var updateSticky = function () {
+        var show = window.scrollY > 700 && !kontaktVisible;
+        sticky.classList.toggle('translate-y-24', !show);
+        sticky.setAttribute('aria-hidden', String(!show));
+      };
+      if ('IntersectionObserver' in window) {
+        new IntersectionObserver(function (entries) { kontaktVisible = entries[0].isIntersecting; updateSticky(); }, { threshold: 0.05 }).observe(document.getElementById('kontakt'));
+      }
+      window.addEventListener('scroll', updateSticky, { passive: true });
+
       // Mobile-Menü
       var toggle = document.getElementById('menu-toggle');
       var menu = document.getElementById('mobile-menu');
@@ -1128,6 +1220,7 @@
       document.querySelectorAll('dialog').forEach(function (d) {
         d.querySelectorAll('[data-close]').forEach(function (b) { b.addEventListener('click', function () { d.close(); }); });
         d.addEventListener('click', function (e) { if (e.target === d) { d.close(); } });
+        d.querySelectorAll('[data-close-and-go]').forEach(function (a) { a.addEventListener('click', function () { d.close(); }); });
       });
 
       // Formular-Validierung
