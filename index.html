@@ -3,12 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Innovarex GmbH | E-Commerce, Branding & Import aus China – Schweiz</title>
-  <meta name="description" content="Innovarex GmbH – Ihr Schweizer B2B-Partner für Sourcing & Import aus China, Shopify E-Commerce, Branding und Performance Marketing. Eigenes Team in China, eigene Marken mit erfolgreichen Exits.">
-  <meta property="og:title" content="Innovarex GmbH | Vom Produkt zur Marke. Aus einer Hand.">
-  <meta property="og:description" content="Sourcing aus China, E-Commerce, Branding und Performance Marketing – mit eigenem Team in China und Marken, die wir selbst aufgebaut und verkauft haben.">
+  <title>Innovarex GmbH | Beschaffung in China, Shopify & Wachstum für Schweizer Unternehmen</title>
+  <meta name="description" content="Innovarex baut eigene E-Commerce-Marken – von der Fabrik in China bis zur Meta-Kampagne – und stellt dieses System Schweizer Unternehmen zur Verfügung. Eigenes Team in China, Haftung für die Qualität, Serienmengen.">
+  <meta property="og:title" content="Innovarex GmbH | Vier Marken gebaut. Zwei verkauft. Jetzt Ihr Produkt.">
+  <meta property="og:description" content="Beschaffung in China mit eigenem Team, Shopify-Shops und Performance Marketing – nach dem System, mit dem wir unsere eigenen Marken aufgebaut und verkauft haben.">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="de_CH">
+  <meta property="og:image" content="assets/img/china-valdrin-produktion.jpg">
   <link rel="icon" href="assets/logo.png" type="image/png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -30,6 +31,7 @@
           },
           boxShadow: {
             card: '0 1px 2px rgba(11,15,25,0.04), 0 8px 24px -12px rgba(11,15,25,0.12)',
+            photo: '0 30px 60px -20px rgba(11,15,25,0.45)',
           },
         },
       },
@@ -37,36 +39,109 @@
   </script>
   <style>
     html { -webkit-font-smoothing: antialiased; }
-    .reveal { opacity: 0; transform: translateY(16px); transition: opacity .6s ease, transform .6s ease; }
+    body { overflow-x: hidden; }
+
+    /* Einblenden beim Scrollen, mit Verzögerung pro Element */
+    .reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1); transition-delay: var(--d, 0ms); }
     .reveal.is-visible { opacity: 1; transform: none; }
-    @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
-    dialog::backdrop { background: rgba(11,15,25,.6); backdrop-filter: blur(4px); }
+    .reveal-left { opacity: 0; transform: translateX(-28px); transition: opacity .8s ease, transform .8s cubic-bezier(.2,.7,.2,1); }
+    .reveal-left.is-visible { opacity: 1; transform: none; }
+    .reveal-scale { opacity: 0; transform: scale(.94); transition: opacity .8s ease, transform .9s cubic-bezier(.2,.7,.2,1); transition-delay: var(--d, 0ms); }
+    .reveal-scale.is-visible { opacity: 1; transform: none; }
+    .reveal-clip { clip-path: inset(0 100% 0 0); transition: clip-path 1s cubic-bezier(.7,0,.2,1); }
+    .reveal-clip.is-visible { clip-path: inset(0 0 0 0); }
+
+    /* Hero-Animationen */
+    @keyframes rise { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: none; } }
+    .rise { animation: rise .9s cubic-bezier(.2,.7,.2,1) both; animation-delay: var(--d, 0ms); }
+    @keyframes floaty { 0%, 100% { transform: translateY(0) rotate(-2deg); } 50% { transform: translateY(-12px) rotate(-2deg); } }
+    .floaty { animation: floaty 6s ease-in-out infinite; }
+    @keyframes floaty2 { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+    .floaty2 { animation: floaty2 5s ease-in-out infinite; animation-delay: 1s; }
+    @keyframes blob { 0%, 100% { transform: translate(0,0) scale(1); } 33% { transform: translate(30px,-20px) scale(1.1); } 66% { transform: translate(-20px,20px) scale(.95); } }
+    .blob { animation: blob 14s ease-in-out infinite; }
+    @keyframes ping-soft { 0% { transform: scale(1); opacity: .8; } 100% { transform: scale(2.6); opacity: 0; } }
+    .ping-soft::after { content: ''; position: absolute; inset: 0; border-radius: 9999px; background: currentColor; animation: ping-soft 1.8s cubic-bezier(0,0,.2,1) infinite; }
+
+    /* Rotierendes Wort in der Headline */
+    .rotator { display: inline-grid; }
+    .rotator > span { grid-area: 1 / 1; transition: opacity .5s ease, transform .5s cubic-bezier(.2,.7,.2,1); }
+    .rotator > span:not(.active) { opacity: 0; transform: translateY(14px); pointer-events: none; }
+    .rotator > span.active { opacity: 1; transform: none; }
+
+    /* Logo-Laufband */
+    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .marquee-track { animation: marquee 34s linear infinite; }
+    .marquee:hover .marquee-track { animation-play-state: paused; }
+
+    /* Zeichnende Prozesslinie */
+    .process-line { transform: scaleX(0); transform-origin: left; transition: transform 1.6s cubic-bezier(.7,0,.2,1) .2s; }
+    .is-visible .process-line { transform: scaleX(1); }
+
+    /* Bild-Zoom & Parallax */
+    .zoom-img img { transition: transform 1.2s cubic-bezier(.2,.7,.2,1); }
+    .zoom-img:hover img { transform: scale(1.06); }
+    [data-parallax] { will-change: transform; }
+
+    /* Karten mit Neigung & Lichtkante */
+    .tilt { transform-style: preserve-3d; transition: transform .25s ease, box-shadow .3s ease; }
+    .tilt::before { content: ''; position: absolute; inset: 0; border-radius: inherit; padding: 1px; background: linear-gradient(135deg, rgba(227,6,19,.55), transparent 40%, transparent 60%, rgba(11,15,25,.25)); -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude; opacity: 0; transition: opacity .3s ease; pointer-events: none; }
+    .tilt:hover::before { opacity: 1; }
+
+    /* Akkordeon */
+    details > summary { list-style: none; cursor: pointer; }
+    details > summary::-webkit-details-marker { display: none; }
+    details .chev { transition: transform .35s cubic-bezier(.2,.7,.2,1); }
+    details[open] .chev { transform: rotate(45deg); }
+    .faq-body { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .4s cubic-bezier(.2,.7,.2,1); }
+    .faq-body > div { overflow: hidden; }
+    details[open] .faq-body { grid-template-rows: 1fr; }
+
+    /* Fortschrittsbalken & Header */
+    #progress { transform: scaleX(0); transform-origin: left; }
+    #header.is-hidden { transform: translateY(-100%); }
+
     .grid-bg {
       background-image: linear-gradient(rgba(11,15,25,.05) 1px, transparent 1px), linear-gradient(90deg, rgba(11,15,25,.05) 1px, transparent 1px);
       background-size: 48px 48px;
-      mask-image: radial-gradient(ellipse at top, black 40%, transparent 75%);
-      -webkit-mask-image: radial-gradient(ellipse at top, black 40%, transparent 75%);
+      mask-image: radial-gradient(ellipse at 30% 20%, black 30%, transparent 70%);
+      -webkit-mask-image: radial-gradient(ellipse at 30% 20%, black 30%, transparent 70%);
+    }
+    dialog::backdrop { background: rgba(11,15,25,.6); backdrop-filter: blur(4px); }
+    @keyframes dialog-in { from { opacity: 0; transform: translateY(12px) scale(.98); } to { opacity: 1; transform: none; } }
+    dialog[open] { animation: dialog-in .3s cubic-bezier(.2,.7,.2,1); }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal, .reveal-left, .reveal-scale, .reveal-clip, .rise { opacity: 1; transform: none; clip-path: none; animation: none; transition: none; }
+      .floaty, .floaty2, .blob, .marquee-track, .ping-soft::after { animation: none; }
+      .process-line { transform: none; transition: none; }
     }
   </style>
 </head>
 <body class="bg-white text-ink font-sans antialiased">
 
+  <div id="progress" class="fixed inset-x-0 top-0 z-[60] h-[3px] bg-swiss"></div>
+
   <!-- ===== Navigation ===== -->
-  <header id="header" class="fixed inset-x-0 top-0 z-50 border-b border-transparent bg-white/80 backdrop-blur transition-all duration-300">
+  <header id="header" class="fixed inset-x-0 top-0 z-50 border-b border-transparent bg-white/85 backdrop-blur transition-all duration-500">
     <div class="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
       <a href="#top" class="flex items-center" aria-label="Innovarex Swiss – Startseite">
-        <img src="assets/logo.png" alt="innovarex swiss" class="h-8 w-auto sm:h-9" width="1200" height="199">
+        <img src="assets/logo.png" alt="innovarex swiss" class="h-8 w-auto sm:h-9" width="1726" height="286">
       </a>
 
       <nav class="hidden items-center gap-8 text-sm font-medium text-ink/70 md:flex" aria-label="Hauptnavigation">
-        <a href="#leistungen" class="transition hover:text-ink">Leistungen</a>
-        <a href="#referenzen" class="transition hover:text-ink">Referenzen</a>
-        <a href="#ablauf" class="transition hover:text-ink">Ablauf</a>
-        <a href="#ueber-uns" class="transition hover:text-ink">Über uns</a>
+        <a href="#leistungen" class="nav-link relative transition hover:text-ink">Leistungen</a>
+        <a href="#vor-ort" class="nav-link relative transition hover:text-ink">Vor Ort</a>
+        <a href="#referenzen" class="nav-link relative transition hover:text-ink">Marken</a>
+        <a href="#ablauf" class="nav-link relative transition hover:text-ink">Ablauf</a>
+        <a href="#ueber-uns" class="nav-link relative transition hover:text-ink">Über uns</a>
       </nav>
 
       <div class="flex items-center gap-3">
-        <a href="#kontakt" class="hidden rounded-full bg-ink px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-ink-700 md:inline-flex">Kontakt</a>
+        <a href="#kontakt" class="group hidden items-center gap-2 rounded-full bg-ink px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-ink-700 md:inline-flex">
+          Kontakt
+          <svg class="h-4 w-4 transition-transform group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6"/></svg>
+        </a>
         <button id="menu-toggle" type="button" class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-ink/10 md:hidden" aria-controls="mobile-menu" aria-expanded="false" aria-label="Menü öffnen">
           <svg id="icon-open" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/></svg>
           <svg id="icon-close" class="hidden h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" d="M6 6l12 12M18 6L6 18"/></svg>
@@ -77,7 +152,8 @@
     <div id="mobile-menu" class="hidden border-t border-ink/5 bg-white md:hidden">
       <nav class="mx-auto flex max-w-7xl flex-col px-4 py-4 sm:px-6" aria-label="Mobile Navigation">
         <a href="#leistungen" class="rounded-lg px-3 py-3 text-base font-medium hover:bg-stone-50">Leistungen</a>
-        <a href="#referenzen" class="rounded-lg px-3 py-3 text-base font-medium hover:bg-stone-50">Referenzen</a>
+        <a href="#vor-ort" class="rounded-lg px-3 py-3 text-base font-medium hover:bg-stone-50">Vor Ort</a>
+        <a href="#referenzen" class="rounded-lg px-3 py-3 text-base font-medium hover:bg-stone-50">Marken</a>
         <a href="#ablauf" class="rounded-lg px-3 py-3 text-base font-medium hover:bg-stone-50">Ablauf</a>
         <a href="#ueber-uns" class="rounded-lg px-3 py-3 text-base font-medium hover:bg-stone-50">Über uns</a>
         <a href="#kontakt" class="mt-3 rounded-full bg-ink px-5 py-3 text-center text-base font-semibold text-white">Kontakt</a>
@@ -90,63 +166,62 @@
     <!-- ===== Hero ===== -->
     <section class="relative overflow-hidden pt-32 pb-20 sm:pt-40 sm:pb-28 lg:pt-44 lg:pb-32">
       <div class="grid-bg absolute inset-0 -z-10"></div>
+      <div class="blob absolute -left-32 top-24 -z-10 h-96 w-96 rounded-full bg-swiss/10 blur-3xl"></div>
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div class="grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
-          <div class="lg:col-span-7">
-            <span class="inline-flex items-center gap-2 rounded-full border border-ink/10 bg-white px-3 py-1 text-xs font-semibold uppercase tracking-wider text-ink/70">
-              <span class="h-1.5 w-1.5 rounded-full bg-swiss"></span>
-              B2B-Partner · Schweiz &amp; China
+        <div class="grid items-center gap-14 lg:grid-cols-12 lg:gap-12">
+          <div class="lg:col-span-6">
+            <span class="rise inline-flex items-center gap-2 rounded-full border border-ink/10 bg-white px-3 py-1 text-xs font-semibold uppercase tracking-wider text-ink/70" style="--d:0ms">
+              <span class="relative h-1.5 w-1.5 rounded-full bg-swiss text-swiss ping-soft"></span>
+              Innovarex GmbH · Eglisau ZH · Eigenes Team in China
             </span>
-            <h1 class="font-display mt-6 text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl xl:text-7xl">
-              Vom Produkt<br class="hidden sm:block"> zur Marke.<br>
-              <span class="text-ink/40">Aus einer Hand.</span>
+            <h1 class="font-display mt-6 text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl lg:text-[3.4rem] xl:text-6xl">
+              <span class="rise block" style="--d:80ms">Vier Marken gebaut.</span>
+              <span class="rise block" style="--d:160ms">Zwei verkauft.</span>
+              <span class="rise block text-swiss" style="--d:240ms">
+                <span class="rotator" id="rotator" aria-live="polite">
+                  <span class="active">Jetzt Ihr Produkt.</span>
+                  <span>Jetzt Ihre Marke.</span>
+                  <span>Jetzt Ihr Sortiment.</span>
+                </span>
+              </span>
             </h1>
-            <p class="mt-6 max-w-xl text-lg leading-relaxed text-ink/70 sm:text-xl">
-              Innovarex ist Ihr Schweizer Partner für Sourcing aus China, E-Commerce, Branding und Performance Marketing. Mit eigenem Team in China – und Marken, die wir selbst aufgebaut, skaliert und verkauft haben.
+            <p class="rise mt-6 max-w-xl text-lg leading-relaxed text-ink/70 sm:text-xl" style="--d:340ms">
+              Innovarex ist keine Agentur und kein Vermittler. Wir betreiben selbst E-Commerce-Marken – von der Fabrik in China bis zur Meta-Kampagne. Dieses System stellen wir Schweizer Unternehmen zur Verfügung, die Produkte in Serie beschaffen und verkaufen wollen.
             </p>
-            <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
-              <a href="#kontakt" class="inline-flex items-center justify-center gap-2 rounded-full bg-swiss px-7 py-3.5 text-base font-semibold text-white shadow-lg shadow-swiss/25 transition hover:bg-swiss-600">
+            <div class="rise mt-8 flex flex-col gap-3 sm:flex-row sm:items-center" style="--d:420ms">
+              <a href="#kontakt" class="group inline-flex items-center justify-center gap-2 rounded-full bg-swiss px-7 py-3.5 text-base font-semibold text-white shadow-lg shadow-swiss/25 transition hover:-translate-y-0.5 hover:bg-swiss-600 hover:shadow-xl hover:shadow-swiss/30">
                 Jetzt anfragen
-                <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6"/></svg>
+                <svg class="h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6"/></svg>
               </a>
-              <a href="#referenzen" class="inline-flex items-center justify-center rounded-full border border-ink/15 bg-white px-7 py-3.5 text-base font-semibold text-ink transition hover:border-ink/40">
-                Referenzen ansehen
+              <a href="#vor-ort" class="inline-flex items-center justify-center rounded-full border border-ink/15 bg-white px-7 py-3.5 text-base font-semibold text-ink transition hover:border-ink/40 hover:bg-stone-50">
+                So arbeiten wir
               </a>
             </div>
-            <ul class="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm text-ink/60">
-              <li class="flex items-center gap-2"><svg class="h-4 w-4 text-swiss" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7"/></svg>Kostenlose Erstberatung</li>
-              <li class="flex items-center gap-2"><svg class="h-4 w-4 text-swiss" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7"/></svg>Antwort innerhalb von 24 Stunden</li>
-              <li class="flex items-center gap-2"><svg class="h-4 w-4 text-swiss" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7"/></svg>Kein Zwischenhändler</li>
+            <ul class="rise mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm text-ink/60" style="--d:500ms">
+              <li class="flex items-center gap-2"><svg class="h-4 w-4 text-swiss" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7"/></svg>Zweimal persönlich in der Fabrik</li>
+              <li class="flex items-center gap-2"><svg class="h-4 w-4 text-swiss" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7"/></svg>Wir haften für die Qualität</li>
+              <li class="flex items-center gap-2"><svg class="h-4 w-4 text-swiss" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7"/></svg>Ab Produktionsmenge, nicht ab Stück</li>
             </ul>
           </div>
 
-          <div class="lg:col-span-5">
-            <div class="relative rounded-3xl bg-ink p-8 text-white shadow-2xl sm:p-10">
-              <div class="absolute -right-6 -top-6 h-32 w-32 rounded-full bg-swiss/30 blur-3xl"></div>
-              <p class="text-xs font-semibold uppercase tracking-wider text-white/50">Track Record</p>
-              <dl class="mt-6 grid grid-cols-2 gap-6">
-                <div>
-                  <dt class="text-sm text-white/60">Eigene Marken</dt>
-                  <dd class="font-display mt-1 text-4xl font-bold">4</dd>
+          <div class="relative lg:col-span-6">
+            <div class="relative mx-auto max-w-md lg:max-w-none">
+              <div class="rise zoom-img relative overflow-hidden rounded-3xl shadow-photo" style="--d:200ms" data-parallax="0.06">
+                <img src="assets/img/china-valdrin-produktion.jpg" alt="Valdrin Dalipi in der Produktion beim Lieferanten in China" class="aspect-[4/5] w-full object-cover" width="1000" height="1250" fetchpriority="high">
+                <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/80 to-transparent p-6 pl-40 text-right text-white sm:pl-52">
+                  <p class="text-xs font-semibold uppercase tracking-wider text-white/60">Vor Ort beim Lieferanten</p>
+                  <p class="mt-1 font-display text-lg font-semibold">Valdrin Dalipi in der Produktion, China</p>
                 </div>
-                <div>
-                  <dt class="text-sm text-white/60">Erfolgreiche Exits</dt>
-                  <dd class="font-display mt-1 text-4xl font-bold">2</dd>
-                </div>
-                <div>
-                  <dt class="text-sm text-white/60">Grösster Exit</dt>
-                  <dd class="font-display mt-1 text-4xl font-bold">6<span class="text-2xl text-white/60">-stellig</span></dd>
-                </div>
-                <div>
-                  <dt class="text-sm text-white/60">Team in China</dt>
-                  <dd class="font-display mt-1 text-4xl font-bold">Eigenes</dd>
-                </div>
-              </dl>
-              <div class="mt-8 border-t border-white/10 pt-6">
-                <p class="text-sm leading-relaxed text-white/70">
-                  «Wir bauen keine Theorie. Wir haben jede Leistung, die wir anbieten, für unsere eigenen Marken zuerst selbst umgesetzt.»
-                </p>
-                <p class="mt-3 text-sm font-semibold">Valdrin Dalipi <span class="font-normal text-white/50">· Gründer &amp; Geschäftsführer</span></p>
+              </div>
+
+              <div class="rise floaty absolute -left-6 -bottom-8 w-40 overflow-hidden rounded-2xl border-4 border-white shadow-photo sm:-left-10 sm:w-52" style="--d:600ms">
+                <img src="assets/img/lager-palette-dpd.jpg" alt="Palette mit Kartons vor dem DPD-Transporter im Schweizer Lager" class="aspect-[4/5] w-full object-cover" width="1000" height="1250">
+                <span class="absolute left-3 top-3 rounded-full bg-white/90 px-2.5 py-1 text-[11px] font-semibold text-ink">Lager Schweiz</span>
+              </div>
+
+              <div class="rise floaty2 absolute -right-4 top-6 rounded-2xl bg-ink p-4 text-white shadow-photo sm:-right-8 sm:p-5" style="--d:700ms">
+                <p class="font-display text-3xl font-bold leading-none">2×</p>
+                <p class="mt-1 text-xs text-white/70">persönlich in der<br>Produktion in China</p>
               </div>
             </div>
           </div>
@@ -154,16 +229,24 @@
       </div>
     </section>
 
-    <!-- ===== Marken-Leiste ===== -->
-    <section class="border-y border-ink/5 bg-stone-50">
-      <div class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
-        <p class="text-center text-xs font-semibold uppercase tracking-wider text-ink/50">Marken, die wir aufgebaut haben</p>
-        <ul class="font-display mt-5 flex flex-wrap items-center justify-center gap-x-10 gap-y-4 text-lg font-semibold text-ink/40 sm:text-xl">
-          <li>Wiegeparadies</li>
-          <li>PowerJets</li>
-          <li>MatchaGlow</li>
-          <li>MeditSoul</li>
-        </ul>
+    <!-- ===== Marken-Laufband ===== -->
+    <section class="marquee overflow-hidden border-y border-white/10 bg-ink py-10 text-white">
+      <p class="text-center text-xs font-semibold uppercase tracking-wider text-white/50">Marken aus unserem Haus – keine Kundenlogos</p>
+      <div class="mt-6 flex w-max marquee-track items-center">
+        <!-- Set 1 -->
+        <div class="flex shrink-0 items-center gap-16 pr-16 sm:gap-24 sm:pr-24">
+          <div class="flex flex-col items-center gap-2"><img src="assets/logos/powerjet-white.svg" alt="PowerJet" class="h-7 w-auto sm:h-8"><span class="text-[11px] uppercase tracking-wider text-white/50">Eigene Marke</span></div>
+          <div class="flex flex-col items-center gap-2"><img src="assets/logos/matchaglow-white.png" alt="MatchaGlow" class="h-6 w-auto sm:h-7" width="1200" height="148"><span class="text-[11px] uppercase tracking-wider text-white/50">Co-Founder</span></div>
+          <div class="flex flex-col items-center gap-2"><img src="assets/logos/wiegeparadies-white.png" alt="Wiegeparadies" class="h-9 w-auto sm:h-11" width="400" height="110"><span class="text-[11px] uppercase tracking-wider text-white/50">Exit 2026</span></div>
+          <div class="flex flex-col items-center gap-2"><img src="assets/logos/meditsoul-white.png" alt="MeditSoul" class="h-10 w-auto sm:h-12" width="600" height="505"><span class="text-[11px] uppercase tracking-wider text-white/50">Exit</span></div>
+        </div>
+        <!-- Set 2 (Kopie für Endlosschleife) -->
+        <div class="flex shrink-0 items-center gap-16 pr-16 sm:gap-24 sm:pr-24" aria-hidden="true">
+          <div class="flex flex-col items-center gap-2"><img src="assets/logos/powerjet-white.svg" alt="" class="h-7 w-auto sm:h-8"><span class="text-[11px] uppercase tracking-wider text-white/50">Eigene Marke</span></div>
+          <div class="flex flex-col items-center gap-2"><img src="assets/logos/matchaglow-white.png" alt="" class="h-6 w-auto sm:h-7" width="1200" height="148"><span class="text-[11px] uppercase tracking-wider text-white/50">Co-Founder</span></div>
+          <div class="flex flex-col items-center gap-2"><img src="assets/logos/wiegeparadies-white.png" alt="" class="h-9 w-auto sm:h-11" width="400" height="110"><span class="text-[11px] uppercase tracking-wider text-white/50">Exit 2026</span></div>
+          <div class="flex flex-col items-center gap-2"><img src="assets/logos/meditsoul-white.png" alt="" class="h-10 w-auto sm:h-12" width="600" height="505"><span class="text-[11px] uppercase tracking-wider text-white/50">Exit</span></div>
+        </div>
       </div>
     </section>
 
@@ -172,183 +255,247 @@
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="max-w-2xl reveal">
           <p class="text-sm font-semibold uppercase tracking-wider text-swiss">Leistungen</p>
-          <h2 class="font-display mt-3 text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">Alles, was ein Produkt braucht, um in der Schweiz zu verkaufen.</h2>
-          <p class="mt-4 text-lg text-ink/70">Vier Bereiche, ein Ansprechpartner. Sie wählen das Modul, das Sie brauchen – oder das Gesamtpaket.</p>
+          <h2 class="font-display mt-3 text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">Was wir für unsere Marken tun, tun wir für Ihre.</h2>
+          <p class="mt-4 text-lg text-ink/70">Vier Bausteine. Einzeln buchbar, zusammen am stärksten – weil jeder Baustein an unseren eigenen Zahlen gemessen wurde, bevor wir ihn anbieten.</p>
         </div>
 
         <div class="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          <article class="reveal group rounded-2xl border border-ink/5 bg-white p-7 shadow-card transition hover:-translate-y-1 hover:shadow-xl">
-            <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-ink text-white">
-              <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Zm0 0c2.5-2.5 3.5-5.5 3.5-9S14.5 5.5 12 3m0 18c-2.5-2.5-3.5-5.5-3.5-9S9.5 5.5 12 3M3.5 9h17M3.5 15h17"/></svg>
+          <article class="reveal tilt group relative rounded-2xl border border-ink/5 bg-white p-7 shadow-card hover:shadow-xl" style="--d:0ms">
+            <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-ink text-white transition-transform duration-500 group-hover:-rotate-6 group-hover:scale-110">
+              <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75"><path stroke-linecap="round" stroke-linejoin="round" d="M3 21h18M5 21V8l7-5 7 5v13M9 21v-6h6v6M9 11h.01M15 11h.01"/></svg>
             </div>
-            <h3 class="font-display mt-6 text-xl font-semibold">Import &amp; Sourcing China</h3>
-            <p class="mt-3 text-sm leading-relaxed text-ink/70">Fabriksuche, Verhandlung, Musterung und Qualitätskontrolle durch unser eigenes Team vor Ort. Versand, Verzollung und Lieferung bis an Ihr Lager in der Schweiz.</p>
+            <h3 class="font-display mt-6 text-xl font-semibold">Beschaffung in China</h3>
+            <p class="mt-3 text-sm leading-relaxed text-ink/70">Unser Team in China sucht die Fabrik, verhandelt in der Landessprache und prüft die Ware, bevor sie den Container sieht. Verzollt geliefert bis an Ihre Rampe.</p>
             <ul class="mt-5 space-y-1.5 text-sm text-ink/60">
-              <li class="flex gap-2"><span class="text-swiss">–</span>Kein Zwischenhändler, beste Einkaufspreise</li>
-              <li class="flex gap-2"><span class="text-swiss">–</span>QC während &amp; nach der Produktion</li>
-              <li class="flex gap-2"><span class="text-swiss">–</span>See- &amp; Luftfracht, verzollt geliefert</li>
+              <li class="flex gap-2"><span class="text-swiss">–</span>Fabrikauswahl &amp; Preisverhandlung vor Ort</li>
+              <li class="flex gap-2"><span class="text-swiss">–</span>Musterung, Vorserie, Endkontrolle</li>
+              <li class="flex gap-2"><span class="text-swiss">–</span>Seefracht, Verzollung, Lieferung</li>
             </ul>
           </article>
 
-          <article class="reveal group rounded-2xl border border-ink/5 bg-white p-7 shadow-card transition hover:-translate-y-1 hover:shadow-xl">
-            <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-ink text-white">
+          <article class="reveal tilt group relative rounded-2xl border border-ink/5 bg-white p-7 shadow-card hover:shadow-xl" style="--d:100ms">
+            <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-ink text-white transition-transform duration-500 group-hover:-rotate-6 group-hover:scale-110">
               <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75"><path stroke-linecap="round" stroke-linejoin="round" d="M3 4h2l2.4 12.2a1 1 0 0 0 1 .8h9.7a1 1 0 0 0 1-.8L21 8H6.2M9 21a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm8 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z"/></svg>
             </div>
-            <h3 class="font-display mt-6 text-xl font-semibold">E-Commerce &amp; Shopify</h3>
-            <p class="mt-3 text-sm leading-relaxed text-ink/70">Aufbau und Optimierung von Shopify-Shops, die verkaufen: Conversion-Design, Zahlungsanbieter, Logistik, Marktplätze wie Galaxus – bis zum laufenden Betrieb.</p>
+            <h3 class="font-display mt-6 text-xl font-semibold">Shopify &amp; Betrieb</h3>
+            <p class="mt-3 text-sm leading-relaxed text-ink/70">Wir bauen Shops, die wir selbst betreiben würden: schnelle Themes, Schweizer Zahlungsarten, Abo-Modelle und die Anbindung an Galaxus und Brack.</p>
             <ul class="mt-5 space-y-1.5 text-sm text-ink/60">
-              <li class="flex gap-2"><span class="text-swiss">–</span>Shop-Setup, Theme &amp; Apps</li>
-              <li class="flex gap-2"><span class="text-swiss">–</span>TWINT, Klarna, Kreditkarte, Rechnung</li>
-              <li class="flex gap-2"><span class="text-swiss">–</span>Lager, Versand &amp; Retouren</li>
+              <li class="flex gap-2"><span class="text-swiss">–</span>Shop-Aufbau &amp; Conversion-Optimierung</li>
+              <li class="flex gap-2"><span class="text-swiss">–</span>TWINT, Klarna, Rechnung, Kreditkarte</li>
+              <li class="flex gap-2"><span class="text-swiss">–</span>Marktplätze, Lager &amp; Versand</li>
             </ul>
           </article>
 
-          <article class="reveal group rounded-2xl border border-ink/5 bg-white p-7 shadow-card transition hover:-translate-y-1 hover:shadow-xl">
-            <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-ink text-white">
-              <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1.5M12 19.5V21M4.2 4.2l1.1 1.1m13.4 13.4 1.1 1.1M3 12h1.5m15 0H21M4.2 19.8l1.1-1.1M18.7 5.3l1.1-1.1M16 12a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z"/></svg>
+          <article class="reveal tilt group relative rounded-2xl border border-ink/5 bg-white p-7 shadow-card hover:shadow-xl" style="--d:200ms">
+            <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-ink text-white transition-transform duration-500 group-hover:-rotate-6 group-hover:scale-110">
+              <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75"><path stroke-linecap="round" stroke-linejoin="round" d="M20 7 12 3 4 7m16 0v10l-8 4m8-14-8 4M4 7v10l8 4M4 7l8 4m0 0v10"/></svg>
             </div>
-            <h3 class="font-display mt-6 text-xl font-semibold">Branding &amp; Produkt</h3>
-            <p class="mt-3 text-sm leading-relaxed text-ink/70">Von der Produktidee zur fertigen Marke: Positionierung, Naming, Logo, Verpackung, Inserts und Private Label – produziert nach Ihren Vorgaben.</p>
+            <h3 class="font-display mt-6 text-xl font-semibold">Marke &amp; Verpackung</h3>
+            <p class="mt-3 text-sm leading-relaxed text-ink/70">Positionierung, Name, Logo, Giftbox, Inserts: Wir gestalten Produkte so, dass sie im Regal und im Feed auffallen – und lassen sie genau so produzieren.</p>
             <ul class="mt-5 space-y-1.5 text-sm text-ink/60">
-              <li class="flex gap-2"><span class="text-swiss">–</span>Markenidentität &amp; Design</li>
-              <li class="flex gap-2"><span class="text-swiss">–</span>Verpackung, Giftbox, Barcodes</li>
-              <li class="flex gap-2"><span class="text-swiss">–</span>Produktfotos &amp; Content</li>
+              <li class="flex gap-2"><span class="text-swiss">–</span>Markenidentität &amp; Naming</li>
+              <li class="flex gap-2"><span class="text-swiss">–</span>Verpackungsdesign &amp; Druckvorstufe</li>
+              <li class="flex gap-2"><span class="text-swiss">–</span>Produktfotos &amp; Ad-Creatives</li>
             </ul>
           </article>
 
-          <article class="reveal group rounded-2xl border border-ink/5 bg-white p-7 shadow-card transition hover:-translate-y-1 hover:shadow-xl">
-            <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-ink text-white">
+          <article class="reveal tilt group relative rounded-2xl border border-ink/5 bg-white p-7 shadow-card hover:shadow-xl" style="--d:300ms">
+            <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-ink text-white transition-transform duration-500 group-hover:-rotate-6 group-hover:scale-110">
               <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75"><path stroke-linecap="round" stroke-linejoin="round" d="M3 17l6-6 4 4 8-8M14 7h7v7"/></svg>
             </div>
-            <h3 class="font-display mt-6 text-xl font-semibold">Performance Marketing</h3>
-            <p class="mt-3 text-sm leading-relaxed text-ink/70">Meta &amp; TikTok Ads, E-Mail-Marketing mit Klaviyo, Influencer-Kooperationen und Creatives – datengetrieben, auf ROAS und Deckungsbeitrag optimiert.</p>
+            <h3 class="font-display mt-6 text-xl font-semibold">Wachstum mit Ads</h3>
+            <p class="mt-3 text-sm leading-relaxed text-ink/70">Meta und TikTok Ads, Klaviyo-Flows, Ambassador-Programme. Wir optimieren auf Deckungsbeitrag pro Bestellung – nicht auf Klicks oder Reichweite.</p>
             <ul class="mt-5 space-y-1.5 text-sm text-ink/60">
               <li class="flex gap-2"><span class="text-swiss">–</span>Kampagnen-Setup &amp; Skalierung</li>
-              <li class="flex gap-2"><span class="text-swiss">–</span>Statische &amp; Video-Creatives</li>
-              <li class="flex gap-2"><span class="text-swiss">–</span>E-Mail-Flows &amp; Retention</li>
+              <li class="flex gap-2"><span class="text-swiss">–</span>E-Mail- &amp; SMS-Automationen</li>
+              <li class="flex gap-2"><span class="text-swiss">–</span>Influencer- &amp; Ambassador-Programme</li>
             </ul>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- ===== Für wen ===== -->
-    <section class="border-y border-ink/5 bg-stone-50 py-20 sm:py-28">
+    <!-- ===== Vor Ort in China ===== -->
+    <section id="vor-ort" class="border-y border-ink/5 bg-stone-50 py-20 sm:py-28">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="grid gap-12 lg:grid-cols-12 lg:gap-16">
-          <div class="lg:col-span-5 reveal">
-            <p class="text-sm font-semibold uppercase tracking-wider text-swiss">Für wen</p>
-            <h2 class="font-display mt-3 text-3xl font-bold tracking-tight sm:text-4xl">Für Unternehmen, die Produkte in der Schweiz verkaufen – oder es vorhaben.</h2>
-            <p class="mt-4 text-lg text-ink/70">Ob bestehender Shop, Handelsunternehmen oder Produktidee: Wir übernehmen die Teile, die Zeit, Kontakte und Erfahrung brauchen.</p>
+          <div class="lg:col-span-5">
+            <div class="reveal">
+              <p class="text-sm font-semibold uppercase tracking-wider text-swiss">Vor Ort in China</p>
+              <h2 class="font-display mt-3 text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">Wir kennen die Halle. Nicht nur das Angebot.</h2>
+              <p class="mt-4 text-lg text-ink/70">Zweimal sind wir selbst nach China gereist, haben Produktionslinien abgenommen, Muster verglichen und mit den Ingenieuren am Tisch gesessen. Dazwischen ist unser eigenes Team vor Ort – fest angestellt, nicht auf Provision.</p>
+            </div>
+
+            <ul class="mt-10 space-y-4">
+              <li class="reveal flex gap-4 rounded-2xl bg-white p-5 shadow-card" style="--d:100ms">
+                <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-ink text-white"><svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2m20 0v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75M13 7a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z"/></svg></span>
+                <div>
+                  <h3 class="font-semibold">Eigenes Team in China</h3>
+                  <p class="mt-1 text-sm text-ink/70">Unsere Leute sprechen die Sprache der Fabrik und sitzen dort, wo produziert wird. Kein Sourcing-Agent, keine Provision auf Ihren Einkaufspreis.</p>
+                </div>
+              </li>
+              <li class="reveal flex gap-4 rounded-2xl bg-white p-5 shadow-card" style="--d:200ms">
+                <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-swiss text-white"><svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Zm-3-10 2 2 4-4"/></svg></span>
+                <div>
+                  <h3 class="font-semibold">Wir haften für die Qualität</h3>
+                  <p class="mt-1 text-sm text-ink/70">Wir prüfen vor dem Versand und stehen für das Ergebnis gerade. Stimmt etwas nicht, ist das unser Problem mit der Fabrik – nicht Ihres.</p>
+                </div>
+              </li>
+              <li class="reveal flex gap-4 rounded-2xl bg-white p-5 shadow-card" style="--d:300ms">
+                <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-ink text-white"><svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16v13H4zM4 7l2-4h12l2 4M9 11h6"/></svg></span>
+                <div>
+                  <h3 class="font-semibold">Nur Serienmengen</h3>
+                  <p class="mt-1 text-sm text-ink/70">Wir kaufen ab Produktionsmenge ein – keine Einzelstücke, keine Testbestellungen. Dafür Preise und Konditionen, die es nur im Bulk gibt.</p>
+                </div>
+              </li>
+            </ul>
           </div>
+
           <div class="lg:col-span-7">
-            <div class="grid gap-4 sm:grid-cols-2">
-              <div class="reveal rounded-2xl bg-white p-6 shadow-card">
-                <h3 class="font-semibold">E-Commerce Brands</h3>
-                <p class="mt-2 text-sm text-ink/70">Eigene Produkte günstiger produzieren, neue Produkte lancieren, Ads skalieren.</p>
-              </div>
-              <div class="reveal rounded-2xl bg-white p-6 shadow-card">
-                <h3 class="font-semibold">Handel &amp; Retail</h3>
-                <p class="mt-2 text-sm text-ink/70">Eigenmarken, Grossmengen und Spezialanfertigungen direkt ab Fabrik.</p>
-              </div>
-              <div class="reveal rounded-2xl bg-white p-6 shadow-card">
-                <h3 class="font-semibold">Startups &amp; Gründer</h3>
-                <p class="mt-2 text-sm text-ink/70">Vom Prototyp bis zum ersten verkauften Produkt – inklusive Shop und Marketing.</p>
-              </div>
-              <div class="reveal rounded-2xl bg-white p-6 shadow-card">
-                <h3 class="font-semibold">KMU &amp; Industrie</h3>
-                <p class="mt-2 text-sm text-ink/70">Komponenten, Werbeartikel und Kundengeschenke mit Qualitätskontrolle vor Ort.</p>
-              </div>
+            <div class="grid grid-cols-2 gap-4 sm:gap-5">
+              <figure class="reveal-scale zoom-img group relative overflow-hidden rounded-2xl shadow-card" style="--d:0ms">
+                <img src="assets/img/china-produktionslinie.jpg" alt="Endmontage-Linie beim Lieferanten in China" class="aspect-[4/5] w-full object-cover" width="1000" height="1250" loading="lazy">
+                <figcaption class="absolute inset-x-0 bottom-0 translate-y-2 bg-gradient-to-t from-ink/80 to-transparent p-4 text-sm font-medium text-white opacity-0 transition duration-500 group-hover:translate-y-0 group-hover:opacity-100">Endmontage-Linie</figcaption>
+              </figure>
+              <figure class="reveal-scale zoom-img group relative mt-8 overflow-hidden rounded-2xl shadow-card" style="--d:120ms">
+                <img src="assets/img/china-showroom-valdrin.jpg" alt="Valdrin Dalipi prüft ein Muster im Showroom des Lieferanten" class="aspect-[4/5] w-full object-cover" width="1000" height="1250" loading="lazy">
+                <figcaption class="absolute inset-x-0 bottom-0 translate-y-2 bg-gradient-to-t from-ink/80 to-transparent p-4 text-sm font-medium text-white opacity-0 transition duration-500 group-hover:translate-y-0 group-hover:opacity-100">Muster-Check im Showroom</figcaption>
+              </figure>
+              <figure class="reveal-scale zoom-img group relative -mt-8 overflow-hidden rounded-2xl shadow-card" style="--d:240ms">
+                <img src="assets/img/china-lieferant.jpg" alt="Gespräch mit dem Lieferanten über ein Produktmuster" class="aspect-[4/5] w-full object-cover" width="1000" height="1250" loading="lazy">
+                <figcaption class="absolute inset-x-0 bottom-0 translate-y-2 bg-gradient-to-t from-ink/80 to-transparent p-4 text-sm font-medium text-white opacity-0 transition duration-500 group-hover:translate-y-0 group-hover:opacity-100">Im Gespräch mit dem Lieferanten</figcaption>
+              </figure>
+              <figure class="reveal-scale zoom-img group relative overflow-hidden rounded-2xl shadow-card" style="--d:360ms">
+                <img src="assets/img/china-fabrikhalle.jpg" alt="Ingenieure des Lieferanten prüfen ein Bauteil in der Fabrikhalle" class="aspect-[4/5] w-full object-cover" width="1000" height="1250" loading="lazy">
+                <figcaption class="absolute inset-x-0 bottom-0 translate-y-2 bg-gradient-to-t from-ink/80 to-transparent p-4 text-sm font-medium text-white opacity-0 transition duration-500 group-hover:translate-y-0 group-hover:opacity-100">Mit den Ingenieuren in der Fabrikhalle</figcaption>
+              </figure>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ===== Referenzen / Zahlen ===== -->
-    <section id="referenzen" class="bg-ink py-20 text-white sm:py-28">
+    <!-- ===== Lager Schweiz ===== -->
+    <section class="py-20 sm:py-28">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
+          <div class="order-2 lg:order-1 lg:col-span-7">
+            <div class="grid grid-cols-2 gap-4 sm:grid-cols-3">
+              <figure class="reveal-scale zoom-img col-span-2 sm:col-span-3 overflow-hidden rounded-3xl shadow-card" style="--d:0ms" data-parallax="0.04">
+                <img src="assets/img/lager-palette-dpd-wide.jpg" alt="Fertig kommissionierte Palette vor dem DPD-Transporter im Schweizer Lager" class="aspect-[16/10] w-full object-cover" width="1400" height="875" loading="lazy">
+              </figure>
+              <figure class="reveal-scale zoom-img overflow-hidden rounded-2xl shadow-card" style="--d:150ms">
+                <img src="assets/img/lager-kartons.jpg" alt="Gestapelte Kartons mit PowerJet-Verpackungen im Lager" class="aspect-[4/5] w-full object-cover" width="1000" height="1250" loading="lazy">
+              </figure>
+              <figure class="reveal-scale zoom-img overflow-hidden rounded-2xl shadow-card" style="--d:250ms">
+                <img src="assets/img/lager-transporter.jpg" alt="Transporter voll mit Paketen für den Versand" class="aspect-[4/5] w-full object-cover" width="1000" height="1250" loading="lazy">
+              </figure>
+              <div class="reveal-scale col-span-2 flex items-center justify-between gap-4 rounded-2xl bg-ink p-5 text-white sm:col-span-1 sm:flex-col sm:items-start" style="--d:350ms">
+                <p class="font-display text-3xl font-bold sm:text-4xl">1–2</p>
+                <p class="text-sm text-white/70">Werktage Lieferzeit ab Schweizer Lager an Endkunden</p>
+              </div>
+            </div>
+          </div>
+          <div class="order-1 reveal lg:order-2 lg:col-span-5">
+            <p class="text-sm font-semibold uppercase tracking-wider text-swiss">Lager &amp; Logistik</p>
+            <h2 class="font-display mt-3 text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">Vom Container bis zum Paket – in der Schweiz.</h2>
+            <p class="mt-4 text-lg text-ink/70">Die Ware kommt verzollt in der Schweiz an. Von hier gehen Paletten an Handelspartner wie Galaxus und Brack und Pakete an Endkunden – ohne Umweg über ein Zwischenlager im Ausland.</p>
+            <ul class="mt-6 space-y-3 text-sm text-ink/70">
+              <li class="flex gap-3"><span class="mt-1 h-2 w-2 shrink-0 rounded-full bg-swiss"></span>Import, Verzollung und Einlagerung aus einer Verantwortung</li>
+              <li class="flex gap-3"><span class="mt-1 h-2 w-2 shrink-0 rounded-full bg-swiss"></span>B2B-Kommissionierung palettenweise, B2C paketweise</li>
+              <li class="flex gap-3"><span class="mt-1 h-2 w-2 shrink-0 rounded-full bg-swiss"></span>Retouren, Ersatzteile und Garantie aus der Schweiz</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Marken / Zahlen ===== -->
+    <section id="referenzen" class="relative overflow-hidden bg-ink py-20 text-white sm:py-28">
+      <div class="blob absolute -right-40 top-10 h-[28rem] w-[28rem] rounded-full bg-swiss/15 blur-3xl"></div>
+      <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="max-w-2xl reveal">
-          <p class="text-sm font-semibold uppercase tracking-wider text-swiss">Referenzen</p>
-          <h2 class="font-display mt-3 text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">Marken, die wir selbst aufgebaut haben.</h2>
-          <p class="mt-4 text-lg text-white/70">Wir beraten nicht nur – wir betreiben. Jede Leistung ist an eigenen Marken erprobt, zwei davon wurden erfolgreich verkauft.</p>
+          <p class="text-sm font-semibold uppercase tracking-wider text-swiss">Unsere Marken</p>
+          <h2 class="font-display mt-3 text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">Wir zeigen keine Kundenlogos. Wir zeigen, was wir selbst gebaut haben.</h2>
+          <p class="mt-4 text-lg text-white/70">Jede Marke hier lief über unser eigenes Kapital, unsere Fabriken und unsere Werbekonten. Zwei davon haben wir an Käufer übergeben.</p>
         </div>
 
         <dl class="mt-14 grid grid-cols-2 gap-8 border-y border-white/10 py-10 lg:grid-cols-4">
-          <div class="reveal">
-            <dd class="font-display text-4xl font-bold sm:text-5xl"><span data-count="4">4</span></dd>
-            <dt class="mt-2 text-sm text-white/60">Marken aufgebaut &amp; skaliert</dt>
+          <div class="reveal" style="--d:0ms">
+            <dd class="font-display text-4xl font-bold sm:text-5xl"><span data-count="4">0</span></dd>
+            <dt class="mt-2 text-sm text-white/60">Marken aufgebaut</dt>
           </div>
-          <div class="reveal">
-            <dd class="font-display text-4xl font-bold sm:text-5xl"><span data-count="2">2</span></dd>
-            <dt class="mt-2 text-sm text-white/60">Erfolgreiche Exits</dt>
+          <div class="reveal" style="--d:100ms">
+            <dd class="font-display text-4xl font-bold sm:text-5xl"><span data-count="2">0</span></dd>
+            <dt class="mt-2 text-sm text-white/60">Exits, 5- und 6-stellig</dt>
           </div>
-          <div class="reveal">
-            <dd class="font-display text-4xl font-bold sm:text-5xl">6<span class="text-2xl text-white/50">-stellig</span></dd>
-            <dt class="mt-2 text-sm text-white/60">Grösster Exit (Wiegeparadies)</dt>
+          <div class="reveal" style="--d:200ms">
+            <dd class="font-display text-4xl font-bold sm:text-5xl"><span data-count="2">0</span>×</dd>
+            <dt class="mt-2 text-sm text-white/60">Persönlich in der Produktion in China</dt>
           </div>
-          <div class="reveal">
-            <dd class="font-display text-4xl font-bold sm:text-5xl">seit <span data-count="2023">2023</span></dd>
-            <dt class="mt-2 text-sm text-white/60">Operativ in der Schweiz &amp; China</dt>
+          <div class="reveal" style="--d:300ms">
+            <dd class="font-display text-4xl font-bold sm:text-5xl">seit <span data-count="2023" data-start="1990">1990</span></dd>
+            <dt class="mt-2 text-sm text-white/60">Innovarex GmbH, Eglisau</dt>
           </div>
         </dl>
 
         <div class="mt-14 grid gap-6 md:grid-cols-2">
-          <article class="reveal rounded-2xl border border-white/10 bg-white/5 p-7 transition hover:bg-white/10">
-            <div class="flex items-center justify-between">
-              <h3 class="font-display text-2xl font-semibold">Wiegeparadies</h3>
-              <span class="rounded-full bg-swiss px-3 py-1 text-xs font-semibold">6-stelliger Exit</span>
-            </div>
-            <p class="mt-3 text-sm text-white/60">Aufgebaut Juni 2023 · verkauft März 2026</p>
-            <p class="mt-4 leading-relaxed text-white/80">E-Commerce-Marke im Baby-Segment von null aufgebaut: Sourcing und Produktion in China, Shopify-Shop, Performance Marketing und Logistik. Nach knapp drei Jahren erfolgreich an einen Käufer übergeben.</p>
-            <ul class="mt-5 flex flex-wrap gap-2 text-xs text-white/70">
-              <li class="rounded-full border border-white/15 px-3 py-1">Sourcing</li>
-              <li class="rounded-full border border-white/15 px-3 py-1">Shopify</li>
-              <li class="rounded-full border border-white/15 px-3 py-1">Meta Ads</li>
-              <li class="rounded-full border border-white/15 px-3 py-1">Exit</li>
-            </ul>
-          </article>
-
-          <article class="reveal rounded-2xl border border-white/10 bg-white/5 p-7 transition hover:bg-white/10">
-            <div class="flex items-center justify-between">
-              <h3 class="font-display text-2xl font-semibold">PowerJets</h3>
+          <article class="reveal tilt group relative rounded-2xl border border-white/10 bg-white/5 p-7 transition hover:bg-white/10" style="--d:0ms">
+            <div class="flex items-center justify-between gap-4">
+              <img src="assets/logos/powerjet-white.svg" alt="PowerJet" class="h-8 w-auto">
               <span class="rounded-full bg-white/10 px-3 py-1 text-xs font-semibold">Eigene Marke</span>
             </div>
-            <p class="mt-3 text-sm text-white/60">Marke der Innovarex GmbH · powerjets.ch</p>
-            <p class="mt-4 leading-relaxed text-white/80">Produktentwicklung und Produktion in China, eigenes Branding und Verpackung, Schweizer Lager, Shopify-Shop, Meta Ads, Ambassador-Programm und Vertrieb über Marktplätze wie Galaxus.</p>
+            <p class="mt-4 text-sm text-white/60">Autopflege · powerjets.ch</p>
+            <p class="mt-3 leading-relaxed text-white/80">Akku-Turbo zum Trocknen und Reinigen von Fahrzeugen. In China mitentwickelt und produziert, in Eglisau gelagert, über Shopify, Galaxus und Brack verkauft – mit Ambassador-Programm und eigenem Ad-Studio.</p>
             <ul class="mt-5 flex flex-wrap gap-2 text-xs text-white/70">
               <li class="rounded-full border border-white/15 px-3 py-1">Produktentwicklung</li>
-              <li class="rounded-full border border-white/15 px-3 py-1">Branding</li>
-              <li class="rounded-full border border-white/15 px-3 py-1">Ads</li>
-              <li class="rounded-full border border-white/15 px-3 py-1">Galaxus</li>
+              <li class="rounded-full border border-white/15 px-3 py-1">Giftbox &amp; Branding</li>
+              <li class="rounded-full border border-white/15 px-3 py-1">Meta Ads</li>
+              <li class="rounded-full border border-white/15 px-3 py-1">Retail</li>
             </ul>
           </article>
 
-          <article class="reveal rounded-2xl border border-white/10 bg-white/5 p-7 transition hover:bg-white/10">
-            <div class="flex items-center justify-between">
-              <h3 class="font-display text-2xl font-semibold">MatchaGlow</h3>
+          <article class="reveal tilt group relative rounded-2xl border border-white/10 bg-white/5 p-7 transition hover:bg-white/10" style="--d:100ms">
+            <div class="flex items-center justify-between gap-4">
+              <img src="assets/logos/matchaglow-white.png" alt="MatchaGlow" class="h-7 w-auto" width="1200" height="148">
               <span class="rounded-full bg-white/10 px-3 py-1 text-xs font-semibold">Co-Founder</span>
             </div>
-            <p class="mt-3 text-sm text-white/60">Matcha &amp; Kollagen · matchaglow.ch</p>
-            <p class="mt-4 leading-relaxed text-white/80">Als Mitgründer verantwortlich für Branding, Performance Marketing und den Import. Abo-Modell, B2B-Grosshandel und Vertrieb über Marktplätze – aufgebaut auf derselben Struktur wie unsere anderen Marken.</p>
+            <p class="mt-4 text-sm text-white/60">Matcha &amp; Kollagen · matchaglow.ch</p>
+            <p class="mt-3 leading-relaxed text-white/80">Beauty-Supplement mit Abo-Modell. Wir verantworten Branding, Import und Performance Marketing – vom Verpackungsdesign bis zur Klaviyo-Automation und dem Einstieg in den Handel.</p>
             <ul class="mt-5 flex flex-wrap gap-2 text-xs text-white/70">
               <li class="rounded-full border border-white/15 px-3 py-1">Branding</li>
-              <li class="rounded-full border border-white/15 px-3 py-1">Performance Marketing</li>
+              <li class="rounded-full border border-white/15 px-3 py-1">Abo-Modell</li>
               <li class="rounded-full border border-white/15 px-3 py-1">Import</li>
+              <li class="rounded-full border border-white/15 px-3 py-1">Handel</li>
             </ul>
           </article>
 
-          <article class="reveal rounded-2xl border border-white/10 bg-white/5 p-7 transition hover:bg-white/10">
-            <div class="flex items-center justify-between">
-              <h3 class="font-display text-2xl font-semibold">MeditSoul</h3>
-              <span class="rounded-full bg-swiss px-3 py-1 text-xs font-semibold">5-stelliger Exit</span>
+          <article class="reveal tilt group relative rounded-2xl border border-white/10 bg-white/5 p-7 transition hover:bg-white/10" style="--d:200ms">
+            <div class="flex items-center justify-between gap-4">
+              <img src="assets/logos/wiegeparadies-white.png" alt="Wiegeparadies" class="h-11 w-auto" width="400" height="110">
+              <span class="rounded-full bg-swiss px-3 py-1 text-xs font-semibold">Exit 6-stellig</span>
             </div>
-            <p class="mt-3 text-sm text-white/60">Aufgebaut &amp; verkauft</p>
-            <p class="mt-4 leading-relaxed text-white/80">Marke von der Produktbeschaffung bis zum laufenden Shop aufgebaut und anschliessend mit einem fünfstelligen Exit an einen neuen Eigentümer übergeben.</p>
+            <p class="mt-4 text-sm text-white/60">Baby &amp; Schlaf · Juni 2023 bis März 2026</p>
+            <p class="mt-3 leading-relaxed text-white/80">Federwiegen und Babyprodukte. Von uns 2023 gestartet, mit eigener Beschaffung in China, Shopify und Meta Ads zur Marke aufgebaut und im März 2026 sechsstellig an einen Käufer übergeben.</p>
             <ul class="mt-5 flex flex-wrap gap-2 text-xs text-white/70">
-              <li class="rounded-full border border-white/15 px-3 py-1">Sourcing</li>
+              <li class="rounded-full border border-white/15 px-3 py-1">Beschaffung</li>
               <li class="rounded-full border border-white/15 px-3 py-1">Shopify</li>
-              <li class="rounded-full border border-white/15 px-3 py-1">Exit</li>
+              <li class="rounded-full border border-white/15 px-3 py-1">Meta Ads</li>
+              <li class="rounded-full border border-white/15 px-3 py-1">Verkauft</li>
+            </ul>
+          </article>
+
+          <article class="reveal tilt group relative rounded-2xl border border-white/10 bg-white/5 p-7 transition hover:bg-white/10" style="--d:300ms">
+            <div class="flex items-center justify-between gap-4">
+              <img src="assets/logos/meditsoul-white.png" alt="MeditSoul" class="h-14 w-auto" width="600" height="505">
+              <span class="rounded-full bg-swiss px-3 py-1 text-xs font-semibold">Exit 5-stellig</span>
+            </div>
+            <p class="mt-4 text-sm text-white/60">Meditation &amp; Wohlbefinden</p>
+            <p class="mt-3 leading-relaxed text-white/80">Marke rund um Meditation und Achtsamkeit – von der Produktbeschaffung bis zum laufenden Shop aufgebaut und mit fünfstelligem Exit an neue Eigentümer übergeben.</p>
+            <ul class="mt-5 flex flex-wrap gap-2 text-xs text-white/70">
+              <li class="rounded-full border border-white/15 px-3 py-1">Beschaffung</li>
+              <li class="rounded-full border border-white/15 px-3 py-1">Shopify</li>
+              <li class="rounded-full border border-white/15 px-3 py-1">Verkauft</li>
             </ul>
           </article>
         </div>
@@ -360,32 +507,35 @@
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="max-w-2xl reveal">
           <p class="text-sm font-semibold uppercase tracking-wider text-swiss">Ablauf</p>
-          <h2 class="font-display mt-3 text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">In vier Schritten zum Ergebnis.</h2>
-          <p class="mt-4 text-lg text-ink/70">Klare Schritte, transparente Kosten, ein Ansprechpartner. Sie müssen sich um nichts kümmern.</p>
+          <h2 class="font-display mt-3 text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">So läuft ein Projekt mit uns.</h2>
+          <p class="mt-4 text-lg text-ink/70">Wir sagen früh, ob ein Produkt für uns Sinn ergibt. Wenn ja, sehen Sie alle Zahlen auf einer Seite, bevor Sie etwas entscheiden.</p>
         </div>
 
-        <ol class="mt-14 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-          <li class="reveal relative rounded-2xl border border-ink/5 p-7">
-            <span class="font-display text-5xl font-bold text-ink/10">01</span>
-            <h3 class="font-display mt-4 text-xl font-semibold">Anfrage</h3>
-            <p class="mt-2 text-sm leading-relaxed text-ink/70">Sie schildern uns Ihr Projekt – Produkt, Ziel, Zeitrahmen. Kostenlos und unverbindlich.</p>
-          </li>
-          <li class="reveal relative rounded-2xl border border-ink/5 p-7">
-            <span class="font-display text-5xl font-bold text-ink/10">02</span>
-            <h3 class="font-display mt-4 text-xl font-semibold">Analyse &amp; Offerte</h3>
-            <p class="mt-2 text-sm leading-relaxed text-ink/70">Wir prüfen Machbarkeit, Lieferanten und Zahlen und erstellen eine transparente Komplettofferte.</p>
-          </li>
-          <li class="reveal relative rounded-2xl border border-ink/5 p-7">
-            <span class="font-display text-5xl font-bold text-ink/10">03</span>
-            <h3 class="font-display mt-4 text-xl font-semibold">Umsetzung</h3>
-            <p class="mt-2 text-sm leading-relaxed text-ink/70">Produktion mit Qualitätskontrolle vor Ort, Shop-Aufbau, Branding und Kampagnen – parallel und koordiniert.</p>
-          </li>
-          <li class="reveal relative rounded-2xl border border-ink/5 p-7">
-            <span class="font-display text-5xl font-bold text-ink/10">04</span>
-            <h3 class="font-display mt-4 text-xl font-semibold">Lieferung &amp; Skalierung</h3>
-            <p class="mt-2 text-sm leading-relaxed text-ink/70">Verzollte Lieferung in die Schweiz, Launch und laufende Optimierung bis zum profitablen Wachstum.</p>
-          </li>
-        </ol>
+        <div class="reveal relative mt-14">
+          <div class="absolute left-0 right-0 top-8 hidden h-px bg-ink/10 lg:block"><div class="process-line h-full bg-swiss"></div></div>
+          <ol class="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+            <li class="reveal relative rounded-2xl border border-ink/5 bg-white p-7 shadow-card" style="--d:100ms">
+              <span class="font-display relative z-10 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-ink text-xl font-bold text-white">01</span>
+              <h3 class="font-display mt-5 text-xl font-semibold">Gespräch</h3>
+              <p class="mt-2 text-sm leading-relaxed text-ink/70">30 Minuten zu Produkt, Menge und Ziel. Wir sagen ehrlich, ob es passt – und wenn nicht, warum.</p>
+            </li>
+            <li class="reveal relative rounded-2xl border border-ink/5 bg-white p-7 shadow-card" style="--d:250ms">
+              <span class="font-display relative z-10 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-ink text-xl font-bold text-white">02</span>
+              <h3 class="font-display mt-5 text-xl font-semibold">Kalkulation</h3>
+              <p class="mt-2 text-sm leading-relaxed text-ink/70">Stückpreis, Fracht, Zoll, Verpackung und Marge auf einer Seite. Muster aus der Fabrik, wenn nötig.</p>
+            </li>
+            <li class="reveal relative rounded-2xl border border-ink/5 bg-white p-7 shadow-card" style="--d:400ms">
+              <span class="font-display relative z-10 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-ink text-xl font-bold text-white">03</span>
+              <h3 class="font-display mt-5 text-xl font-semibold">Produktion &amp; Kontrolle</h3>
+              <p class="mt-2 text-sm leading-relaxed text-ink/70">Unser Team begleitet die Produktion und prüft vor dem Versand. Parallel entstehen Shop, Verpackung und Kampagnen.</p>
+            </li>
+            <li class="reveal relative rounded-2xl border border-ink/5 bg-white p-7 shadow-card" style="--d:550ms">
+              <span class="font-display relative z-10 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-swiss text-xl font-bold text-white">04</span>
+              <h3 class="font-display mt-5 text-xl font-semibold">Lieferung &amp; Verkauf</h3>
+              <p class="mt-2 text-sm leading-relaxed text-ink/70">Verzollte Lieferung in die Schweiz, Launch und laufende Optimierung – bis die Zahlen stimmen.</p>
+            </li>
+          </ol>
+        </div>
       </div>
     </section>
 
@@ -393,39 +543,40 @@
     <section id="ueber-uns" class="border-y border-ink/5 bg-stone-50 py-20 sm:py-28">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
-          <div class="reveal lg:col-span-4">
-            <div class="mx-auto flex aspect-square w-full max-w-xs items-center justify-center rounded-3xl bg-ink text-white shadow-2xl">
-              <div class="text-center">
-                <span class="font-display text-6xl font-bold tracking-tight">VD</span>
-                <p class="mt-3 text-sm text-white/60">Valdrin Dalipi</p>
+          <div class="lg:col-span-5">
+            <div class="reveal-left relative mx-auto max-w-sm overflow-hidden rounded-3xl shadow-photo lg:max-w-none">
+              <img src="assets/img/valdrin-dalipi.jpg" alt="Valdrin Dalipi, Gründer und Geschäftsführer der Innovarex GmbH" class="aspect-[4/5] w-full object-cover" width="900" height="1125" loading="lazy">
+              <div class="absolute bottom-5 left-5 rounded-2xl bg-white/90 px-4 py-3 shadow-card backdrop-blur">
+                <p class="font-display font-semibold">Valdrin Dalipi</p>
+                <p class="text-xs text-ink/60">Gründer &amp; Geschäftsführer</p>
               </div>
             </div>
           </div>
-          <div class="reveal lg:col-span-8">
+          <div class="reveal lg:col-span-7">
             <p class="text-sm font-semibold uppercase tracking-wider text-swiss">Über uns</p>
-            <h2 class="font-display mt-3 text-3xl font-bold tracking-tight sm:text-4xl">Schweizer Anspruch. Chinesische Produktion. Ein Team.</h2>
+            <h2 class="font-display mt-3 text-3xl font-bold tracking-tight sm:text-4xl">Ein Gründer, der selbst einkauft.</h2>
             <p class="mt-5 text-lg leading-relaxed text-ink/70">
-              Hinter Innovarex steht Valdrin Dalipi mit einem eingespielten Team in der Schweiz und in China. Seit 2023 bauen wir eigene E-Commerce-Marken auf – von der ersten Fabrikanfrage bis zum Verkauf des Unternehmens. Dieses Wissen stellen wir Geschäftskunden zur Verfügung.
+              Valdrin Dalipi hat Innovarex 2023 in Eglisau gegründet und seither vier Marken aufgebaut – jede mit eigenem Geld, eigener Beschaffung in China und eigenen Werbekonten. Zwei davon wurden verkauft, zwei laufen weiter.
             </p>
             <p class="mt-4 text-lg leading-relaxed text-ink/70">
-              Unser Team in China besteht aus festen Mitarbeitenden, keinen Freelancern. So kontrollieren wir Qualität, Preise und Termine direkt – ohne Zwischenhändler.
+              Was Innovarex von Agenturen unterscheidet: Wir haben jede Entscheidung, die wir Ihnen empfehlen, vorher mit unserem eigenen Risiko getroffen. Zweimal war Valdrin persönlich in der Produktion in China; dazwischen arbeitet unser Team dort fest angestellt.
             </p>
             <blockquote class="mt-6 border-l-2 border-swiss pl-5 text-ink">
-              «Wir verstehen beide Seiten: die Erwartungen Schweizer Kunden und die Realität in der Fabrik. Genau dazwischen entsteht der Unterschied.»
-              <footer class="mt-2 text-sm text-ink/60">— Valdrin Dalipi, Gründer &amp; Geschäftsführer Innovarex GmbH</footer>
+              «Ich empfehle keinem Kunden eine Fabrik, in der ich nicht selbst gestanden bin. Und ich kaufe nichts ein, für das ich nicht geradestehen würde.»
+              <footer class="mt-2 text-sm text-ink/60">— Valdrin Dalipi</footer>
             </blockquote>
             <div class="mt-8 grid gap-4 sm:grid-cols-3">
-              <div class="rounded-xl bg-white p-4 shadow-card">
-                <p class="font-semibold">Eigenes Team in China</p>
-                <p class="mt-1 text-sm text-ink/60">Kontrolle vor Ort statt Agenten.</p>
-              </div>
-              <div class="rounded-xl bg-white p-4 shadow-card">
-                <p class="font-semibold">Unternehmer, nicht Berater</p>
+              <div class="reveal rounded-xl bg-white p-4 shadow-card" style="--d:100ms">
+                <p class="font-semibold">Betreiber, nicht Berater</p>
                 <p class="mt-1 text-sm text-ink/60">Wir riskieren mit eigenen Marken.</p>
               </div>
-              <div class="rounded-xl bg-white p-4 shadow-card">
-                <p class="font-semibold">Persönliche Betreuung</p>
-                <p class="mt-1 text-sm text-ink/60">Kleines Team, schnelle Entscheide.</p>
+              <div class="reveal rounded-xl bg-white p-4 shadow-card" style="--d:200ms">
+                <p class="font-semibold">Schweiz &amp; China</p>
+                <p class="mt-1 text-sm text-ink/60">Eglisau ZH und eigenes Team vor Ort.</p>
+              </div>
+              <div class="reveal rounded-xl bg-white p-4 shadow-card" style="--d:300ms">
+                <p class="font-semibold">Direkter Draht</p>
+                <p class="mt-1 text-sm text-ink/60">Sie sprechen mit dem Gründer, nicht mit einem Account-Manager.</p>
               </div>
             </div>
           </div>
@@ -433,14 +584,67 @@
       </div>
     </section>
 
-    <!-- ===== Kontakt ===== -->
-    <section id="kontakt" class="py-20 sm:py-28">
+    <!-- ===== Klartext / FAQ ===== -->
+    <section class="py-20 sm:py-28">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="grid gap-12 lg:grid-cols-12 lg:gap-16">
+          <div class="reveal lg:col-span-4">
+            <p class="text-sm font-semibold uppercase tracking-wider text-swiss">Klartext</p>
+            <h2 class="font-display mt-3 text-3xl font-bold tracking-tight sm:text-4xl">Was Sie vorher wissen sollten.</h2>
+            <p class="mt-4 text-lg text-ink/70">Wir arbeiten nicht mit jedem. Das spart beiden Seiten Zeit.</p>
+          </div>
+          <div class="lg:col-span-8">
+            <div class="divide-y divide-ink/10 border-y border-ink/10">
+              <details class="reveal group py-5" style="--d:0ms">
+                <summary class="flex items-center justify-between gap-6 text-left font-display text-lg font-semibold">
+                  Arbeitet ihr auch mit kleinen Mengen?
+                  <span class="chev flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-ink/15 text-ink"><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" d="M12 5v14M5 12h14"/></svg></span>
+                </summary>
+                <div class="faq-body"><div><p class="pt-4 text-ink/70">Nein. Wir kaufen ab Produktionsmenge ein, weil nur so Preise, Qualitätskontrolle und Haftung funktionieren. Die konkrete Mindestmenge hängt vom Produkt ab und steht in der Kalkulation – wenn sie für Sie nicht passt, sagen wir das im ersten Gespräch.</p></div></div>
+              </details>
+              <details class="reveal group py-5" style="--d:80ms">
+                <summary class="flex items-center justify-between gap-6 text-left font-display text-lg font-semibold">
+                  Was passiert, wenn die Qualität nicht stimmt?
+                  <span class="chev flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-ink/15 text-ink"><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" d="M12 5v14M5 12h14"/></svg></span>
+                </summary>
+                <div class="faq-body"><div><p class="pt-4 text-ink/70">Dann ist das unser Problem mit der Fabrik. Wir prüfen während der Produktion und vor dem Versand; was die Prüfung nicht besteht, wird nicht verladen. Für das, was bei Ihnen ankommt, stehen wir gerade – das ist der Unterschied zum reinen Vermittler.</p></div></div>
+              </details>
+              <details class="reveal group py-5" style="--d:160ms">
+                <summary class="flex items-center justify-between gap-6 text-left font-display text-lg font-semibold">
+                  Wie lange dauert es von der Anfrage bis zur Ware?
+                  <span class="chev flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-ink/15 text-ink"><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" d="M12 5v14M5 12h14"/></svg></span>
+                </summary>
+                <div class="faq-body"><div><p class="pt-4 text-ink/70">Die Kalkulation haben Sie innerhalb weniger Tage. Produktion dauert je nach Produkt meist vier bis acht Wochen, die Seefracht in die Schweiz rund sechs Wochen. Wer schneller muss, bekommt eine Luftfracht-Variante mit den Mehrkosten daneben.</p></div></div>
+              </details>
+              <details class="reveal group py-5" style="--d:240ms">
+                <summary class="flex items-center justify-between gap-6 text-left font-display text-lg font-semibold">
+                  Kann ich nur die Beschaffung oder nur das Marketing buchen?
+                  <span class="chev flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-ink/15 text-ink"><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" d="M12 5v14M5 12h14"/></svg></span>
+                </summary>
+                <div class="faq-body"><div><p class="pt-4 text-ink/70">Ja. Die vier Bausteine sind einzeln buchbar. Am meisten bringt es, wenn Beschaffung, Verpackung und Vertrieb aus einer Hand kommen – aber ein Händler mit eigenem Shop braucht von uns vielleicht nur die Fabrik und den Container.</p></div></div>
+              </details>
+              <details class="reveal group py-5" style="--d:320ms">
+                <summary class="flex items-center justify-between gap-6 text-left font-display text-lg font-semibold">
+                  Wie verdient Innovarex?
+                  <span class="chev flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-ink/15 text-ink"><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" d="M12 5v14M5 12h14"/></svg></span>
+                </summary>
+                <div class="faq-body"><div><p class="pt-4 text-ink/70">Transparent: Sie sehen den Einkaufspreis der Fabrik, Fracht und Zoll sowie unsere Servicepauschale getrennt ausgewiesen. Keine versteckte Marge im Stückpreis, keine Provision von der Fabrik.</p></div></div>
+              </details>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Kontakt ===== -->
+    <section id="kontakt" class="relative overflow-hidden border-t border-ink/5 bg-stone-50 py-20 sm:py-28">
+      <div class="blob absolute -left-40 bottom-0 h-96 w-96 rounded-full bg-swiss/10 blur-3xl"></div>
+      <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="grid gap-12 lg:grid-cols-12 lg:gap-16">
           <div class="reveal lg:col-span-5">
             <p class="text-sm font-semibold uppercase tracking-wider text-swiss">Kontakt</p>
-            <h2 class="font-display mt-3 text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">Erzählen Sie uns von Ihrem Projekt.</h2>
-            <p class="mt-4 text-lg text-ink/70">Wir melden uns innerhalb von 24 Stunden mit einer ersten Einschätzung – kostenlos und unverbindlich.</p>
+            <h2 class="font-display mt-3 text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">Welches Produkt soll es werden?</h2>
+            <p class="mt-4 text-lg text-ink/70">Schreiben Sie uns, was Sie beschaffen oder verkaufen wollen und in welcher Menge. Sie bekommen innerhalb eines Werktags eine ehrliche Einschätzung – oder eine Absage mit Begründung.</p>
 
             <ul class="mt-8 space-y-4 text-sm">
               <li class="flex items-start gap-3">
@@ -453,12 +657,12 @@
               </li>
               <li class="flex items-start gap-3">
                 <span class="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-ink text-white"><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg></span>
-                <div><p class="font-semibold">Reaktionszeit</p><p class="text-ink/70">Antwort innerhalb von 24 Stunden an Werktagen</p></div>
+                <div><p class="font-semibold">Antwort</p><p class="text-ink/70">Innerhalb eines Werktags, direkt vom Gründer</p></div>
               </li>
             </ul>
           </div>
 
-          <div class="reveal lg:col-span-7">
+          <div class="reveal lg:col-span-7" style="--d:150ms">
             <form id="contact-form" action="https://formsubmit.co/vdalipi@innovarex.swiss" method="POST" class="rounded-3xl border border-ink/5 bg-white p-6 shadow-card sm:p-10" novalidate>
               <input type="hidden" name="_subject" value="Neue Anfrage über innovarex.swiss">
               <input type="hidden" name="_template" value="table">
@@ -486,21 +690,21 @@
                   <label for="interest" class="block text-sm font-medium">Worum geht es? <span class="text-swiss">*</span></label>
                   <select id="interest" name="interesse" required class="mt-2 w-full rounded-xl border border-ink/15 bg-white px-4 py-3 text-sm outline-none transition focus:border-ink focus:ring-2 focus:ring-ink/10">
                     <option value="" disabled selected>Bitte auswählen</option>
-                    <option>Import &amp; Sourcing aus China</option>
-                    <option>E-Commerce &amp; Shopify</option>
-                    <option>Branding &amp; Produktentwicklung</option>
-                    <option>Performance Marketing</option>
-                    <option>Gesamtpaket – vom Produkt zur Marke</option>
+                    <option>Beschaffung in China</option>
+                    <option>Shopify &amp; Betrieb</option>
+                    <option>Marke &amp; Verpackung</option>
+                    <option>Wachstum mit Ads</option>
+                    <option>Alles zusammen – vom Produkt zur Marke</option>
                     <option>Etwas anderes</option>
                   </select>
                 </div>
                 <div class="sm:col-span-2">
-                  <label for="quantity" class="block text-sm font-medium">Ungefähre Stückzahl / Budget</label>
-                  <input id="quantity" name="stueckzahl_budget" type="text" class="mt-2 w-full rounded-xl border border-ink/15 bg-white px-4 py-3 text-sm outline-none transition placeholder:text-ink/40 focus:border-ink focus:ring-2 focus:ring-ink/10" placeholder="z. B. 1'000 – 5'000 Stück oder CHF 20'000 Ads-Budget/Monat">
+                  <label for="quantity" class="block text-sm font-medium">Menge pro Bestellung / Budget</label>
+                  <input id="quantity" name="menge_budget" type="text" class="mt-2 w-full rounded-xl border border-ink/15 bg-white px-4 py-3 text-sm outline-none transition placeholder:text-ink/40 focus:border-ink focus:ring-2 focus:ring-ink/10" placeholder="z. B. 2'000 Stück pro Bestellung oder CHF 15'000 Ads-Budget pro Monat">
                 </div>
                 <div class="sm:col-span-2">
                   <label for="message" class="block text-sm font-medium">Ihr Projekt <span class="text-swiss">*</span></label>
-                  <textarea id="message" name="nachricht" rows="5" required class="mt-2 w-full resize-y rounded-xl border border-ink/15 bg-white px-4 py-3 text-sm outline-none transition placeholder:text-ink/40 focus:border-ink focus:ring-2 focus:ring-ink/10" placeholder="Welches Produkt, welches Ziel, welcher Zeitrahmen?"></textarea>
+                  <textarea id="message" name="nachricht" rows="5" required class="mt-2 w-full resize-y rounded-xl border border-ink/15 bg-white px-4 py-3 text-sm outline-none transition placeholder:text-ink/40 focus:border-ink focus:ring-2 focus:ring-ink/10" placeholder="Welches Produkt, für welchen Kanal, bis wann?"></textarea>
                 </div>
                 <div class="sm:col-span-2">
                   <label class="flex items-start gap-3 text-sm text-ink/70">
@@ -512,11 +716,11 @@
 
               <p id="form-error" class="mt-4 hidden text-sm text-swiss" role="alert">Bitte füllen Sie alle Pflichtfelder korrekt aus.</p>
 
-              <button type="submit" class="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-swiss px-7 py-3.5 text-base font-semibold text-white shadow-lg shadow-swiss/25 transition hover:bg-swiss-600 sm:w-auto">
+              <button type="submit" class="group mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-swiss px-7 py-3.5 text-base font-semibold text-white shadow-lg shadow-swiss/25 transition hover:-translate-y-0.5 hover:bg-swiss-600 hover:shadow-xl hover:shadow-swiss/30 sm:w-auto">
                 Anfrage senden
-                <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6"/></svg>
+                <svg class="h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6"/></svg>
               </button>
-              <p class="mt-3 text-xs text-ink/50">Kostenlos und unverbindlich. Ihre Daten werden ausschliesslich zur Bearbeitung Ihrer Anfrage verwendet.</p>
+              <p class="mt-3 text-xs text-ink/50">Unverbindlich. Ihre Angaben werden nur zur Bearbeitung der Anfrage verwendet.</p>
             </form>
           </div>
         </div>
@@ -526,44 +730,44 @@
   </main>
 
   <!-- ===== Footer ===== -->
-  <footer class="border-t border-ink/5 bg-stone-50">
+  <footer class="bg-ink text-white">
     <div class="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
       <div class="grid gap-10 md:grid-cols-12">
         <div class="md:col-span-5">
-          <img src="assets/logo.png" alt="innovarex swiss" class="h-8 w-auto" width="1200" height="199">
-          <p class="mt-4 max-w-sm text-sm leading-relaxed text-ink/60">Schweizer B2B-Partner für Import aus China, E-Commerce, Branding und Performance Marketing. Vom Produkt zur Marke – aus einer Hand.</p>
+          <img src="assets/logo-white.png" alt="innovarex swiss" class="h-8 w-auto" width="1726" height="286" loading="lazy">
+          <p class="mt-4 max-w-sm text-sm leading-relaxed text-white/60">Wir bauen E-Commerce-Marken – von der Fabrik in China bis zur Kampagne – und stellen dieses System Schweizer Unternehmen zur Verfügung.</p>
         </div>
         <div class="md:col-span-2">
-          <p class="text-xs font-semibold uppercase tracking-wider text-ink/50">Navigation</p>
+          <p class="text-xs font-semibold uppercase tracking-wider text-white/50">Navigation</p>
           <ul class="mt-4 space-y-2 text-sm">
-            <li><a href="#leistungen" class="text-ink/70 hover:text-ink">Leistungen</a></li>
-            <li><a href="#referenzen" class="text-ink/70 hover:text-ink">Referenzen</a></li>
-            <li><a href="#ablauf" class="text-ink/70 hover:text-ink">Ablauf</a></li>
-            <li><a href="#ueber-uns" class="text-ink/70 hover:text-ink">Über uns</a></li>
-            <li><a href="#kontakt" class="text-ink/70 hover:text-ink">Kontakt</a></li>
+            <li><a href="#leistungen" class="text-white/70 transition hover:text-white">Leistungen</a></li>
+            <li><a href="#vor-ort" class="text-white/70 transition hover:text-white">Vor Ort</a></li>
+            <li><a href="#referenzen" class="text-white/70 transition hover:text-white">Marken</a></li>
+            <li><a href="#ablauf" class="text-white/70 transition hover:text-white">Ablauf</a></li>
+            <li><a href="#kontakt" class="text-white/70 transition hover:text-white">Kontakt</a></li>
           </ul>
         </div>
         <div class="md:col-span-3">
-          <p class="text-xs font-semibold uppercase tracking-wider text-ink/50">Kontakt</p>
-          <address class="mt-4 text-sm not-italic leading-relaxed text-ink/70">
+          <p class="text-xs font-semibold uppercase tracking-wider text-white/50">Kontakt</p>
+          <address class="mt-4 text-sm not-italic leading-relaxed text-white/70">
             Innovarex GmbH<br>
             Schaffhauserstrasse 5<br>
             8193 Eglisau, Schweiz<br>
-            <a href="mailto:vdalipi@innovarex.swiss" class="hover:text-ink">vdalipi@innovarex.swiss</a>
+            <a href="mailto:vdalipi@innovarex.swiss" class="transition hover:text-white">vdalipi@innovarex.swiss</a>
           </address>
         </div>
         <div class="md:col-span-2">
-          <p class="text-xs font-semibold uppercase tracking-wider text-ink/50">Rechtliches</p>
+          <p class="text-xs font-semibold uppercase tracking-wider text-white/50">Rechtliches</p>
           <ul class="mt-4 space-y-2 text-sm">
-            <li><button type="button" class="text-ink/70 hover:text-ink" data-dialog="impressum">Impressum</button></li>
-            <li><button type="button" class="text-ink/70 hover:text-ink" data-dialog="datenschutz">Datenschutzerklärung</button></li>
-            <li><button type="button" class="text-ink/70 hover:text-ink" data-dialog="agb">AGB</button></li>
+            <li><button type="button" class="text-white/70 transition hover:text-white" data-dialog="impressum">Impressum</button></li>
+            <li><button type="button" class="text-white/70 transition hover:text-white" data-dialog="datenschutz">Datenschutzerklärung</button></li>
+            <li><button type="button" class="text-white/70 transition hover:text-white" data-dialog="agb">AGB</button></li>
           </ul>
         </div>
       </div>
-      <div class="mt-12 flex flex-col gap-3 border-t border-ink/10 pt-6 text-xs text-ink/50 sm:flex-row sm:items-center sm:justify-between">
+      <div class="mt-12 flex flex-col gap-3 border-t border-white/10 pt-6 text-xs text-white/50 sm:flex-row sm:items-center sm:justify-between">
         <p>© <span id="year">2026</span> Innovarex GmbH. Alle Rechte vorbehalten.</p>
-        <p>CHE-291.171.613 · Made in Switzerland</p>
+        <p>CHE-291.171.613 · Eglisau, Schweiz</p>
       </div>
     </div>
   </footer>
@@ -633,19 +837,19 @@
         <p class="font-semibold text-ink">1. Geltungsbereich</p>
         <p>Diese AGB gelten für alle Dienstleistungen der Innovarex GmbH (nachfolgend «Innovarex») gegenüber Geschäftskunden. Abweichende Bedingungen des Kunden gelten nur, wenn Innovarex ihnen schriftlich zugestimmt hat.</p>
         <p class="font-semibold text-ink">2. Leistungen</p>
-        <p>Innovarex bietet Dienstleistungen in den Bereichen Import und Produktion aus China, E-Commerce, Branding und Performance Marketing an. Der genaue Leistungsumfang wird in der jeweiligen individuellen Offerte festgelegt.</p>
+        <p>Innovarex bietet Dienstleistungen in den Bereichen Beschaffung und Produktion in China, E-Commerce, Branding und Performance Marketing an. Der genaue Leistungsumfang wird in der jeweiligen individuellen Offerte festgelegt. Beschaffungsaufträge werden ausschliesslich ab Serien- bzw. Produktionsmengen ausgeführt; die Mindestmenge wird in der Offerte ausgewiesen.</p>
         <p class="font-semibold text-ink">3. Offerte und Vertragsschluss</p>
         <p>Offerten sind unverbindlich und freibleibend. Ein Vertrag kommt durch schriftliche Auftragsbestätigung von Innovarex oder durch Beginn der Leistungserbringung zustande. Zusätzliche, nicht in der Offerte aufgeführte Kosten werden nur nach vorheriger Absprache berechnet.</p>
         <p class="font-semibold text-ink">4. Preise und Zahlung</p>
         <p>Alle Preise verstehen sich in Schweizer Franken. Bei Produktions- und Importaufträgen ist in der Regel eine Anzahlung vor Produktionsbeginn erforderlich; der Restbetrag wird vor Versand der Ware fällig. Die Zahlungsmodalitäten werden individuell vereinbart.</p>
         <p class="font-semibold text-ink">5. Lieferung</p>
         <p>Die Lieferung erfolgt an die vom Kunden angegebene Adresse in der Schweiz. Lieferfristen sind Richtwerte; Verzögerungen durch Produktion, Transport oder Zoll begründen keinen Anspruch auf Schadenersatz.</p>
-        <p class="font-semibold text-ink">6. Qualitätskontrolle und Mängelrüge</p>
-        <p>Innovarex führt Qualitätskontrollen während und nach der Produktion durch. Produktionsbedingte, geringfügige Abweichungen in Farbe, Grösse oder Material stellen keinen Mangel dar. Mängel sind innerhalb von 7 Werktagen nach Erhalt der Ware schriftlich zu melden.</p>
+        <p class="font-semibold text-ink">6. Qualitätskontrolle und Gewährleistung</p>
+        <p>Innovarex führt Qualitätskontrollen während der Produktion und vor dem Versand durch und gewährleistet, dass die gelieferte Ware der in der Offerte definierten Spezifikation entspricht. Produktionsbedingte, geringfügige Abweichungen in Farbe, Grösse oder Material stellen keinen Mangel dar. Mängel sind innerhalb von 7 Werktagen nach Erhalt der Ware schriftlich zu melden; Innovarex leistet nach eigener Wahl Nachbesserung, Ersatzlieferung oder Gutschrift.</p>
         <p class="font-semibold text-ink">7. Haftung</p>
-        <p>Innovarex haftet nur für Schäden, die auf vorsätzliches oder grob fahrlässiges Verhalten zurückzuführen sind. Die Haftung ist auf den Auftragswert der betroffenen Bestellung beschränkt. Eine Haftung für indirekte Schäden, Folgeschäden oder entgangenen Gewinn ist ausgeschlossen.</p>
+        <p>Über die Gewährleistung nach Ziffer 6 hinaus haftet Innovarex nur für Schäden, die auf vorsätzliches oder grob fahrlässiges Verhalten zurückzuführen sind. Die Haftung ist auf den Auftragswert der betroffenen Bestellung beschränkt. Eine Haftung für indirekte Schäden, Folgeschäden oder entgangenen Gewinn ist ausgeschlossen.</p>
         <p class="font-semibold text-ink">8. Vertraulichkeit und geistiges Eigentum</p>
-        <p>Beide Parteien behandeln vertrauliche Informationen vertraulich. Vom Kunden bereitgestellte Designs, Marken und Spezifikationen bleiben Eigentum des Kunden und werden nur im Rahmen des Auftrags verwendet.</p>
+        <p>Beide Parteien behandeln vertrauliche Informationen vertraulich. Vom Kunden bereitgestellte Designs, Marken und Spezifikationen bleiben Eigentum des Kunden und werden nur im Rahmen des Auftrags verwendet. Lieferantenkontakte von Innovarex bleiben Eigentum von Innovarex.</p>
         <p class="font-semibold text-ink">9. Anwendbares Recht und Gerichtsstand</p>
         <p>Es gilt ausschliesslich Schweizer Recht. Gerichtsstand ist der Sitz der Innovarex GmbH.</p>
         <p class="font-semibold text-ink">10. Schlussbestimmungen</p>
@@ -656,16 +860,37 @@
 
   <script>
     (function () {
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
       // Jahr im Footer
       document.getElementById('year').textContent = new Date().getFullYear();
 
-      // Header-Schatten beim Scrollen
+      // Fortschrittsbalken + Header (Schatten, ausblenden beim Runterscrollen)
       var header = document.getElementById('header');
+      var progress = document.getElementById('progress');
+      var lastY = 0;
       var onScroll = function () {
-        header.classList.toggle('border-ink/5', window.scrollY > 8);
-        header.classList.toggle('shadow-sm', window.scrollY > 8);
+        var y = window.scrollY;
+        var max = document.documentElement.scrollHeight - window.innerHeight;
+        progress.style.transform = 'scaleX(' + (max > 0 ? Math.min(1, y / max) : 0) + ')';
+        header.classList.toggle('border-ink/5', y > 8);
+        header.classList.toggle('shadow-sm', y > 8);
+        var menuOpen = !document.getElementById('mobile-menu').classList.contains('hidden');
+        header.classList.toggle('is-hidden', y > 320 && y > lastY && !menuOpen);
+        lastY = y;
+        // Parallax
+        if (!reduce) {
+          document.querySelectorAll('[data-parallax]').forEach(function (el) {
+            var r = el.getBoundingClientRect();
+            if (r.bottom < 0 || r.top > window.innerHeight) return;
+            var f = parseFloat(el.getAttribute('data-parallax')) || 0.05;
+            var off = (r.top + r.height / 2 - window.innerHeight / 2) * f;
+            el.style.transform = 'translateY(' + (-off).toFixed(1) + 'px)';
+          });
+        }
       };
       window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', onScroll);
       onScroll();
 
       // Mobile-Menü
@@ -679,22 +904,81 @@
         iconClose.classList.toggle('hidden', !open);
         toggle.setAttribute('aria-expanded', String(open));
         toggle.setAttribute('aria-label', open ? 'Menü schliessen' : 'Menü öffnen');
+        if (open) header.classList.remove('is-hidden');
       };
       toggle.addEventListener('click', function () { setMenu(menu.classList.contains('hidden')); });
       menu.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', function () { setMenu(false); }); });
 
+      // Rotierendes Wort in der Headline
+      var rot = document.getElementById('rotator');
+      if (rot && !reduce) {
+        var words = rot.querySelectorAll('span');
+        var idx = 0;
+        setInterval(function () {
+          words[idx].classList.remove('active');
+          idx = (idx + 1) % words.length;
+          words[idx].classList.add('active');
+        }, 2800);
+      }
+
       // Einblend-Animationen
-      var revealEls = document.querySelectorAll('.reveal');
-      if ('IntersectionObserver' in window) {
+      var revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-scale, .reveal-clip');
+      if ('IntersectionObserver' in window && !reduce) {
         var io = new IntersectionObserver(function (entries) {
           entries.forEach(function (e) {
             if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); }
           });
-        }, { threshold: 0.12 });
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
         revealEls.forEach(function (el) { io.observe(el); });
       } else {
         revealEls.forEach(function (el) { el.classList.add('is-visible'); });
       }
+
+      // Zahlen hochzählen
+      var counters = document.querySelectorAll('[data-count]');
+      var runCount = function (el) {
+        var end = parseInt(el.getAttribute('data-count'), 10);
+        var start = parseInt(el.getAttribute('data-start') || '0', 10);
+        if (reduce) { el.textContent = end; return; }
+        var dur = 1400, t0 = null;
+        var step = function (ts) {
+          if (!t0) t0 = ts;
+          var p = Math.min(1, (ts - t0) / dur);
+          var eased = 1 - Math.pow(1 - p, 3);
+          el.textContent = Math.round(start + (end - start) * eased);
+          if (p < 1) requestAnimationFrame(step);
+        };
+        requestAnimationFrame(step);
+      };
+      if ('IntersectionObserver' in window) {
+        var cio = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) { if (e.isIntersecting) { runCount(e.target); cio.unobserve(e.target); } });
+        }, { threshold: 0.6 });
+        counters.forEach(function (el) { cio.observe(el); });
+      } else {
+        counters.forEach(function (el) { el.textContent = el.getAttribute('data-count'); });
+      }
+
+      // Karten leicht zur Maus neigen
+      if (!reduce && window.matchMedia('(hover: hover)').matches) {
+        document.querySelectorAll('.tilt').forEach(function (card) {
+          card.addEventListener('mousemove', function (e) {
+            var r = card.getBoundingClientRect();
+            var x = (e.clientX - r.left) / r.width - 0.5;
+            var y = (e.clientY - r.top) / r.height - 0.5;
+            card.style.transform = 'perspective(900px) rotateX(' + (-y * 6).toFixed(2) + 'deg) rotateY(' + (x * 6).toFixed(2) + 'deg) translateY(-4px)';
+          });
+          card.addEventListener('mouseleave', function () { card.style.transform = ''; });
+        });
+      }
+
+      // Nur ein FAQ-Eintrag offen
+      var faqs = document.querySelectorAll('details');
+      faqs.forEach(function (d) {
+        d.addEventListener('toggle', function () {
+          if (d.open) faqs.forEach(function (o) { if (o !== d && o.open) o.open = false; });
+        });
+      });
 
       // Rechtliche Dialoge
       document.querySelectorAll('[data-dialog]').forEach(function (btn) {

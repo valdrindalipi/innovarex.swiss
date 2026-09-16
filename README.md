@@ -20,8 +20,9 @@ landingpage/
 ├── index.html          Komplette Seite (Navigation, Hero, Leistungen, Referenzen,
 │                       Ablauf, Über uns, Kontaktformular, Footer, Impressum/Datenschutz/AGB)
 └── assets/
-    ├── logo.png            Logo, 1200 px breit (wird auf der Seite verwendet)
-    └── logo-original.png   Logo in Originalauflösung
+    ├── logo.png / logo-white.png   Innovarex-Logo, transparent (hell / dunkel)
+    ├── logos/                      Marken-Logos (PowerJet, MatchaGlow, Wiegeparadies, MeditSoul)
+    └── img/                        Fotos: Fabrik & Lieferant in China, Lager Schweiz, Founder
 ```
 
 ## Kontaktformular
