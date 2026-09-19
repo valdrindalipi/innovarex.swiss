@@ -9,4 +9,10 @@
     <image:image><image:loc>https://innovarex.swiss/assets/img/qc-produktionshalle.jpg</image:loc><image:title>Produktionshalle einer Supplement-Fabrik in China</image:title></image:image>
     <image:image><image:loc>https://innovarex.swiss/assets/img/valdrin-dalipi.jpg</image:loc><image:title>Valdrin Dalipi, Gründer der Innovarex GmbH</image:title></image:image>
   </url>
+  <url>
+    <loc>https://innovarex.swiss/valdrin/</loc>
+    <lastmod>2026-09-19</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
 </urlset>
