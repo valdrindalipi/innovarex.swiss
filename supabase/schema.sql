@@ -131,3 +131,16 @@ drop policy if exists briefings_auth_insert on public.briefings;
 create policy briefings_auth_insert on public.briefings for insert to authenticated with check (true);
 drop policy if exists leads_auth_insert on public.leads;
 create policy leads_auth_insert on public.leads for insert to authenticated with check (true);
+-- Patch 002: Nur vdalipi@innovarex.swiss darf ein Konto haben. Jeder andere Login-Versuch wird auf Datenbank-Ebene abgelehnt.
+create or replace function public.only_admin_accounts() returns trigger language plpgsql security definer as $$
+begin
+  if lower(coalesce(new.email, '')) <> 'vdalipi@innovarex.swiss' then
+    raise exception 'Kein Zugang für diese E-Mail-Adresse.';
+  end if;
+  return new;
+end $$;
+drop trigger if exists only_admin_accounts on auth.users;
+create trigger only_admin_accounts before insert on auth.users for each row execute function public.only_admin_accounts();
+
+-- Bestehende Fremdkonten entfernen, falls vorhanden
+delete from auth.users where lower(email) <> 'vdalipi@innovarex.swiss';
