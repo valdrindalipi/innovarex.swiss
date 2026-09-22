@@ -140,7 +140,7 @@
   <script>
   (function () {
     var SB_URL = 'https://fgmvvtvcrjngqzyrkvfn.supabase.co', SB_KEY = 'sb_publishable_lk1BiwTkmdKP8X6Gm0mHrQ_xu2U0HYd', ADMIN = 'vdalipi@innovarex.swiss';
-    var sb = window.supabase.createClient(SB_URL, SB_KEY);
+    var sb = window.supabase.createClient(SB_URL, SB_KEY, { auth: { storageKey: 'innovarex-admin' } });
     var STAGES = [['neu','Neu'],['erstgespraech','Erstgespräch'],['briefing','Briefing offen'],['kalkulation','Kalkulation'],['muster','Muster'],['angebot','Angebot'],['gewonnen','Gewonnen'],['verloren','Verloren']];
     var OPEN = ['neu','erstgespraech','briefing','kalkulation','muster','angebot'];
     var LABEL = {}; STAGES.forEach(function (s) { LABEL[s[0]] = s[1]; });

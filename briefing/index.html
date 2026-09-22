@@ -174,7 +174,7 @@
   <script>
   (function () {
     var SB_URL = 'https://fgmvvtvcrjngqzyrkvfn.supabase.co', SB_KEY = 'sb_publishable_lk1BiwTkmdKP8X6Gm0mHrQ_xu2U0HYd';
-    var sb = window.supabase.createClient(SB_URL, SB_KEY);
+    var sb = window.supabase.createClient(SB_URL, SB_KEY, { auth: { persistSession: false, autoRefreshToken: false, detectSessionInUrl: false } });
     var token = new URLSearchParams(location.search).get('t') || null;
     var form = document.getElementById('briefing'), steps = Array.prototype.slice.call(form.querySelectorAll('.step')), cur = 1, total = steps.length;
     var prev = document.getElementById('prev'), next = document.getElementById('next'), send = document.getElementById('send'), err = document.getElementById('err');
@@ -250,13 +250,13 @@
       var upload = all.reduce(function (p, item) {
         return p.then(function () {
           var path = folder + '/' + item.k + '-' + item.f.name.replace(/[^a-zA-Z0-9._-]/g, '_');
-          return sb.storage.from('briefing').upload(path, item.f, { upsert: false }).then(function (r) { if (r.error) throw r.error; uploaded.push({ feld: item.k, pfad: path, name: item.f.name, groesse: item.f.size }); });
+          return sb.storage.from('briefing').upload(path, item.f, { upsert: false }).then(function (r) { if (r.error) throw new Error('Upload von ' + item.f.name + ': ' + r.error.message); uploaded.push({ feld: item.k, pfad: path, name: item.f.name, groesse: item.f.size }); });
         });
       }, Promise.resolve());
       upload.then(function () {
         return sb.from('briefings').insert({ token: token, firma: d.firma || null, ansprechperson: d.ansprechperson || null, email: d.email || null, telefon: d.telefon || null, daten: d, dateien: uploaded });
       }).then(function (r) {
-        if (r.error) throw r.error;
+        if (r.error) throw new Error('Speichern: ' + r.error.message);
         var fd = new FormData(); fd.append('_subject', 'Neues Briefing: ' + (d.firma || d.ansprechperson)); fd.append('_template', 'table');
         fd.append('Firma', d.firma || ''); fd.append('Ansprechperson', d.ansprechperson || ''); fd.append('E-Mail', d.email || ''); fd.append('Produkt', d.produkt_name || ''); fd.append('Menge', d.menge_erstbestellung || ''); fd.append('Dateien', String(uploaded.length)); fd.append('Admin', 'https://innovarex.swiss/admin/');
         return fetch('https://formsubmit.co/ajax/vdalipi@innovarex.swiss', { method: 'POST', headers: { Accept: 'application/json' }, body: fd }).catch(function () {});
