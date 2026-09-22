@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="de-CH">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projekt-Briefing | Innovarex GmbH</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={theme:{extend:{fontFamily:{sans:['Inter','system-ui','sans-serif'],display:['Space Grotesk','Inter','sans-serif']},colors:{ink:{DEFAULT:'#0B0F19',800:'#141A26'},accent:{DEFAULT:'#7633E3',600:'#6224C9',50:'#F3EEFD'},swiss:'#E30613'},boxShadow:{card:'0 1px 2px rgba(11,15,25,.04), 0 8px 24px -12px rgba(11,15,25,.12)'}}}}</script>
+  <style>
+    .step{display:none}.step.active{display:block;animation:in .4s cubic-bezier(.2,.7,.2,1)}
+    @keyframes in{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+    .field{width:100%;border:1px solid rgba(11,15,25,.15);border-radius:.75rem;padding:.75rem 1rem;font-size:.875rem;outline:none;background:#fff}
+    .field:focus{border-color:#0B0F19;box-shadow:0 0 0 3px rgba(11,15,25,.08)}
+    .chip{display:flex;align-items:center;gap:.75rem;border:1px solid rgba(11,15,25,.12);border-radius:1rem;padding:.9rem 1rem;font-size:.875rem;font-weight:500;background:#fff;cursor:pointer;text-align:left;transition:.15s}
+    .chip:hover{border-color:#7633E3}.chip.on{border-color:#7633E3;background:#F3EEFD}
+    .chip .box{width:1.1rem;height:1.1rem;border-radius:.3rem;border:1px solid rgba(11,15,25,.25);flex-shrink:0;display:flex;align-items:center;justify-content:center}
+    .chip.on .box{background:#7633E3;border-color:#7633E3}
+    .chip.radio .box{border-radius:999px}
+    label.lbl{display:block;font-size:.875rem;font-weight:500;margin-bottom:.5rem}
+    .hint{font-size:.75rem;color:rgba(11,15,25,.55);margin-top:.4rem}
+  </style>
+</head>
+<body class="bg-stone-50 text-ink font-sans antialiased">
+  <header class="border-b border-ink/5 bg-white">
+    <div class="mx-auto flex h-16 max-w-3xl items-center justify-between px-4 sm:px-6">
+      <a href="/" aria-label="Innovarex"><img src="/assets/logo.png" alt="Innovarex Swiss" class="h-7 w-auto"></a>
+      <a href="tel:+41784419989" class="text-sm font-medium text-ink/70 hover:text-ink">+41 78 441 99 89</a>
+    </div>
+  </header>
+
+  <main class="mx-auto max-w-3xl px-4 py-10 sm:px-6 sm:py-14">
+    <div id="intro">
+      <p class="text-sm font-semibold uppercase tracking-wider text-accent">Projekt-Briefing</p>
+      <h1 class="font-display mt-3 text-3xl font-bold tracking-tight sm:text-4xl">Damit wir Ihnen eine Kalkulation statt zehn Rückfragen schicken.</h1>
+      <p class="mt-4 text-lg text-ink/70">Neun kurze Schritte, rund zehn Minuten. Sie können jederzeit unterbrechen, Ihre Angaben bleiben in diesem Browser gespeichert. Was Sie nicht wissen, lassen Sie leer.</p>
+    </div>
+
+    <div class="mt-8 flex items-center justify-between text-xs font-semibold uppercase tracking-wider text-ink/50">
+      <span id="step-label">Schritt 1 von 9</span><span id="step-title">Firma und Kontakt</span>
+    </div>
+    <div class="mt-2 h-1.5 w-full overflow-hidden rounded-full bg-ink/10"><div id="bar" class="h-full w-[11%] rounded-full bg-accent transition-all duration-500"></div></div>
+
+    <form id="briefing" class="mt-8 rounded-3xl border border-ink/5 bg-white p-6 shadow-card sm:p-10" novalidate>
+
+      <section class="step active" data-step="1" data-title="Firma und Kontakt">
+        <div class="grid gap-5 sm:grid-cols-2">
+          <div><label class="lbl">Firma <span class="text-swiss">*</span></label><input class="field" name="firma" required></div>
+          <div><label class="lbl">Ansprechperson <span class="text-swiss">*</span></label><input class="field" name="ansprechperson" required autocomplete="name"></div>
+          <div><label class="lbl">Rolle im Unternehmen</label><input class="field" name="rolle" placeholder="z. B. Geschäftsführer, Einkauf"></div>
+          <div><label class="lbl">Branche</label><input class="field" name="branche" placeholder="z. B. Bau, E-Commerce, Handel"></div>
+          <div><label class="lbl">E-Mail <span class="text-swiss">*</span></label><input class="field" name="email" type="email" required autocomplete="email"></div>
+          <div><label class="lbl">Telefon</label><input class="field" name="telefon" type="tel" autocomplete="tel"></div>
+          <div class="sm:col-span-2"><label class="lbl">Website oder Shop (falls vorhanden)</label><input class="field" name="website" placeholder="https://"></div>
+        </div>
+      </section>
+
+      <section class="step" data-step="2" data-title="Das Produkt">
+        <div class="grid gap-5">
+          <div><label class="lbl">Produktname oder Arbeitstitel <span class="text-swiss">*</span></label><input class="field" name="produkt_name" required></div>
+          <div><label class="lbl">Beschreibung <span class="text-swiss">*</span></label><textarea class="field" name="produkt_beschreibung" rows="4" required placeholder="Was ist es, wofür wird es gebraucht, was muss es können?"></textarea></div>
+          <div><label class="lbl">Referenz-Link</label><input class="field" name="referenz_link" placeholder="Link zu einem ähnlichen Produkt (Amazon, Alibaba, Konkurrent)"><p class="hint">Der schnellste Weg, damit wir dasselbe verstehen wie Sie.</p></div>
+          <div class="grid gap-5 sm:grid-cols-3">
+            <div><label class="lbl">Masse (L × B × H)</label><input class="field" name="masse" placeholder="z. B. 20 × 10 × 5 cm"></div>
+            <div><label class="lbl">Gewicht</label><input class="field" name="gewicht" placeholder="z. B. 350 g"></div>
+            <div><label class="lbl">Material</label><input class="field" name="material" placeholder="z. B. ABS, Edelstahl, Baumwolle"></div>
+          </div>
+          <div><label class="lbl">Farben und Varianten</label><input class="field" name="varianten" placeholder="z. B. Schwarz und Weiss, Grössen S bis XL"></div>
+          <div><label class="lbl">Zwingende Funktionen oder Eigenschaften</label><textarea class="field" name="muss_kriterien" rows="3" placeholder="Was darf auf keinen Fall fehlen?"></textarea></div>
+          <div>
+            <label class="lbl">Bilder, Skizzen oder Datenblätter</label>
+            <label class="flex cursor-pointer flex-col items-center justify-center rounded-2xl border-2 border-dashed border-ink/15 bg-stone-50 px-4 py-8 text-center text-sm text-ink/60 transition hover:border-accent">
+              <span class="font-semibold text-ink">Dateien auswählen</span><span class="mt-1">JPG, PNG, PDF, bis 15 MB pro Datei</span>
+              <input type="file" name="produkt_dateien" class="hidden" multiple accept="image/*,application/pdf" data-files>
+            </label>
+            <ul class="mt-3 space-y-1 text-sm text-ink/70" data-filelist></ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="step" data-step="3" data-title="Neu oder bestehend">
+        <label class="lbl">Wird das Produkt heute schon verkauft? <span class="text-swiss">*</span></label>
+        <div class="grid gap-3 sm:grid-cols-2" data-radio="bestehend">
+          <button type="button" class="chip radio" data-value="Neues Produkt"><span class="box"></span>Nein, neues Produkt</button>
+          <button type="button" class="chip radio" data-value="Bestehendes Produkt"><span class="box"></span>Ja, bestehendes Produkt</button>
+        </div>
+        <div id="bestehend-details" class="mt-6 hidden grid gap-5">
+          <div class="grid gap-5 sm:grid-cols-2">
+            <div><label class="lbl">Aktueller Lieferant (Land, Plattform)</label><input class="field" name="aktueller_lieferant"></div>
+            <div><label class="lbl">Aktueller Einkaufspreis pro Stück</label><input class="field" name="aktueller_ek" placeholder="CHF oder USD"></div>
+            <div><label class="lbl">Verkaufspreis pro Stück</label><input class="field" name="aktueller_vk" placeholder="CHF"></div>
+            <div><label class="lbl">Muster des heutigen Produkts vorhanden?</label><select class="field" name="muster_vorhanden"><option value="">Bitte wählen</option><option>Ja, kann ich schicken</option><option>Nein</option></select></div>
+          </div>
+          <div><label class="lbl">Was stört heute?</label><div class="grid gap-3 sm:grid-cols-2" data-multi="stoert"><button type="button" class="chip" data-value="Preis zu hoch"><span class="box"></span>Preis zu hoch</button><button type="button" class="chip" data-value="Qualität schwankt"><span class="box"></span>Qualität schwankt</button><button type="button" class="chip" data-value="Lieferzeit zu lang"><span class="box"></span>Lieferzeit zu lang</button><button type="button" class="chip" data-value="Kommunikation schwierig"><span class="box"></span>Kommunikation schwierig</button><button type="button" class="chip" data-value="Verpackung oder Branding fehlt"><span class="box"></span>Verpackung oder Branding fehlt</button><button type="button" class="chip" data-value="Mindestmenge zu hoch"><span class="box"></span>Mindestmenge zu hoch</button></div></div>
+        </div>
+      </section>
+
+      <section class="step" data-step="4" data-title="Menge und Budget">
+        <div class="grid gap-5 sm:grid-cols-2">
+          <div><label class="lbl">Stück pro Erstbestellung <span class="text-swiss">*</span></label><select class="field" name="menge_erstbestellung" required><option value="">Bitte wählen</option><option>300 bis 500</option><option>500 bis 1'000</option><option>1'000 bis 2'000</option><option>2'000 bis 5'000</option><option>5'000 bis 10'000</option><option>Über 10'000</option><option>Unter 300, bitte prüfen</option></select></div>
+          <div><label class="lbl">Erwartete Nachbestellungen pro Jahr</label><select class="field" name="nachbestellungen"><option value="">Bitte wählen</option><option>Einmalig</option><option>1 bis 2 Mal</option><option>3 bis 6 Mal</option><option>Laufend, monatlich</option></select></div>
+          <div><label class="lbl">Zielpreis pro Stück ab Lager Schweiz</label><input class="field" name="zielpreis" placeholder="CHF"></div>
+          <div><label class="lbl">Budget für die erste Bestellung</label><select class="field" name="budget"><option value="">Bitte wählen</option><option>Unter CHF 10'000</option><option>CHF 10'000 bis 25'000</option><option>CHF 25'000 bis 50'000</option><option>CHF 50'000 bis 100'000</option><option>Über CHF 100'000</option></select></div>
+        </div>
+        <p class="hint mt-4">Einzelbestellungen unter 300 Stück setzen wir in der Regel nicht um. Die Mindestmenge hängt vom Produkt ab, bei einfachen Artikeln liegt sie tiefer als bei Elektronik.</p>
+      </section>
+
+      <section class="step" data-step="5" data-title="Branding und Verpackung">
+        <div class="grid gap-6">
+          <div><label class="lbl">Eigene Marke oder neutral? <span class="text-swiss">*</span></label><div class="grid gap-3 sm:grid-cols-3" data-radio="branding"><button type="button" class="chip radio" data-value="Eigene Marke"><span class="box"></span>Eigene Marke</button><button type="button" class="chip radio" data-value="Neutral, ohne Logo"><span class="box"></span>Neutral, ohne Logo</button><button type="button" class="chip radio" data-value="Noch offen"><span class="box"></span>Noch offen</button></div></div>
+          <div><label class="lbl">Logo vorhanden?</label><div class="grid gap-3 sm:grid-cols-3" data-radio="logo"><button type="button" class="chip radio" data-value="Ja, lade ich hoch"><span class="box"></span>Ja, lade ich hoch</button><button type="button" class="chip radio" data-value="Nein, brauchen wir"><span class="box"></span>Nein, brauchen wir</button><button type="button" class="chip radio" data-value="Kein Logo nötig"><span class="box"></span>Kein Logo nötig</button></div>
+            <label class="mt-3 flex cursor-pointer items-center justify-center rounded-2xl border-2 border-dashed border-ink/15 bg-stone-50 px-4 py-5 text-sm text-ink/60 transition hover:border-accent"><span class="font-semibold text-ink">Logo hochladen</span><span class="ml-2">PNG, SVG oder PDF</span><input type="file" name="logo_dateien" class="hidden" multiple accept="image/*,application/pdf,.svg" data-files></label><ul class="mt-2 space-y-1 text-sm text-ink/70" data-filelist></ul></div>
+          <div><label class="lbl">Logo auf dem Produkt</label><div class="grid gap-3 sm:grid-cols-2" data-multi="logo_anbringung"><button type="button" class="chip" data-value="Druck"><span class="box"></span>Druck</button><button type="button" class="chip" data-value="Prägung oder Gravur"><span class="box"></span>Prägung oder Gravur</button><button type="button" class="chip" data-value="Etikett oder Aufkleber"><span class="box"></span>Etikett oder Aufkleber</button><button type="button" class="chip" data-value="Eingewoben oder gestickt"><span class="box"></span>Eingewoben oder gestickt</button></div></div>
+          <div><label class="lbl">Verpackung</label><div class="grid gap-3 sm:grid-cols-2" data-multi="verpackung"><button type="button" class="chip" data-value="Standardkarton, neutral"><span class="box"></span>Standardkarton, neutral</button><button type="button" class="chip" data-value="Bedruckte Box"><span class="box"></span>Bedruckte Box</button><button type="button" class="chip" data-value="Giftbox mit Einsatz"><span class="box"></span>Giftbox mit Einsatz</button><button type="button" class="chip" data-value="Anleitung auf Deutsch"><span class="box"></span>Anleitung auf Deutsch</button><button type="button" class="chip" data-value="Barcode EAN"><span class="box"></span>Barcode EAN</button><button type="button" class="chip" data-value="Versandfertig einzeln verpackt"><span class="box"></span>Versandfertig einzeln verpackt</button></div></div>
+          <div><label class="lbl">Markenfarben oder Design-Vorgaben</label><input class="field" name="markenfarben" placeholder="z. B. Dunkelblau und Weiss, Schrift Montserrat"></div>
+        </div>
+      </section>
+
+      <section class="step" data-step="6" data-title="Qualität und Vorschriften">
+        <div class="grid gap-6">
+          <div><label class="lbl">Zertifikate oder Prüfungen nötig?</label><div class="grid gap-3 sm:grid-cols-2" data-multi="zertifikate"><button type="button" class="chip" data-value="CE"><span class="box"></span>CE</button><button type="button" class="chip" data-value="RoHS oder REACH"><span class="box"></span>RoHS oder REACH</button><button type="button" class="chip" data-value="Lebensmittelkontakt LFGB"><span class="box"></span>Lebensmittelkontakt (LFGB)</button><button type="button" class="chip" data-value="Spielzeug EN 71"><span class="box"></span>Spielzeug (EN 71)</button><button type="button" class="chip" data-value="Kosmetik oder Supplement"><span class="box"></span>Kosmetik oder Supplement</button><button type="button" class="chip" data-value="Weiss ich nicht"><span class="box"></span>Weiss ich nicht, bitte beraten</button></div></div>
+          <div><label class="lbl">Zielmarkt</label><div class="grid gap-3 sm:grid-cols-3" data-radio="zielmarkt"><button type="button" class="chip radio" data-value="Nur Schweiz"><span class="box"></span>Nur Schweiz</button><button type="button" class="chip radio" data-value="Schweiz und EU"><span class="box"></span>Schweiz und EU</button><button type="button" class="chip radio" data-value="Weltweit"><span class="box"></span>Weltweit</button></div></div>
+          <div><label class="lbl">Besondere Qualitätsanforderungen</label><textarea class="field" name="qualitaet_hinweise" rows="3" placeholder="z. B. Toleranzen, Belastungstests, Farbtreue, Garantie"></textarea></div>
+        </div>
+      </section>
+
+      <section class="step" data-step="7" data-title="Logistik">
+        <div class="grid gap-5 sm:grid-cols-2">
+          <div class="sm:col-span-2"><label class="lbl">Lieferadresse</label><input class="field" name="lieferadresse" placeholder="Strasse, PLZ, Ort"></div>
+          <div><label class="lbl">Anlieferung</label><select class="field" name="anlieferung"><option value="">Bitte wählen</option><option>Palette an unser Lager</option><option>Pakete an unser Lager</option><option>Zwischenlagerung bei Innovarex</option><option>Direktversand an Endkunden durch Innovarex</option></select></div>
+          <div><label class="lbl">Wunschtermin</label><input class="field" name="wunschtermin" placeholder="z. B. vor Weihnachten, KW 20"></div>
+          <div class="sm:col-span-2"><label class="lbl">Fracht</label><div class="grid gap-3 sm:grid-cols-3" data-radio="fracht"><button type="button" class="chip radio" data-value="Günstig, Seefracht"><span class="box"></span>Günstig, See (ca. 6 Wochen)</button><button type="button" class="chip radio" data-value="Mittel, Zugfracht"><span class="box"></span>Mittel, Zug (3 bis 4 Wochen)</button><button type="button" class="chip radio" data-value="Schnell, Luftfracht"><span class="box"></span>Schnell, Luft (Tage)</button></div></div>
+        </div>
+      </section>
+
+      <section class="step" data-step="8" data-title="Verkauf">
+        <div class="grid gap-6">
+          <div><label class="lbl">Wo wird verkauft?</label><div class="grid gap-3 sm:grid-cols-2" data-multi="kanaele"><button type="button" class="chip" data-value="Eigener Onlineshop"><span class="box"></span>Eigener Onlineshop</button><button type="button" class="chip" data-value="Galaxus oder Brack"><span class="box"></span>Galaxus oder Brack</button><button type="button" class="chip" data-value="Stationärer Handel"><span class="box"></span>Stationärer Handel</button><button type="button" class="chip" data-value="B2B an Firmen"><span class="box"></span>B2B an Firmen</button><button type="button" class="chip" data-value="Eigener Gebrauch, kein Verkauf"><span class="box"></span>Eigener Gebrauch, kein Verkauf</button></div></div>
+          <div><label class="lbl">Brauchen Sie von uns zusätzlich</label><div class="grid gap-3 sm:grid-cols-2" data-multi="zusatz"><button type="button" class="chip" data-value="Shopify-Shop oder Website"><span class="box"></span>Shopify-Shop oder Website</button><button type="button" class="chip" data-value="Produktfotos und Videos"><span class="box"></span>Produktfotos und Videos</button><button type="button" class="chip" data-value="Ads Google Meta TikTok"><span class="box"></span>Ads auf Google, Meta, TikTok</button><button type="button" class="chip" data-value="E-Mail und WhatsApp Automationen"><span class="box"></span>E-Mail- und WhatsApp-Automationen</button><button type="button" class="chip" data-value="Nichts davon"><span class="box"></span>Nichts davon</button></div></div>
+        </div>
+      </section>
+
+      <section class="step" data-step="9" data-title="Entscheidung">
+        <div class="grid gap-5 sm:grid-cols-2">
+          <div><label class="lbl">Wer entscheidet?</label><input class="field" name="entscheider" placeholder="z. B. ich allein, Geschäftsleitung"></div>
+          <div><label class="lbl">Entscheidung bis</label><input class="field" name="entscheidung_bis" placeholder="z. B. Ende Monat"></div>
+          <div><label class="lbl">Vergleichsangebote vorhanden?</label><select class="field" name="vergleich"><option value="">Bitte wählen</option><option>Nein</option><option>Ja, ein bis zwei</option><option>Ja, mehrere</option></select></div>
+          <div><label class="lbl">Wichtigstes Kriterium</label><select class="field" name="kriterium"><option value="">Bitte wählen</option><option>Preis</option><option>Qualität</option><option>Tempo</option><option>Alles aus einer Hand</option></select></div>
+          <div class="sm:col-span-2"><label class="lbl">Sonst noch etwas?</label><textarea class="field" name="bemerkung" rows="3"></textarea></div>
+        </div>
+        <label class="mt-6 flex items-start gap-3 text-sm text-ink/70"><input type="checkbox" name="datenschutz" required class="mt-1 h-4 w-4 accent-ink"><span>Ich bin einverstanden, dass Innovarex meine Angaben und Dateien zur Erstellung einer Kalkulation verwendet. <a href="/#kontakt" class="underline">Datenschutz</a> <span class="text-swiss">*</span></span></label>
+      </section>
+
+      <p id="err" class="mt-5 hidden text-sm text-swiss" role="alert"></p>
+      <div class="mt-8 flex items-center justify-between gap-4">
+        <button type="button" id="prev" class="rounded-full border border-ink/15 px-6 py-3 text-sm font-semibold transition hover:border-ink/40 disabled:opacity-30">Zurück</button>
+        <button type="button" id="next" class="group inline-flex items-center gap-2 rounded-full bg-accent px-7 py-3 text-sm font-semibold text-white shadow-lg shadow-accent/25 transition hover:bg-accent-600">Weiter<svg class="h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6"/></svg></button>
+        <button type="submit" id="send" class="hidden inline-flex items-center gap-2 rounded-full bg-accent px-7 py-3 text-sm font-semibold text-white shadow-lg shadow-accent/25 transition hover:bg-accent-600 disabled:opacity-60">Briefing senden</button>
+      </div>
+    </form>
+
+    <div id="done" class="mt-8 hidden rounded-3xl border border-ink/5 bg-white p-8 text-center shadow-card sm:p-12">
+      <span class="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-accent text-white"><svg class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7"/></svg></span>
+      <h2 class="font-display mt-6 text-2xl font-bold">Danke, Ihr Briefing ist bei uns.</h2>
+      <p class="mx-auto mt-3 max-w-md text-ink/70">Wir prüfen Ihre Angaben und melden uns innerhalb von zwei Werktagen mit einer ersten Einschätzung oder direkt mit der Kalkulation.</p>
+      <a href="/" class="mt-8 inline-flex rounded-full bg-ink px-6 py-3 text-sm font-semibold text-white">Zur Startseite</a>
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  <script>
+  (function () {
+    var SB_URL = 'https://fgmvvtvcrjngqzyrkvfn.supabase.co', SB_KEY = 'sb_publishable_lk1BiwTkmdKP8X6Gm0mHrQ_xu2U0HYd';
+    var sb = window.supabase.createClient(SB_URL, SB_KEY);
+    var token = new URLSearchParams(location.search).get('t') || null;
+    var form = document.getElementById('briefing'), steps = Array.prototype.slice.call(form.querySelectorAll('.step')), cur = 1, total = steps.length;
+    var prev = document.getElementById('prev'), next = document.getElementById('next'), send = document.getElementById('send'), err = document.getElementById('err');
+    var choices = {}; var files = {};
+    var KEY = 'innovarex-briefing';
+
+    // Auswahl-Chips
+    form.querySelectorAll('[data-multi],[data-radio]').forEach(function (g) {
+      var name = g.getAttribute('data-multi') || g.getAttribute('data-radio'), multi = g.hasAttribute('data-multi');
+      choices[name] = multi ? [] : '';
+      g.querySelectorAll('.chip').forEach(function (c) {
+        c.addEventListener('click', function () {
+          var v = c.getAttribute('data-value');
+          if (multi) { var i = choices[name].indexOf(v); if (i < 0) choices[name].push(v); else choices[name].splice(i, 1); c.classList.toggle('on'); }
+          else { choices[name] = v; g.querySelectorAll('.chip').forEach(function (o) { o.classList.remove('on'); }); c.classList.add('on'); }
+          if (name === 'bestehend') document.getElementById('bestehend-details').classList.toggle('hidden', v !== 'Bestehendes Produkt');
+          save();
+        });
+      });
+    });
+    // Dateien
+    form.querySelectorAll('[data-files]').forEach(function (inp) {
+      files[inp.name] = [];
+      inp.addEventListener('change', function () {
+        files[inp.name] = files[inp.name].concat(Array.prototype.slice.call(inp.files)).slice(0, 10);
+        var ul = inp.closest('div').querySelector('[data-filelist]') || inp.parentElement.parentElement.querySelector('[data-filelist]');
+        ul.innerHTML = files[inp.name].map(function (f) { return '<li>' + f.name + ' (' + Math.round(f.size / 1024) + ' KB)</li>'; }).join('');
+      });
+    });
+    // Zwischenspeichern
+    function data() {
+      var d = {}; new FormData(form).forEach(function (v, k) { if (typeof v === 'string' && v) d[k] = v; });
+      Object.keys(choices).forEach(function (k) { if (choices[k] && choices[k].length) d[k] = choices[k]; });
+      return d;
+    }
+    function save() { try { localStorage.setItem(KEY, JSON.stringify({ step: cur, data: data(), choices: choices })); } catch (e) {} }
+    function restore() {
+      try {
+        var s = JSON.parse(localStorage.getItem(KEY) || 'null'); if (!s) return;
+        Object.keys(s.data || {}).forEach(function (k) { var el = form.elements[k]; if (el && typeof s.data[k] === 'string') el.value = s.data[k]; });
+        Object.keys(s.choices || {}).forEach(function (k) {
+          choices[k] = s.choices[k]; var g = form.querySelector('[data-multi="' + k + '"],[data-radio="' + k + '"]'); if (!g) return;
+          g.querySelectorAll('.chip').forEach(function (c) { var v = c.getAttribute('data-value'); c.classList.toggle('on', Array.isArray(choices[k]) ? choices[k].indexOf(v) >= 0 : choices[k] === v); });
+        });
+        if (choices.bestehend === 'Bestehendes Produkt') document.getElementById('bestehend-details').classList.remove('hidden');
+        cur = Math.min(Math.max(1, s.step || 1), total);
+      } catch (e) {}
+    }
+    form.addEventListener('input', save);
+    function show(n) {
+      cur = n; steps.forEach(function (s) { s.classList.toggle('active', +s.getAttribute('data-step') === n); });
+      document.getElementById('step-label').textContent = 'Schritt ' + n + ' von ' + total;
+      document.getElementById('step-title').textContent = steps[n - 1].getAttribute('data-title');
+      document.getElementById('bar').style.width = Math.round(n / total * 100) + '%';
+      prev.disabled = n === 1; next.classList.toggle('hidden', n === total); send.classList.toggle('hidden', n !== total);
+      err.classList.add('hidden'); window.scrollTo({ top: 0, behavior: 'smooth' }); save();
+    }
+    function valid(n) {
+      var ok = true, s = steps[n - 1];
+      s.querySelectorAll('[required]').forEach(function (el) { if (!el.checkValidity()) { ok = false; el.classList.add('!border-swiss'); } else el.classList.remove('!border-swiss'); });
+      s.querySelectorAll('[data-radio]').forEach(function (g) { var name = g.getAttribute('data-radio'); if (g.previousElementSibling && g.previousElementSibling.textContent.indexOf('*') >= 0 && !choices[name]) ok = false; });
+      if (!ok) { err.textContent = 'Bitte füllen Sie die Pflichtfelder aus.'; err.classList.remove('hidden'); }
+      return ok;
+    }
+    prev.addEventListener('click', function () { if (cur > 1) show(cur - 1); });
+    next.addEventListener('click', function () { if (valid(cur)) show(cur + 1); });
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault(); if (!valid(cur)) return;
+      send.disabled = true; send.textContent = 'Wird gesendet …';
+      var d = data(); var uploaded = []; var folder = (token || 'ohne-token') + '/' + Date.now();
+      var all = []; Object.keys(files).forEach(function (k) { files[k].forEach(function (f) { all.push({ k: k, f: f }); }); });
+      var upload = all.reduce(function (p, item) {
+        return p.then(function () {
+          var path = folder + '/' + item.k + '-' + item.f.name.replace(/[^a-zA-Z0-9._-]/g, '_');
+          return sb.storage.from('briefing').upload(path, item.f, { upsert: false }).then(function (r) { if (r.error) throw r.error; uploaded.push({ feld: item.k, pfad: path, name: item.f.name, groesse: item.f.size }); });
+        });
+      }, Promise.resolve());
+      upload.then(function () {
+        return sb.from('briefings').insert({ token: token, firma: d.firma || null, ansprechperson: d.ansprechperson || null, email: d.email || null, telefon: d.telefon || null, daten: d, dateien: uploaded });
+      }).then(function (r) {
+        if (r.error) throw r.error;
+        var fd = new FormData(); fd.append('_subject', 'Neues Briefing: ' + (d.firma || d.ansprechperson)); fd.append('_template', 'table');
+        fd.append('Firma', d.firma || ''); fd.append('Ansprechperson', d.ansprechperson || ''); fd.append('E-Mail', d.email || ''); fd.append('Produkt', d.produkt_name || ''); fd.append('Menge', d.menge_erstbestellung || ''); fd.append('Dateien', String(uploaded.length)); fd.append('Admin', 'https://innovarex.swiss/admin/');
+        return fetch('https://formsubmit.co/ajax/vdalipi@innovarex.swiss', { method: 'POST', headers: { Accept: 'application/json' }, body: fd }).catch(function () {});
+      }).then(function () {
+        try { localStorage.removeItem(KEY); } catch (e) {}
+        form.classList.add('hidden'); document.getElementById('intro').classList.add('hidden'); document.getElementById('done').classList.remove('hidden'); window.scrollTo({ top: 0, behavior: 'smooth' });
+      }).catch(function (e) {
+        send.disabled = false; send.textContent = 'Briefing senden';
+        err.textContent = 'Das Senden hat nicht geklappt (' + (e.message || e) + '). Bitte versuchen Sie es erneut oder schreiben Sie an vdalipi@innovarex.swiss.'; err.classList.remove('hidden');
+      });
+    });
+
+    restore(); show(cur);
+  })();
+  </script>
+</body>
+</html>

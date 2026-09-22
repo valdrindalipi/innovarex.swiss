@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="de-CH">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin | Innovarex</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={theme:{extend:{fontFamily:{sans:['Inter','system-ui','sans-serif'],display:['Space Grotesk','Inter','sans-serif']},colors:{ink:{DEFAULT:'#0B0F19',800:'#141A26',700:'#1E2635'},accent:{DEFAULT:'#7633E3',600:'#6224C9',50:'#F3EEFD'},swiss:'#E30613'},boxShadow:{card:'0 1px 2px rgba(11,15,25,.04), 0 8px 24px -12px rgba(11,15,25,.12)'}}}}</script>
+  <style>
+    .field{width:100%;border:1px solid rgba(11,15,25,.15);border-radius:.6rem;padding:.55rem .8rem;font-size:.875rem;outline:none;background:#fff}.field:focus{border-color:#0B0F19}
+    .view{display:none}.view.active{display:block}
+    .card{cursor:grab}.card.dragging{opacity:.4}.col.over{background:#F3EEFD}
+    .tab.on{background:#0B0F19;color:#fff}
+    ::-webkit-scrollbar{height:8px;width:8px}::-webkit-scrollbar-thumb{background:rgba(11,15,25,.15);border-radius:99px}
+  </style>
+</head>
+<body class="bg-stone-50 text-ink font-sans antialiased">
+
+  <!-- Login -->
+  <div id="login" class="flex min-h-screen items-center justify-center p-6">
+    <div class="w-full max-w-sm rounded-3xl border border-ink/5 bg-white p-8 shadow-card">
+      <img src="/assets/logo.png" alt="Innovarex" class="h-7 w-auto">
+      <h1 class="font-display mt-6 text-2xl font-bold">Admin</h1>
+      <p class="mt-1 text-sm text-ink/60">Sie erhalten einen Login-Link per E-Mail.</p>
+      <form id="login-form" class="mt-6">
+        <input class="field" type="email" name="email" placeholder="E-Mail" value="vdalipi@innovarex.swiss" required>
+        <button class="mt-3 w-full rounded-full bg-accent py-3 text-sm font-semibold text-white transition hover:bg-accent-600">Login-Link senden</button>
+      </form>
+      <p id="login-msg" class="mt-4 hidden text-sm text-ink/70"></p>
+    </div>
+  </div>
+
+  <!-- App -->
+  <div id="app" class="hidden">
+    <header class="sticky top-0 z-30 border-b border-ink/5 bg-white/90 backdrop-blur">
+      <div class="mx-auto flex h-14 max-w-[1400px] items-center justify-between gap-4 px-4">
+        <div class="flex items-center gap-6">
+          <img src="/assets/logo.png" alt="Innovarex" class="h-6 w-auto">
+          <nav class="hidden items-center gap-1 text-sm font-medium sm:flex">
+            <button class="tab rounded-full px-3 py-1.5 on" data-view="dashboard">Dashboard</button>
+            <button class="tab rounded-full px-3 py-1.5" data-view="pipeline">Pipeline</button>
+            <button class="tab rounded-full px-3 py-1.5" data-view="liste">Leads</button>
+            <button class="tab rounded-full px-3 py-1.5" data-view="aufgaben">Aufgaben</button>
+            <button class="tab rounded-full px-3 py-1.5" data-view="briefings">Briefings</button>
+          </nav>
+        </div>
+        <div class="flex items-center gap-2">
+          <input id="search" class="field !w-44 sm:!w-64" placeholder="Suchen: Name, Firma, Produkt">
+          <button id="new-lead" class="rounded-full bg-accent px-4 py-2 text-sm font-semibold text-white hover:bg-accent-600">+ Lead</button>
+          <button id="reload" class="rounded-full border border-ink/15 px-3 py-2 text-sm" title="Neu laden">↻</button>
+          <button id="logout" class="rounded-full border border-ink/15 px-3 py-2 text-sm">Abmelden</button>
+        </div>
+      </div>
+      <nav class="flex gap-1 overflow-x-auto px-4 pb-2 text-sm font-medium sm:hidden">
+        <button class="tab shrink-0 rounded-full px-3 py-1.5 on" data-view="dashboard">Dashboard</button>
+        <button class="tab shrink-0 rounded-full px-3 py-1.5" data-view="pipeline">Pipeline</button>
+        <button class="tab shrink-0 rounded-full px-3 py-1.5" data-view="liste">Leads</button>
+        <button class="tab shrink-0 rounded-full px-3 py-1.5" data-view="aufgaben">Aufgaben</button>
+        <button class="tab shrink-0 rounded-full px-3 py-1.5" data-view="briefings">Briefings</button>
+      </nav>
+    </header>
+
+    <main class="mx-auto max-w-[1400px] px-4 py-6">
+      <section id="v-dashboard" class="view active">
+        <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4" id="kpis"></div>
+        <div class="mt-6 grid gap-6 lg:grid-cols-2">
+          <div class="rounded-2xl border border-ink/5 bg-white p-5 shadow-card"><h2 class="font-display text-lg font-semibold">Neue Anfragen</h2><div id="dash-new" class="mt-4 divide-y divide-ink/5"></div></div>
+          <div class="rounded-2xl border border-ink/5 bg-white p-5 shadow-card"><h2 class="font-display text-lg font-semibold">Fällig und überfällig</h2><div id="dash-due" class="mt-4 divide-y divide-ink/5"></div></div>
+        </div>
+      </section>
+      <section id="v-pipeline" class="view"><div id="board" class="flex gap-4 overflow-x-auto pb-4"></div></section>
+      <section id="v-liste" class="view">
+        <div class="mb-4 flex flex-wrap gap-2" id="stage-filter"></div>
+        <div class="overflow-x-auto rounded-2xl border border-ink/5 bg-white shadow-card"><table class="w-full text-sm"><thead class="bg-stone-50 text-left text-xs uppercase tracking-wider text-ink/50"><tr><th class="px-4 py-3">Lead</th><th class="px-4 py-3">Thema</th><th class="px-4 py-3">Phase</th><th class="px-4 py-3">Wert</th><th class="px-4 py-3">Nächster Schritt</th><th class="px-4 py-3">Eingang</th></tr></thead><tbody id="list"></tbody></table></div>
+      </section>
+      <section id="v-aufgaben" class="view"><div class="rounded-2xl border border-ink/5 bg-white p-5 shadow-card"><h2 class="font-display text-lg font-semibold">Offene Aufgaben</h2><div id="tasks-all" class="mt-4 divide-y divide-ink/5"></div></div></section>
+      <section id="v-briefings" class="view"><div id="briefings-all" class="grid gap-4 lg:grid-cols-2"></div></section>
+    </main>
+
+    <!-- Lead-Detail -->
+    <div id="drawer" class="fixed inset-0 z-40 hidden">
+      <div class="absolute inset-0 bg-ink/50" data-close></div>
+      <aside class="absolute right-0 top-0 h-full w-full max-w-2xl overflow-y-auto bg-white shadow-2xl">
+        <div class="sticky top-0 flex items-start justify-between gap-4 border-b border-ink/5 bg-white p-5">
+          <div><h2 id="d-name" class="font-display text-xl font-bold"></h2><p id="d-sub" class="text-sm text-ink/60"></p></div>
+          <button class="rounded-full p-2 hover:bg-stone-100" data-close>✕</button>
+        </div>
+        <div class="p-5">
+          <div class="flex flex-wrap gap-2" id="d-actions"></div>
+          <div class="mt-5 grid gap-3 sm:grid-cols-2">
+            <div><label class="text-xs font-semibold uppercase tracking-wider text-ink/50">Phase</label><select id="d-stage" class="field mt-1"></select></div>
+            <div><label class="text-xs font-semibold uppercase tracking-wider text-ink/50">Priorität</label><select id="d-prio" class="field mt-1"><option value="niedrig">Niedrig</option><option value="normal">Normal</option><option value="hoch">Hoch</option></select></div>
+            <div><label class="text-xs font-semibold uppercase tracking-wider text-ink/50">Auftragswert CHF</label><input id="d-wert" type="number" class="field mt-1" placeholder="geschätzt"></div>
+            <div><label class="text-xs font-semibold uppercase tracking-wider text-ink/50">Fällig am</label><input id="d-due" type="date" class="field mt-1"></div>
+            <div class="sm:col-span-2"><label class="text-xs font-semibold uppercase tracking-wider text-ink/50">Nächster Schritt</label><input id="d-next" class="field mt-1" placeholder="z. B. Kalkulation schicken"></div>
+            <div class="sm:col-span-2 hidden" id="d-lost-wrap"><label class="text-xs font-semibold uppercase tracking-wider text-ink/50">Grund verloren</label><input id="d-lost" class="field mt-1"></div>
+          </div>
+          <div class="mt-3 flex items-center gap-3"><button id="d-save" class="rounded-full bg-ink px-5 py-2 text-sm font-semibold text-white hover:bg-accent">Speichern</button><span id="d-saved" class="hidden text-sm text-ink/60">Gespeichert</span></div>
+
+          <div class="mt-8 rounded-2xl bg-stone-50 p-4 text-sm" id="d-info"></div>
+
+          <h3 class="font-display mt-8 text-lg font-semibold">Briefing</h3>
+          <div id="d-briefing" class="mt-3 text-sm"></div>
+
+          <h3 class="font-display mt-8 text-lg font-semibold">Aufgaben</h3>
+          <form id="task-form" class="mt-3 flex gap-2"><input class="field" name="titel" placeholder="Neue Aufgabe" required><input class="field !w-40" name="faellig_am" type="date"><button class="rounded-full bg-ink px-4 text-sm font-semibold text-white">+</button></form>
+          <div id="d-tasks" class="mt-3 divide-y divide-ink/5"></div>
+
+          <h3 class="font-display mt-8 text-lg font-semibold">Verlauf und Notizen</h3>
+          <form id="note-form" class="mt-3"><div class="flex gap-2"><select class="field !w-36" name="typ"><option value="notiz">Notiz</option><option value="anruf">Anruf</option><option value="email">E-Mail</option><option value="whatsapp">WhatsApp</option><option value="meeting">Meeting</option></select><input class="field" name="text" placeholder="Was ist passiert?" required><button class="rounded-full bg-ink px-4 text-sm font-semibold text-white">+</button></div></form>
+          <div id="d-notes" class="mt-3 space-y-3"></div>
+
+          <button id="d-delete" class="mt-10 text-sm text-swiss underline">Lead löschen</button>
+        </div>
+      </aside>
+    </div>
+
+    <!-- Neuer Lead -->
+    <div id="modal" class="fixed inset-0 z-40 hidden items-center justify-center p-4">
+      <div class="absolute inset-0 bg-ink/50" data-close-modal></div>
+      <form id="lead-form" class="relative w-full max-w-lg rounded-3xl bg-white p-6 shadow-2xl">
+        <h2 class="font-display text-xl font-bold">Lead manuell anlegen</h2>
+        <div class="mt-4 grid gap-3 sm:grid-cols-2">
+          <input class="field" name="name" placeholder="Name *" required><input class="field" name="firma" placeholder="Firma">
+          <input class="field" name="email" type="email" placeholder="E-Mail *" required><input class="field" name="telefon" placeholder="Telefon">
+          <input class="field sm:col-span-2" name="interesse" placeholder="Thema, z. B. Neues Produkt beschaffen">
+          <select class="field sm:col-span-2" name="quelle"><option value="telefon">Telefon</option><option value="email">E-Mail</option><option value="empfehlung">Empfehlung</option><option value="messe">Messe oder Event</option><option value="linkedin">LinkedIn</option><option value="website">Website</option></select>
+          <textarea class="field sm:col-span-2" name="nachricht" rows="3" placeholder="Notiz"></textarea>
+        </div>
+        <div class="mt-4 flex justify-end gap-2"><button type="button" class="rounded-full border border-ink/15 px-5 py-2 text-sm" data-close-modal>Abbrechen</button><button class="rounded-full bg-accent px-5 py-2 text-sm font-semibold text-white">Anlegen</button></div>
+      </form>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  <script>
+  (function () {
+    var SB_URL = 'https://fgmvvtvcrjngqzyrkvfn.supabase.co', SB_KEY = 'sb_publishable_lk1BiwTkmdKP8X6Gm0mHrQ_xu2U0HYd', ADMIN = 'vdalipi@innovarex.swiss';
+    var sb = window.supabase.createClient(SB_URL, SB_KEY);
+    var STAGES = [['neu','Neu'],['erstgespraech','Erstgespräch'],['briefing','Briefing offen'],['kalkulation','Kalkulation'],['muster','Muster'],['angebot','Angebot'],['gewonnen','Gewonnen'],['verloren','Verloren']];
+    var OPEN = ['neu','erstgespraech','briefing','kalkulation','muster','angebot'];
+    var LABEL = {}; STAGES.forEach(function (s) { LABEL[s[0]] = s[1]; });
+    var leads = [], tasks = [], briefings = [], current = null, filter = 'offen', q = '';
+    var $ = function (id) { return document.getElementById(id); };
+    var esc = function (s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
+    var chf = function (n) { return n == null || n === '' ? '' : 'CHF ' + Number(n).toLocaleString('de-CH').replace(/’| /g, "'"); };
+    var dt = function (s) { return s ? new Date(s).toLocaleDateString('de-CH') : ''; };
+    var today = function () { return new Date().toISOString().slice(0, 10); };
+    var stageBadge = function (s) { var c = s === 'gewonnen' ? 'bg-green-100 text-green-700' : s === 'verloren' ? 'bg-stone-200 text-ink/60' : s === 'neu' ? 'bg-accent text-white' : 'bg-accent-50 text-accent'; return '<span class="rounded-full px-2 py-0.5 text-xs font-semibold ' + c + '">' + LABEL[s] + '</span>'; };
+    var prioDot = function (p) { return p === 'hoch' ? '<span class="inline-block h-2 w-2 rounded-full bg-swiss" title="hoch"></span> ' : ''; };
+
+    // ---------- Auth ----------
+    $('login-form').addEventListener('submit', function (e) {
+      e.preventDefault(); var email = e.target.email.value.trim(); var m = $('login-msg'); m.classList.remove('hidden'); m.textContent = 'Link wird gesendet …';
+      sb.auth.signInWithOtp({ email: email, options: { emailRedirectTo: location.origin + '/admin/' } }).then(function (r) { m.textContent = r.error ? 'Fehler: ' + r.error.message : 'Link gesendet. Bitte E-Mail öffnen und auf den Link klicken.'; });
+    });
+    $('logout').addEventListener('click', function () { sb.auth.signOut().then(function () { location.reload(); }); });
+    sb.auth.onAuthStateChange(function (ev, session) {
+      if (session && session.user) {
+        if (session.user.email !== ADMIN) { sb.auth.signOut(); alert('Dieses Konto hat keinen Zugriff.'); return; }
+        $('login').classList.add('hidden'); $('app').classList.remove('hidden'); if (location.hash) history.replaceState(null, '', location.pathname); loadAll();
+      } else { $('login').classList.remove('hidden'); $('app').classList.add('hidden'); }
+    });
+
+    // ---------- Daten ----------
+    function loadAll() {
+      return Promise.all([
+        sb.from('leads').select('*').order('created_at', { ascending: false }),
+        sb.from('aufgaben').select('*').eq('erledigt', false).order('faellig_am', { ascending: true, nullsFirst: false }),
+        sb.from('briefings').select('*').order('created_at', { ascending: false })
+      ]).then(function (r) {
+        if (r[0].error) { alert('Datenbank nicht erreichbar: ' + r[0].error.message + '. Ist das Schema eingespielt?'); return; }
+        leads = r[0].data || []; tasks = r[1].data || []; briefings = r[2].data || []; render();
+      });
+    }
+    $('reload').addEventListener('click', loadAll); setInterval(loadAll, 90000);
+    $('search').addEventListener('input', function (e) { q = e.target.value.toLowerCase(); render(); });
+    function visible() {
+      return leads.filter(function (l) {
+        if (q && !(l.name + ' ' + (l.firma || '') + ' ' + (l.email || '') + ' ' + (l.interesse || '') + ' ' + (l.nachricht || '')).toLowerCase().includes(q)) return false;
+        if (filter === 'offen') return OPEN.indexOf(l.stage) >= 0; if (filter === 'alle') return true; return l.stage === filter;
+      });
+    }
+
+    // ---------- Views ----------
+    document.querySelectorAll('.tab').forEach(function (t) { t.addEventListener('click', function () {
+      document.querySelectorAll('.tab').forEach(function (x) { x.classList.toggle('on', x.getAttribute('data-view') === t.getAttribute('data-view')); });
+      document.querySelectorAll('.view').forEach(function (v) { v.classList.toggle('active', v.id === 'v-' + t.getAttribute('data-view')); });
+    }); });
+
+    function render() { renderDash(); renderBoard(); renderList(); renderTasks(); renderBriefings(); if (current) { var l = leads.find(function (x) { return x.id === current.id; }); if (l) { current = l; fillDrawer(); } } }
+
+    function leadRow(l, extra) {
+      return '<button class="flex w-full items-center justify-between gap-3 py-3 text-left hover:bg-stone-50" data-open="' + l.id + '"><div><p class="font-medium">' + prioDot(l.prioritaet) + esc(l.name) + (l.firma ? ' <span class="text-ink/50">· ' + esc(l.firma) + '</span>' : '') + '</p><p class="text-xs text-ink/60">' + esc(l.interesse || '') + (extra ? ' · ' + extra : '') + '</p></div>' + stageBadge(l.stage) + '</button>';
+    }
+    function renderDash() {
+      var open = leads.filter(function (l) { return OPEN.indexOf(l.stage) >= 0; });
+      var week = new Date(); week.setDate(week.getDate() - 7);
+      var neu = leads.filter(function (l) { return new Date(l.created_at) >= week; }).length;
+      var wert = open.reduce(function (a, l) { return a + (Number(l.wert) || 0); }, 0);
+      var won = leads.filter(function (l) { return l.stage === 'gewonnen'; }).length, lost = leads.filter(function (l) { return l.stage === 'verloren'; }).length;
+      var overdue = leads.filter(function (l) { return OPEN.indexOf(l.stage) >= 0 && l.faellig_am && l.faellig_am < today(); }).length + tasks.filter(function (t) { return t.faellig_am && t.faellig_am < today(); }).length;
+      var k = [['Neue Anfragen, 7 Tage', neu], ['Offene Leads', open.length], ['Pipeline-Wert', chf(wert) || 'CHF 0'], ['Überfällig', overdue], ['Gewonnen', won], ['Verloren', lost], ['Abschlussquote', (won + lost) ? Math.round(won / (won + lost) * 100) + ' %' : '–'], ['Briefings', briefings.length]];
+      $('kpis').innerHTML = k.map(function (x) { return '<div class="rounded-2xl border border-ink/5 bg-white p-5 shadow-card"><p class="text-xs font-semibold uppercase tracking-wider text-ink/50">' + x[0] + '</p><p class="font-display mt-2 text-3xl font-bold">' + x[1] + '</p></div>'; }).join('');
+      $('dash-new').innerHTML = leads.filter(function (l) { return l.stage === 'neu'; }).slice(0, 8).map(function (l) { return leadRow(l, dt(l.created_at)); }).join('') || '<p class="py-3 text-sm text-ink/50">Keine neuen Anfragen.</p>';
+      var due = leads.filter(function (l) { return OPEN.indexOf(l.stage) >= 0 && l.faellig_am && l.faellig_am <= today(); });
+      $('dash-due').innerHTML = due.map(function (l) { return leadRow(l, (l.naechster_schritt || '') + ' · ' + dt(l.faellig_am)); }).join('') || '<p class="py-3 text-sm text-ink/50">Nichts fällig.</p>';
+    }
+    function renderBoard() {
+      $('board').innerHTML = STAGES.map(function (s) {
+        var items = visible().filter(function (l) { return l.stage === s[0]; });
+        if (filter === 'offen' && OPEN.indexOf(s[0]) < 0) items = leads.filter(function (l) { return l.stage === s[0] && (!q || (l.name + ' ' + (l.firma || '')).toLowerCase().includes(q)); });
+        var sum = items.reduce(function (a, l) { return a + (Number(l.wert) || 0); }, 0);
+        return '<div class="col w-72 shrink-0 rounded-2xl bg-stone-100 p-3" data-stage="' + s[0] + '"><div class="flex items-center justify-between px-1"><p class="text-xs font-semibold uppercase tracking-wider text-ink/60">' + s[1] + ' <span class="text-ink/40">' + items.length + '</span></p><span class="text-xs text-ink/50">' + (sum ? chf(sum) : '') + '</span></div><div class="mt-3 space-y-2 min-h-[60px]">' + items.map(function (l) {
+          var late = l.faellig_am && l.faellig_am < today() && OPEN.indexOf(l.stage) >= 0;
+          return '<div class="card rounded-xl border border-ink/5 bg-white p-3 shadow-card" draggable="true" data-id="' + l.id + '" data-open="' + l.id + '"><p class="text-sm font-semibold">' + prioDot(l.prioritaet) + esc(l.name) + '</p><p class="text-xs text-ink/60">' + esc(l.firma || l.email) + '</p><p class="mt-1 text-xs text-ink/70">' + esc(l.interesse || '') + '</p><div class="mt-2 flex items-center justify-between text-xs"><span class="' + (late ? 'text-swiss font-semibold' : 'text-ink/50') + '">' + (l.naechster_schritt ? esc(l.naechster_schritt) + (l.faellig_am ? ' · ' + dt(l.faellig_am) : '') : dt(l.created_at)) + '</span><span class="font-semibold">' + chf(l.wert) + '</span></div></div>';
+        }).join('') + '</div></div>';
+      }).join('');
+      // Drag and drop
+      var dragId = null;
+      $('board').querySelectorAll('.card').forEach(function (c) {
+        c.addEventListener('dragstart', function () { dragId = c.getAttribute('data-id'); c.classList.add('dragging'); });
+        c.addEventListener('dragend', function () { c.classList.remove('dragging'); });
+      });
+      $('board').querySelectorAll('.col').forEach(function (col) {
+        col.addEventListener('dragover', function (e) { e.preventDefault(); col.classList.add('over'); });
+        col.addEventListener('dragleave', function () { col.classList.remove('over'); });
+        col.addEventListener('drop', function (e) { e.preventDefault(); col.classList.remove('over'); if (dragId) setStage(dragId, col.getAttribute('data-stage')); });
+      });
+    }
+    function renderList() {
+      $('stage-filter').innerHTML = [['offen', 'Offen'], ['alle', 'Alle']].concat(STAGES).map(function (s) { return '<button class="rounded-full border px-3 py-1 text-xs font-semibold ' + (filter === s[0] ? 'border-ink bg-ink text-white' : 'border-ink/15 bg-white') + '" data-filter="' + s[0] + '">' + s[1] + '</button>'; }).join('');
+      $('stage-filter').querySelectorAll('[data-filter]').forEach(function (b) { b.addEventListener('click', function () { filter = b.getAttribute('data-filter'); render(); }); });
+      $('list').innerHTML = visible().map(function (l) { return '<tr class="cursor-pointer border-t border-ink/5 hover:bg-stone-50" data-open="' + l.id + '"><td class="px-4 py-3"><p class="font-medium">' + prioDot(l.prioritaet) + esc(l.name) + '</p><p class="text-xs text-ink/60">' + esc(l.firma || '') + ' ' + esc(l.email) + '</p></td><td class="px-4 py-3">' + esc(l.interesse || '') + '</td><td class="px-4 py-3">' + stageBadge(l.stage) + '</td><td class="px-4 py-3">' + chf(l.wert) + '</td><td class="px-4 py-3">' + esc(l.naechster_schritt || '') + (l.faellig_am ? '<br><span class="text-xs ' + (l.faellig_am < today() ? 'text-swiss' : 'text-ink/50') + '">' + dt(l.faellig_am) + '</span>' : '') + '</td><td class="px-4 py-3 text-ink/60">' + dt(l.created_at) + '</td></tr>'; }).join('') || '<tr><td class="px-4 py-6 text-ink/50" colspan="6">Keine Leads.</td></tr>';
+    }
+    function renderTasks() {
+      $('tasks-all').innerHTML = tasks.map(function (t) { var l = leads.find(function (x) { return x.id === t.lead_id; }); return '<div class="flex items-center gap-3 py-3"><input type="checkbox" class="h-4 w-4 accent-ink" data-done="' + t.id + '"><div class="flex-1"><p class="text-sm font-medium">' + esc(t.titel) + '</p><p class="text-xs text-ink/60">' + (l ? '<button class="underline" data-open="' + l.id + '">' + esc(l.name) + (l.firma ? ' · ' + esc(l.firma) : '') + '</button>' : '') + (t.faellig_am ? ' · <span class="' + (t.faellig_am < today() ? 'text-swiss font-semibold' : '') + '">' + dt(t.faellig_am) + '</span>' : '') + '</p></div></div>'; }).join('') || '<p class="py-3 text-sm text-ink/50">Keine offenen Aufgaben.</p>';
+    }
+    function briefingCard(b, compact) {
+      var d = b.daten || {}; var l = b.lead_id ? leads.find(function (x) { return x.id === b.lead_id; }) : null;
+      var rows = Object.keys(d).filter(function (k) { return k !== 'datenschutz'; }).map(function (k) { var v = Array.isArray(d[k]) ? d[k].join(', ') : d[k]; return '<div class="grid grid-cols-3 gap-2 border-t border-ink/5 py-1.5"><span class="text-xs text-ink/50">' + esc(k.replace(/_/g, ' ')) + '</span><span class="col-span-2 break-words">' + esc(v) + '</span></div>'; }).join('');
+      var files = (b.dateien || []).map(function (f, i) { return '<button class="rounded-full border border-ink/15 px-3 py-1 text-xs hover:border-accent" data-file="' + esc(f.pfad) + '">' + esc(f.name) + '</button>'; }).join(' ');
+      return '<div class="rounded-2xl border border-ink/5 bg-white p-5 shadow-card"><div class="flex items-start justify-between gap-3"><div><p class="font-display font-semibold">' + esc(d.produkt_name || 'Briefing') + '</p><p class="text-xs text-ink/60">' + esc(b.firma || '') + ' · ' + esc(b.ansprechperson || '') + ' · ' + dt(b.created_at) + '</p></div>' + (l ? '<button class="rounded-full bg-accent-50 px-3 py-1 text-xs font-semibold text-accent" data-open="' + l.id + '">Lead öffnen</button>' : '<span class="rounded-full bg-stone-100 px-3 py-1 text-xs">ohne Lead</span>') + '</div>' + (files ? '<div class="mt-3 flex flex-wrap gap-2">' + files + '</div>' : '') + '<details class="mt-3"' + (compact ? '' : ' open') + '><summary class="cursor-pointer text-sm font-medium text-accent">Alle Angaben</summary><div class="mt-2 text-sm">' + rows + '</div></details></div>';
+    }
+    function renderBriefings() { $('briefings-all').innerHTML = briefings.map(function (b) { return briefingCard(b, true); }).join('') || '<p class="text-sm text-ink/50">Noch keine Briefings.</p>'; }
+
+    // ---------- Aktionen ----------
+    document.body.addEventListener('click', function (e) {
+      var o = e.target.closest('[data-open]'); if (o) { openLead(o.getAttribute('data-open')); return; }
+      var f = e.target.closest('[data-file]'); if (f) { sb.storage.from('briefing').createSignedUrl(f.getAttribute('data-file'), 3600).then(function (r) { if (r.data) window.open(r.data.signedUrl, '_blank'); else alert('Datei nicht gefunden'); }); return; }
+      if (e.target.closest('[data-close]')) $('drawer').classList.add('hidden');
+      if (e.target.closest('[data-close-modal]')) { $('modal').classList.add('hidden'); $('modal').classList.remove('flex'); }
+      var c = e.target.closest('[data-copy]'); if (c) { navigator.clipboard.writeText(c.getAttribute('data-copy')); c.textContent = 'Kopiert'; }
+    });
+    document.body.addEventListener('change', function (e) {
+      var d = e.target.getAttribute && e.target.getAttribute('data-done'); if (d) sb.from('aufgaben').update({ erledigt: true, erledigt_am: new Date().toISOString() }).eq('id', d).then(loadAll);
+    });
+    function setStage(id, stage) {
+      var l = leads.find(function (x) { return x.id === id; }); if (!l || l.stage === stage) return;
+      sb.from('leads').update({ stage: stage }).eq('id', id).then(function () { return sb.from('lead_notizen').insert({ lead_id: id, typ: 'status', text: LABEL[l.stage] + ' → ' + LABEL[stage], autor: 'Valdrin' }); }).then(loadAll);
+    }
+    function openLead(id) { current = leads.find(function (x) { return x.id === id; }); if (!current) return; fillDrawer(); $('drawer').classList.remove('hidden'); }
+    function fillDrawer() {
+      var l = current; $('d-name').textContent = l.name + (l.firma ? ' · ' + l.firma : ''); $('d-sub').textContent = 'Eingang ' + dt(l.created_at) + ' · Quelle ' + (l.quelle || 'website');
+      var wa = (l.telefon || '').replace(/[^0-9+]/g, '').replace(/^0/, '+41').replace(/^\+/, '');
+      $('d-actions').innerHTML = '<a class="rounded-full bg-ink px-4 py-2 text-sm font-semibold text-white" href="mailto:' + esc(l.email) + '">E-Mail</a>' + (l.telefon ? '<a class="rounded-full bg-ink px-4 py-2 text-sm font-semibold text-white" href="tel:' + esc(l.telefon) + '">Anrufen</a><a class="rounded-full bg-green-600 px-4 py-2 text-sm font-semibold text-white" target="_blank" rel="noopener" href="https://wa.me/' + wa + '">WhatsApp</a>' : '') + '<button class="rounded-full border border-ink/15 px-4 py-2 text-sm font-semibold" data-copy="https://innovarex.swiss/briefing/?t=' + l.briefing_token + '">Briefing-Link kopieren</button>';
+      $('d-stage').innerHTML = STAGES.map(function (s) { return '<option value="' + s[0] + '"' + (l.stage === s[0] ? ' selected' : '') + '>' + s[1] + '</option>'; }).join('');
+      $('d-prio').value = l.prioritaet || 'normal'; $('d-wert').value = l.wert || ''; $('d-due').value = l.faellig_am || ''; $('d-next').value = l.naechster_schritt || ''; $('d-lost').value = l.verloren_grund || '';
+      $('d-lost-wrap').classList.toggle('hidden', l.stage !== 'verloren');
+      $('d-info').innerHTML = [['E-Mail', l.email], ['Telefon', l.telefon], ['Thema', l.interesse], ['Menge / Budget', l.menge_budget], ['Erstberatung', l.erstberatung], ['Nachricht', l.nachricht]].filter(function (x) { return x[1]; }).map(function (x) { return '<div class="grid grid-cols-3 gap-2 py-1"><span class="text-xs font-semibold uppercase tracking-wider text-ink/50">' + x[0] + '</span><span class="col-span-2 whitespace-pre-line break-words">' + esc(x[1]) + '</span></div>'; }).join('');
+      var bs = briefings.filter(function (b) { return b.lead_id === l.id; });
+      $('d-briefing').innerHTML = bs.length ? bs.map(function (b) { return briefingCard(b, false); }).join('') : '<p class="text-ink/50">Noch kein Briefing. Link kopieren und dem Kunden schicken.</p>';
+      $('d-tasks').innerHTML = tasks.filter(function (t) { return t.lead_id === l.id; }).map(function (t) { return '<div class="flex items-center gap-3 py-2"><input type="checkbox" class="h-4 w-4 accent-ink" data-done="' + t.id + '"><span class="flex-1 text-sm">' + esc(t.titel) + '</span><span class="text-xs ' + (t.faellig_am && t.faellig_am < today() ? 'text-swiss' : 'text-ink/50') + '">' + dt(t.faellig_am) + '</span></div>'; }).join('') || '<p class="py-2 text-sm text-ink/50">Keine offenen Aufgaben.</p>';
+      sb.from('lead_notizen').select('*').eq('lead_id', l.id).order('created_at', { ascending: false }).then(function (r) {
+        var ic = { notiz: '📝', anruf: '📞', email: '✉️', whatsapp: '💬', meeting: '🤝', status: '↔', system: '⚙' };
+        $('d-notes').innerHTML = (r.data || []).map(function (n) { return '<div class="rounded-xl bg-stone-50 p-3 text-sm"><div class="flex justify-between text-xs text-ink/50"><span>' + (ic[n.typ] || '') + ' ' + esc(n.typ) + (n.autor ? ' · ' + esc(n.autor) : '') + '</span><span>' + new Date(n.created_at).toLocaleString('de-CH') + '</span></div><p class="mt-1 whitespace-pre-line">' + esc(n.text) + '</p></div>'; }).join('') || '<p class="text-sm text-ink/50">Noch nichts.</p>';
+      });
+    }
+    $('d-stage').addEventListener('change', function () { $('d-lost-wrap').classList.toggle('hidden', $('d-stage').value !== 'verloren'); });
+    $('d-save').addEventListener('click', function () {
+      var upd = { stage: $('d-stage').value, prioritaet: $('d-prio').value, wert: $('d-wert').value || null, faellig_am: $('d-due').value || null, naechster_schritt: $('d-next').value || null, verloren_grund: $('d-lost').value || null };
+      var old = current.stage;
+      sb.from('leads').update(upd).eq('id', current.id).then(function (r) {
+        if (r.error) { alert(r.error.message); return; }
+        var p = old !== upd.stage ? sb.from('lead_notizen').insert({ lead_id: current.id, typ: 'status', text: LABEL[old] + ' → ' + LABEL[upd.stage], autor: 'Valdrin' }) : Promise.resolve();
+        return p.then(loadAll).then(function () { $('d-saved').classList.remove('hidden'); setTimeout(function () { $('d-saved').classList.add('hidden'); }, 2000); });
+      });
+    });
+    $('note-form').addEventListener('submit', function (e) { e.preventDefault(); var f = e.target; sb.from('lead_notizen').insert({ lead_id: current.id, typ: f.typ.value, text: f.text.value, autor: 'Valdrin' }).then(function () { f.text.value = ''; fillDrawer(); }); });
+    $('task-form').addEventListener('submit', function (e) { e.preventDefault(); var f = e.target; sb.from('aufgaben').insert({ lead_id: current.id, titel: f.titel.value, faellig_am: f.faellig_am.value || null }).then(function () { f.reset(); loadAll(); }); });
+    $('d-delete').addEventListener('click', function () { if (confirm('Lead und alle Notizen endgültig löschen?')) sb.from('leads').delete().eq('id', current.id).then(function () { $('drawer').classList.add('hidden'); current = null; loadAll(); }); });
+    $('new-lead').addEventListener('click', function () { $('modal').classList.remove('hidden'); $('modal').classList.add('flex'); });
+    $('lead-form').addEventListener('submit', function (e) {
+      e.preventDefault(); var f = e.target; var row = {}; new FormData(f).forEach(function (v, k) { row[k] = v || null; });
+      sb.from('leads').insert(row).then(function (r) { if (r.error) { alert(r.error.message); return; } f.reset(); $('modal').classList.add('hidden'); $('modal').classList.remove('flex'); loadAll(); });
+    });
+  })();
+  </script>
+</body>
+</html>

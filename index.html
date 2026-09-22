@@ -1562,6 +1562,9 @@
         error.classList.add('hidden');
         submitBtn.disabled = true; submitBtn.textContent = 'Wird gesendet …';
         var data = new FormData(form);
+        // Anfrage in die Datenbank (Admin-Panel), Fehler blockieren den Versand nicht
+        var lead = { name: data.get('name'), firma: data.get('firma') || null, email: data.get('email'), telefon: data.get('telefon') || null, interesse: data.get('interesse') || null, menge_budget: data.get('menge_budget') || null, nachricht: data.get('nachricht') || null, erstberatung: data.get('erstberatung') || null, quelle: 'website' };
+        fetch('https://fgmvvtvcrjngqzyrkvfn.supabase.co/rest/v1/leads', { method: 'POST', headers: { 'Content-Type': 'application/json', 'apikey': 'sb_publishable_lk1BiwTkmdKP8X6Gm0mHrQ_xu2U0HYd', 'Authorization': 'Bearer sb_publishable_lk1BiwTkmdKP8X6Gm0mHrQ_xu2U0HYd', 'Prefer': 'return=minimal' }, body: JSON.stringify(lead) }).catch(function () {});
         fetch('https://formsubmit.co/ajax/vdalipi@innovarex.swiss', { method: 'POST', headers: { 'Accept': 'application/json' }, body: data })
           .then(function (r) { return r.ok ? r.json() : Promise.reject(r); })
           .then(function () { showSuccess(); })
