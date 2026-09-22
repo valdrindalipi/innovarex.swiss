@@ -1123,7 +1123,8 @@
               <span class="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-accent text-white"><svg class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7"/></svg></span>
               <h3 class="font-display mt-6 text-2xl font-bold">Danke, Ihre Anfrage ist bei uns.</h3>
               <p class="mx-auto mt-3 max-w-md text-ink/70">Wir melden uns innerhalb eines Werktags persönlich bei Ihnen. Wenn es eilt, erreichen Sie uns direkt unter <a href="tel:+41784419989" class="font-semibold text-ink">+41 78 441 99 89</a>.</p>
-              <button type="button" id="form-again" class="mt-8 inline-flex items-center rounded-full border border-ink/15 px-6 py-3 text-sm font-semibold transition hover:border-ink/40">Weitere Anfrage senden</button>
+              <div class="mx-auto mt-8 max-w-md rounded-2xl bg-stone-50 p-5 text-left"><p class="font-semibold">Schneller zur Kalkulation?</p><p class="mt-1 text-sm text-ink/70">Füllen Sie jetzt das Projekt-Briefing aus, rund zehn Minuten. Ihre Angaben von hier sind schon drin. Dann brauchen wir keine Rückfragen und können direkt rechnen.</p><a id="form-briefing" href="/briefing/" class="group mt-4 inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-semibold text-white transition hover:bg-accent-600">Briefing jetzt ausfüllen<svg class="h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6"/></svg></a></div>
+              <button type="button" id="form-again" class="mt-6 inline-flex items-center rounded-full border border-ink/15 px-6 py-3 text-sm font-semibold transition hover:border-ink/40">Weitere Anfrage senden</button>
             </div>
           </div>
         </div>
@@ -1562,8 +1563,10 @@
         error.classList.add('hidden');
         submitBtn.disabled = true; submitBtn.textContent = 'Wird gesendet …';
         var data = new FormData(form);
+        var token = (window.crypto && crypto.randomUUID) ? crypto.randomUUID() : 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) { var r = Math.random() * 16 | 0; return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16); });
+        var briefingBtn = document.getElementById('form-briefing'); if (briefingBtn) briefingBtn.href = '/briefing/?t=' + token;
         // Anfrage in die Datenbank (Admin-Panel), Fehler blockieren den Versand nicht
-        var lead = { name: data.get('name'), firma: data.get('firma') || null, email: data.get('email'), telefon: data.get('telefon') || null, interesse: data.get('interesse') || null, menge_budget: data.get('menge_budget') || null, nachricht: data.get('nachricht') || null, erstberatung: data.get('erstberatung') || null, quelle: 'website' };
+        var lead = { name: data.get('name'), firma: data.get('firma') || null, email: data.get('email'), telefon: data.get('telefon') || null, interesse: data.get('interesse') || null, menge_budget: data.get('menge_budget') || null, nachricht: data.get('nachricht') || null, erstberatung: data.get('erstberatung') || null, quelle: 'website', briefing_token: token };
         fetch('https://fgmvvtvcrjngqzyrkvfn.supabase.co/rest/v1/leads', { method: 'POST', headers: { 'Content-Type': 'application/json', 'apikey': 'sb_publishable_lk1BiwTkmdKP8X6Gm0mHrQ_xu2U0HYd', 'Authorization': 'Bearer sb_publishable_lk1BiwTkmdKP8X6Gm0mHrQ_xu2U0HYd', 'Prefer': 'return=minimal' }, body: JSON.stringify(lead) }).catch(function () {});
         fetch('https://formsubmit.co/ajax/vdalipi@innovarex.swiss', { method: 'POST', headers: { 'Accept': 'application/json' }, body: data })
           .then(function (r) { return r.ok ? r.json() : Promise.reject(r); })

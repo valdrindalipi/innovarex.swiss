@@ -47,6 +47,7 @@
     <form id="briefing" class="mt-8 rounded-3xl border border-ink/5 bg-white p-6 shadow-card sm:p-10" novalidate>
 
       <section class="step active" data-step="1" data-title="Firma und Kontakt">
+        <div id="prefill-note" class="mb-5 hidden rounded-2xl bg-accent-50 p-4 text-sm"><p class="font-semibold text-accent">Ihre Angaben aus der Anfrage sind übernommen.</p><p class="mt-1 text-ink/70">Bitte kurz prüfen, dann weiter. Fragen, die Sie schon beantwortet haben, sind in den nächsten Schritten vorausgefüllt.</p></div>
         <div class="grid gap-5 sm:grid-cols-2">
           <div><label class="lbl">Firma <span class="text-swiss">*</span></label><input class="field" name="firma" required></div>
           <div><label class="lbl">Ansprechperson <span class="text-swiss">*</span></label><input class="field" name="ansprechperson" required autocomplete="name"></div>
@@ -269,7 +270,35 @@
       });
     });
 
-    restore(); show(cur);
+    restore();
+    // Vorbefüllung aus dem Lead (nur mit persönlichem Link)
+    function setChip(group, values) {
+      var g = form.querySelector('[data-multi="' + group + '"],[data-radio="' + group + '"]'); if (!g) return;
+      var multi = g.hasAttribute('data-multi'); var list = [].concat(values).filter(Boolean);
+      if (!multi) { choices[group] = list[0] || ''; } else { choices[group] = list.slice(); }
+      g.querySelectorAll('.chip').forEach(function (c) { var v = c.getAttribute('data-value'); c.classList.toggle('on', list.indexOf(v) >= 0); });
+      if (group === 'bestehend') document.getElementById('bestehend-details').classList.toggle('hidden', choices.bestehend !== 'Bestehendes Produkt');
+    }
+    function prefill(l) {
+      var set = function (k, v) { var el = form.elements[k]; if (el && v && !el.value) el.value = v; };
+      set('firma', l.firma); set('ansprechperson', l.name); set('email', l.email); set('telefon', l.telefon);
+      var eb = (l.erstberatung || '').split(' · '); var topic = eb[0] || l.interesse || ''; var answer = eb[1] || '';
+      if (/Neues Produkt/i.test(topic)) setChip('bestehend', 'Neues Produkt');
+      if (/Bestehendes Produkt/i.test(topic)) {
+        setChip('bestehend', 'Bestehendes Produkt');
+        var st = []; if (/Preis|Marge/i.test(answer)) st.push('Preis zu hoch'); if (/Qualität|Material/i.test(answer)) st.push('Qualität schwankt'); if (/Verpackung|Branding/i.test(answer)) st.push('Verpackung oder Branding fehlt'); if (st.length) setChip('stoert', st);
+      }
+      if (/Neues Produkt/i.test(topic) && answer) { var sel = form.elements['menge_erstbestellung']; if (sel && !sel.value) { var o = document.createElement('option'); o.textContent = answer + ' (aus Ihrer Anfrage)'; o.value = answer; sel.appendChild(o); sel.value = answer; } }
+      if (/Mehr Verk/i.test(topic) || /Shop oder Website/i.test(topic)) {
+        var z = []; if (/Ads/i.test(answer)) z.push('Ads Google Meta TikTok'); if (/Funnel|Landingpage|Shopify|CRM/i.test(answer) || /Shop oder Website/i.test(topic)) z.push('Shopify-Shop oder Website'); if (/E-Mail|WhatsApp|Support/i.test(answer)) z.push('E-Mail und WhatsApp Automationen'); if (/Creatives|Produktbilder/i.test(answer)) z.push('Produktfotos und Videos'); if (z.length) setChip('zusatz', z);
+        if (/Mehr Verk/i.test(topic)) { form.elements['produkt_beschreibung'].removeAttribute('required'); form.elements['produkt_name'].placeholder = 'Ihr bestehendes Produkt'; }
+      }
+      document.getElementById('prefill-note').classList.remove('hidden'); save();
+    }
+    if (token) {
+      sb.rpc('briefing_prefill', { t: token }).then(function (r) { if (r.data && r.data.length) prefill(r.data[0]); }).catch(function () {});
+    }
+    show(cur);
   })();
   </script>
 </body>
