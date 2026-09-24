@@ -4,3 +4,4 @@ Disallow: /admin/
 Disallow: /briefing/
 
 Sitemap: https://innovarex.swiss/sitemap.xml
+Disallow: /social/
